@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../CHANGELOG.md:1
 msgid "Changelog"
-msgstr ""
+msgstr "变更日志"
 
 #: ../../CHANGELOG.md:3
 msgid "2022.1.7"
@@ -31,6 +31,8 @@ msgid ""
 " Nox. We'd like to thank the following folks who contributed to this "
 "release:"
 msgstr ""
+"Claudio Jolowicz、Diego Ramirez 和 Tom Fleet 已经成为 Nox 的维护者。"
+"我们要感谢为这个版本做出贡献的以下人员："
 
 #: ../../CHANGELOG.md:7
 msgid "@brettcannon"
@@ -79,69 +81,70 @@ msgstr ""
 #: ../../CHANGELOG.md:19 ../../CHANGELOG.md:63 ../../CHANGELOG.md:245
 #: ../../CHANGELOG.md:276
 msgid "New features:"
-msgstr ""
+msgstr "新特性："
 
 #: ../../CHANGELOG.md:20
 msgid "Add `mamba` backend (#444, #448, #546, #551)"
-msgstr ""
+msgstr "添加 `mamba` 后端（#444, #448, #546, #551）"
 
 #: ../../CHANGELOG.md:21
 msgid "Add `session.debug` to show debug-level messages (#489)"
-msgstr ""
+msgstr "增加 `session.debug` 以显示调试级信息（#489）"
 
 #: ../../CHANGELOG.md:22
 msgid "Add cookbook page to the documentation (#483)"
-msgstr ""
+msgstr "在文档中添加 cookbook 页面（#483）"
 
 #: ../../CHANGELOG.md:23
 msgid "Add support for the `FORCE_COLOR` environment variable (#524, #548)"
-msgstr ""
+msgstr "增加对 `FORCE_COLOR` 环境变量的支持（#524, #548）。"
 
 #: ../../CHANGELOG.md:24
 msgid "Allow using `session.chdir()` as a context manager (#543)"
-msgstr ""
+msgstr "允许使用 `session.chdir()` 作为上下文管理器（#543）。"
 
 #: ../../CHANGELOG.md:25
 msgid "Deprecate use of `session.install()` without a valid backend (#537)"
-msgstr ""
+msgstr "废弃在没有有效后端的情况下使用 `session.install()` 的做法（#537）"
 
 #: ../../CHANGELOG.md:27 ../../CHANGELOG.md:68
 msgid "Improvements:"
-msgstr ""
+msgstr "改进："
 
 #: ../../CHANGELOG.md:28
 msgid "Test against Python 3.10 (#495, $502, #506)"
-msgstr ""
+msgstr "针对 Python 3.10 的测试（#495, $502, #506）"
 
 #: ../../CHANGELOG.md:29
 msgid "Add support for the `channel` option when using the `conda` backend (#522)"
-msgstr ""
+msgstr "当使用 `conda` 后端时，增加对 `channel` 选项的支持（#522）"
 
 #: ../../CHANGELOG.md:30
 msgid ""
 "Show more specific error message when the `--keywords` expression "
 "contains a syntax error (#493)"
 msgstr ""
+"当 `--keywords` 表达式包含一个语法错误时，显示更具体的错误信息（#493）"
 
 #: ../../CHANGELOG.md:31
 msgid "Include reference to `session.notify()` in tutorial page (#500)"
-msgstr ""
+msgstr "在教程页面中包括对 `session.notify()` 的引用（#500）"
 
 #: ../../CHANGELOG.md:32
 msgid "Document how `session.run()` fails and how to handle failures  (#533)"
-msgstr ""
+msgstr "记录 `session.run()` 如何失败以及如何处理失败（#533）"
 
 #: ../../CHANGELOG.md:33
 msgid "Allow the list of sessions to be empty (#523)"
-msgstr ""
+msgstr "允许会话列表为空（#523）"
 
 #: ../../CHANGELOG.md:35 ../../CHANGELOG.md:268
 msgid "Bugfixes:"
-msgstr ""
+msgstr "错误修正："
 
 #: ../../CHANGELOG.md:36
 msgid "Fix broken temporary directory when using `session.chdir()` (#555, #556)"
-msgstr ""
+msgstr "修正使用 `session.chdir()` 时临时目录的损坏（#555, #556）"
 
 #: ../../CHANGELOG.md:37
 msgid "Set the `CONDA_PREFIX` environment variable (#538)"

@@ -19,27 +19,29 @@ msgstr ""
 
 #: ../../cookbook.rst:2
 msgid "The Nox Cookbook"
-msgstr ""
+msgstr "Nox 秘籍"
 
 #: ../../cookbook.rst:5
 msgid "The What?"
-msgstr ""
+msgstr "什么？"
 
 #: ../../cookbook.rst:7
 msgid ""
 "A lot of people and a lot of projects use Nox for their python automation"
 " powers."
 msgstr ""
+"很多人和很多项目都使用 Nox 的 python 自动化能力。"
 
 #: ../../cookbook.rst:9
 msgid ""
 "Some of these sessions are the classic \"run pytest and linting\", some "
 "are more unique and more interesting!"
 msgstr ""
+"这些会话中有些是经典的（\"run pytest and linting\"），有些是更独特、更有趣的！"
 
 #: ../../cookbook.rst:11
 msgid "The Nox cookbook is a collection of these such sessions."
-msgstr ""
+msgstr "Nox 秘籍是这些会话的集合。"
 
 #: ../../cookbook.rst:13
 msgid ""
@@ -48,12 +50,15 @@ msgid ""
 "more powerful tasks, often the only examples can be found hunting around "
 "GitHub for novel sessions."
 msgstr ""
+"Nox超级容易上手，而且开箱即用，超级强大。"
+"但是，当事情变得复杂或者你想把一些更强大的任务串联起来时，往往可以在 GitHub 上找到唯一的例子来猎取新颖的会话。"
 
 #: ../../cookbook.rst:15
 msgid ""
 "The kind of sessions that make you think \"I didn't know you could do "
 "that!\""
 msgstr ""
+"那种让你觉得 \"我不知道你能做到这一点！\" 的会话。"
 
 #: ../../cookbook.rst:17
 msgid ""
@@ -62,40 +67,45 @@ msgid ""
 "a reference guide for nox's users. If you're doing something cool with "
 "Nox, why not add your session here?"
 msgstr ""
+"这本秘籍旨在成为一个集中的、由社区驱动的、令人敬畏的 Nox 会话库，作为灵感来源和 Nox 用户的参考指南。"
+"如果你正在用 Nox 做一些很酷的事情，为什么不在这里添加你的会话呢？"
 
 #: ../../cookbook.rst:21
 msgid "Contributing a Session"
-msgstr ""
+msgstr "贡献会话"
 
 #: ../../cookbook.rst:23
 msgid ""
 "Anyone can contribute sessions to the cookbook. However, there are a few "
 "guiding principles you should keep in mind:"
 msgstr ""
+"任何人都可以为秘籍贡献会话。然而，有几条指导原则你应该牢记："
 
 #: ../../cookbook.rst:25
 msgid ""
 "Your session should be interesting or unique, it should do something out "
 "of the ordinary or otherwise interesting."
 msgstr ""
+"你的会话应该是有趣的或独特的，它应该做一些不寻常的事情或其他有趣的事情。"
 
 #: ../../cookbook.rst:26
 msgid "You should explain briefly what it does and why it's interesting."
-msgstr ""
+msgstr "你应该简要地解释它的作用，以及为什么它很有趣。"
 
 #: ../../cookbook.rst:28
 msgid ""
 "For general advice on how to contribute to Nox see our "
 ":doc:`CONTRIBUTING` guide"
 msgstr ""
+"关于如何为 Nox 做贡献的一般建议，请参见 :doc:`CONTRIBUTING` 指南"
 
 #: ../../cookbook.rst:31
 msgid "Recipes"
-msgstr ""
+msgstr "绝技"
 
 #: ../../cookbook.rst:34
 msgid "Instant Dev Environment"
-msgstr ""
+msgstr "即时开发环境"
 
 #: ../../cookbook.rst:36
 msgid ""
@@ -103,20 +113,22 @@ msgid ""
 "for beginners) is the problem of wrangling virtual environments and "
 "installing dependencies."
 msgstr ""
+"在为 Python 项目做贡献时，常见的症结（尤其是对于初学者）是处理虚拟环境和安装依赖的问题。"
 
 #: ../../cookbook.rst:38
 msgid "Enter the ``dev`` nox session:"
-msgstr ""
+msgstr "进入 ``dev`` nox 会话："
 
 #: ../../cookbook.rst:74
 msgid ""
 "With this, a user can simply run ``nox -s dev`` and have their entire "
 "environment set up automatically!"
 msgstr ""
+"有了这个，用户只需运行 ``nox -s dev``，就能自动设置好他们的整个环境！"
 
 #: ../../cookbook.rst:78
 msgid "The Auto-Release"
-msgstr ""
+msgstr "自动发布"
 
 #: ../../cookbook.rst:80
 msgid ""
@@ -124,10 +136,12 @@ msgid ""
 "with lots of intricate steps. Tools like `Bump2Version "
 "<https://github.com/c4urself/bump2version>`_ really help here."
 msgstr ""
+"发布开源项目的新版本可能是真正的痛苦，有很多复杂的步骤。"
+"像 `Bump2Version <https://github.com/c4urself/bump2version>`_ 这样的工具在这里确实有帮助。"
 
 #: ../../cookbook.rst:82
 msgid "Even more so with a sprinkling of Nox:"
-msgstr ""
+msgstr "洒上 Nox 后更是如此："
 
 #: ../../cookbook.rst:129
 msgid ""
@@ -135,4 +149,6 @@ msgid ""
 "(provided you have Bump2Version set up to change your files). This is "
 "especially powerful if you have a CI/CD pipeline set up!"
 msgstr ""
-
+"现在，简单的 ``nox -s release -- patch`` 就能自动发布"
+"（前提是你已经设置了 Bump2Version 来改变你的文件）。"
+"如果你设置了 CI/CD 管道，这就特别强大！"
