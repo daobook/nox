@@ -19,45 +19,46 @@ msgstr ""
 
 #: ../../usage.rst:2
 msgid "Command-line usage"
-msgstr ""
+msgstr "命令行用法"
 
 #: ../../usage.rst:5
 msgid "Invocation"
-msgstr ""
+msgstr "调用"
 
 #: ../../usage.rst:7
 msgid "Nox is normally invoked on the command line:"
-msgstr ""
+msgstr "Nox 通常是在命令行上调用的："
 
 #: ../../usage.rst:14
 msgid "You can also invoke Nox via the Python interpreter:"
-msgstr ""
+msgstr "你也可以通过 Python 解释器调用 Nox："
 
 #: ../../usage.rst:22
 msgid "Listing available sessions"
-msgstr ""
+msgstr "列出可用的会话"
 
 #: ../../usage.rst:24
 msgid "To list all available sessions, including parametrized sessions:"
-msgstr ""
+msgstr "列出所有可用的会话，包括参数化的会话："
 
 #: ../../usage.rst:37
 msgid "Running all sessions"
-msgstr ""
+msgstr "运行所有会话"
 
 #: ../../usage.rst:39
 msgid "You can run every session by just executing ``nox`` without any arguments:"
-msgstr ""
+msgstr "你可以通过执行 ``nox`` 来运行每个会话，不需要任何参数："
 
 #: ../../usage.rst:45
 msgid ""
 "The order that sessions are executed is the order that they appear in the"
 " Noxfile."
 msgstr ""
+"会话的执行顺序是它们在 Noxfile 中出现的顺序。"
 
 #: ../../usage.rst:51
 msgid "Specifying one or more sessions"
-msgstr ""
+msgstr "指定一个或多个会话"
 
 #: ../../usage.rst:53
 msgid ""
@@ -65,14 +66,16 @@ msgid ""
 " can choose to run a particular set of them using ``--session``, ``-s``, "
 "or ``-e``:"
 msgstr ""
+"默认情况下，Nox 将运行 noxfile 中定义的所有会话。"
+"然而，你可以选择使用 ``--session``、``-s`` 或 ``-e`` 来运行它们中的某一组："
 
 #: ../../usage.rst:61
 msgid "You can also use the ``NOXSESSION`` environment variable:"
-msgstr ""
+msgstr "你也可以使用 ``NOXSESSION`` 环境变量。"
 
 #: ../../usage.rst:68
 msgid "Nox will run these sessions in the same order they are specified."
-msgstr ""
+msgstr "Nox 将按照指定的顺序运行这些会话。"
 
 #: ../../usage.rst:70
 msgid ""

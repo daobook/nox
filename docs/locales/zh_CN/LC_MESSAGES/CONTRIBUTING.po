@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../CONTRIBUTING.md:1
 msgid "Contributing"
-msgstr ""
+msgstr "贡献"
 
 #: ../../CONTRIBUTING.md:3
 msgid ""
@@ -29,22 +29,24 @@ msgid ""
 "contributions in the form of bug reports, feature requests, and pull "
 "requests."
 msgstr ""
+"感谢您对改进 Nox 的兴趣。"
+"Nox 在 [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) 下是开源的，欢迎以错误报告、功能请求和拉动请求的形式作出贡献。"
 
 #: ../../CONTRIBUTING.md:6
 msgid "Nox is hosted on [GitHub](https://github.com/theacodes/nox)."
-msgstr ""
+msgstr "Nox 托管在 [GitHub](https://github.com/theacodes/nox)。"
 
 #: ../../CONTRIBUTING.md:8
 msgid "Support, questions, and feature requests"
-msgstr ""
+msgstr "支持、问题和功能请求"
 
 #: ../../CONTRIBUTING.md:10
 msgid "Feel free to file a bug on [GitHub](https://github.com/theacodes/nox)."
-msgstr ""
+msgstr "欢迎在 [GitHub](https://github.com/theacodes/nox) 上提交错误。"
 
 #: ../../CONTRIBUTING.md:12
 msgid "Reporting issues"
-msgstr ""
+msgstr "报告议题"
 
 #: ../../CONTRIBUTING.md:14
 msgid ""
@@ -52,18 +54,20 @@ msgid ""
 "figure out what's going on, please err on the side of including lots of "
 "information, such as:"
 msgstr ""
+"在 [GitHub](https://github.com/theacodes/nox) 上提交错误。"
+"为了帮助我们弄清楚发生了什么事，请尽量包含大量的信息，例如："
 
 #: ../../CONTRIBUTING.md:17
 msgid "Operating system."
-msgstr ""
+msgstr "操作系统。"
 
 #: ../../CONTRIBUTING.md:18
 msgid "Python version."
-msgstr ""
+msgstr "Python 版本。"
 
 #: ../../CONTRIBUTING.md:19
 msgid "If possible, a minimal case that can reproduce the issue."
-msgstr ""
+msgstr "如果可能的话，能重现该问题的最小案例。"
 
 #: ../../CONTRIBUTING.md:21
 msgid "Pull requests"
@@ -74,56 +78,62 @@ msgid ""
 "It's recommended to file a bug before starting work on anything. It'll "
 "allow chance to talk it over with the owners and validate your approach."
 msgstr ""
+"建议在开始工作之前提出一个错误。这将使我们有机会与 owner 进行讨论，并验证你的方法。"
 
 #: ../../CONTRIBUTING.md:25
 msgid "Nox maintains 100% test coverage. All pull requests must maintain this."
-msgstr ""
+msgstr "Nox 保持 100% 的测试覆盖率。所有拉动请求必须保持这一点。"
 
 #: ../../CONTRIBUTING.md:26
 msgid "Follow [pep8](https://pep8.org)."
-msgstr ""
+msgstr "遵从 [pep8](https://pep8.org)。"
 
 #: ../../CONTRIBUTING.md:27
 msgid "Update documentation, if relevant."
-msgstr ""
+msgstr "更新文档，如果相关的话。"
 
 #: ../../CONTRIBUTING.md:29
 msgid "Running tests"
-msgstr ""
+msgstr "运行测试"
 
 #: ../../CONTRIBUTING.md:31
 msgid ""
 "Nox runs its own tests (it's recursive!). The best thing to do is start "
 "with a known-good nox installation, e.g. from PyPI:"
 msgstr ""
+"Nox 运行自己的测试（它是递归的！）。"
+"最好的办法是从一个已知的好的 Nox 安装开始，例如从 PyPI 开始："
 
 #: ../../CONTRIBUTING.md:36
 msgid "To just check for lint errors, run:"
-msgstr ""
+msgstr "如果只是检查 lint 错误，可以运行："
 
 #: ../../CONTRIBUTING.md:40
 msgid "To run against a particular Python version:"
-msgstr ""
+msgstr "要针对一个特定的 Python 版本运行："
 
 #: ../../CONTRIBUTING.md:48
 msgid ""
 "When you send a pull request the CI will handle running everything, but "
 "it is recommended to test as much as possible locally before pushing."
 msgstr ""
+"当你发送一个拉动请求时，CI将处理运行所有的东西，但建议在推送之前尽可能在本地测试。"
 
 #: ../../CONTRIBUTING.md:51
 msgid "Getting a sticker"
-msgstr ""
+msgstr "获得贴纸"
 
 #: ../../CONTRIBUTING.md:53
 msgid ""
 "If you've contributed to Nox, you can get a cute little Nox sticker. "
 "Reach out to Thea at me@thea.codes to request one."
 msgstr ""
+"如果你对 Nox 有贡献，你可以得到一个可爱的Nox小贴纸。"
+"请联系 Thea，me@thea.codes，索取一张。
 
 #: ../../CONTRIBUTING.md:55
 msgid "Getting paid"
-msgstr ""
+msgstr "获得报酬"
 
 #: ../../CONTRIBUTING.md:57
 msgid ""
@@ -132,4 +142,5 @@ msgid ""
 "let you know when and for how much you can expense contributions, but "
 "always feel free to ask."
 msgstr ""
-
+"对 Nox 的贡献可以通过 [我们的开放集体](https://opencollective.com/python-nox) 进行支出。"
+"维护者会让你知道什么时候和多少钱可以支出贡献，但请随时询问。"
