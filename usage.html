@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>命令行用法 &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="Nox 秘籍" href="cookbook.html" />
+    <link rel="prev" title="配置和 API" href="config.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="command-line-usage">
+<h1>命令行用法<a class="headerlink" href="#command-line-usage" title="永久链接至标题">¶</a></h1>
+<section id="invocation">
+<h2>调用<a class="headerlink" href="#invocation" title="永久链接至标题">¶</a></h2>
+<p>Nox 通常是在命令行上调用的：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox</span>
+</pre></div>
+</div>
+<p>你也可以通过 Python 解释器调用 Nox：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m nox</span>
+</pre></div>
+</div>
+</section>
+<section id="listing-available-sessions">
+<h2>列出可用的会话<a class="headerlink" href="#listing-available-sessions" title="永久链接至标题">¶</a></h2>
+<p>列出所有可用的会话，包括参数化的会话：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -l</span>
+<span class="go">nox --list</span>
+<span class="go">nox --list-sessions</span>
+</pre></div>
+</div>
+</section>
+<section id="running-all-sessions">
+<span id="session-execution-order"></span><h2>运行所有会话<a class="headerlink" href="#running-all-sessions" title="永久链接至标题">¶</a></h2>
+<p>你可以通过执行 <code class="docutils literal notranslate"><span class="pre">nox</span></code> 来运行每个会话，不需要任何参数：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox</span>
+</pre></div>
+</div>
+<p>会话的执行顺序是它们在 Noxfile 中出现的顺序。</p>
+</section>
+<section id="specifying-one-or-more-sessions">
+<span id="opt-sessions-pythons-and-keywords"></span><h2>指定一个或多个会话<a class="headerlink" href="#specifying-one-or-more-sessions" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，Nox 将运行 noxfile 中定义的所有会话。然而，你可以选择使用 <code class="docutils literal notranslate"><span class="pre">--session</span></code>、<code class="docutils literal notranslate"><span class="pre">-s</span></code> 或 <code class="docutils literal notranslate"><span class="pre">-e</span></code> 来运行它们中的某一组：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --session tests</span>
+<span class="go">nox -s lint tests</span>
+<span class="go">nox -e lint</span>
+</pre></div>
+</div>
+<p>你也可以使用 <code class="docutils literal notranslate"><span class="pre">NOXSESSION</span></code> 环境变量。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">NOXSESSION=lint nox</span>
+<span class="go">NOXSESSION=lint,tests nox</span>
+</pre></div>
+</div>
+<p>Nox 将按照指定的顺序运行这些会话。</p>
+<p>If you have a <a class="reference internal" href="config.html#virtualenv-config"><span class="std std-ref">configured session’s virtualenv</span></a>, you can choose to run only sessions with given Python versions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --python 3.8</span>
+<span class="go">nox -p 3.7 3.8</span>
+</pre></div>
+</div>
+<p>You can also use <a class="reference external" href="https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests">pytest-style keywords</a> to filter test sessions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -k &quot;not lint&quot;</span>
+<span class="go">nox -k &quot;tests and not lint&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="specifying-parametrized-sessions">
+<span id="running-paramed-sessions"></span><h2>Specifying parametrized sessions<a class="headerlink" href="#specifying-parametrized-sessions" title="永久链接至标题">¶</a></h2>
+<p>If you have a <a class="reference internal" href="config.html#parametrized"><span class="std std-ref">parametrized</span></a> session such as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Then running <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--session</span> <span class="pre">tests</span></code> will actually run all parametrized versions of the session. If you want the run the session with a particular set of parametrized arguments, you can specify them with the session name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --session &quot;tests(django=&#39;1.9&#39;)&quot;</span>
+<span class="go">nox --session &quot;tests(django=&#39;2.0&#39;)&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="changing-the-sessions-default-backend">
+<span id="opt-default-venv-backend"></span><h2>Changing the sessions default backend<a class="headerlink" href="#changing-the-sessions-default-backend" title="永久链接至标题">¶</a></h2>
+<p>By default nox uses <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> as the virtual environment backend for the sessions, but it also supports <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, and <code class="docutils literal notranslate"><span class="pre">venv</span></code> as well as no backend (passthrough to whatever python environment nox is running on). You can change the default behaviour by using <code class="docutils literal notranslate"><span class="pre">-db</span> <span class="pre">&lt;backend&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--default-venv-backend</span> <span class="pre">&lt;backend&gt;</span></code>. Supported names are <code class="docutils literal notranslate"><span class="pre">('none',</span> <span class="pre">'virtualenv',</span> <span class="pre">'conda',</span> <span class="pre">'mamba',</span> <span class="pre">'venv')</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -db conda</span>
+<span class="go">nox --default-venv-backend conda</span>
+</pre></div>
+</div>
+<p>You can also set this option in the Noxfile with <code class="docutils literal notranslate"><span class="pre">nox.options.default_venv_backend</span></code>. In case both are provided, the commandline argument takes precedence.</p>
+<p>Note that using this option does not change the backend for sessions where <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code> is explicitly set.</p>
+</section>
+<section id="forcing-the-sessions-backend">
+<span id="opt-force-venv-backend"></span><h2>Forcing the sessions backend<a class="headerlink" href="#forcing-the-sessions-backend" title="永久链接至标题">¶</a></h2>
+<p>You might work in a different environment than a project’s default continuous integration settings, and might wish to get a quick way to execute the same tasks but on a different venv backend. For this purpose, you can temporarily force the backend used by <strong>all</strong> sessions in the current nox execution by using <code class="docutils literal notranslate"><span class="pre">-fb</span> <span class="pre">&lt;backend&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--force-venv-backend</span> <span class="pre">&lt;backend&gt;</span></code>. No exceptions are made, the backend will be forced for all sessions run whatever the other options values and nox file configuration. Supported names are <code class="docutils literal notranslate"><span class="pre">('none',</span> <span class="pre">'virtualenv',</span> <span class="pre">'conda',</span> <span class="pre">'venv')</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -fb conda</span>
+<span class="go">nox --force-venv-backend conda</span>
+</pre></div>
+</div>
+<p>You can also set this option in the Noxfile with <code class="docutils literal notranslate"><span class="pre">nox.options.force_venv_backend</span></code>. In case both are provided, the commandline argument takes precedence.</p>
+<p>Finally note that the <code class="docutils literal notranslate"><span class="pre">--no-venv</span></code> flag is a shortcut for <code class="docutils literal notranslate"><span class="pre">--force-venv-backend</span> <span class="pre">none</span></code> and allows to temporarily run all selected sessions on the current python interpreter (the one running nox).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --no-venv</span>
+</pre></div>
+</div>
+</section>
+<section id="re-using-virtualenvs">
+<span id="opt-reuse-existing-virtualenvs"></span><h2>Re-using virtualenvs<a class="headerlink" href="#re-using-virtualenvs" title="永久链接至标题">¶</a></h2>
+<p>By default, Nox deletes and recreates virtualenvs every time it is run. This is usually fine for most projects and continuous integration environments as <a class="reference external" href="https://pip.pypa.io/en/stable/cli/pip_install/#caching">pip’s caching</a> makes re-install rather quick. However, there are some situations where it is advantageous to re-use the virtualenvs between runs. Use <code class="docutils literal notranslate"><span class="pre">-r</span></code> or <code class="docutils literal notranslate"><span class="pre">--reuse-existing-virtualenvs</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -r</span>
+<span class="go">nox --reuse-existing-virtualenvs</span>
+</pre></div>
+</div>
+<p>If the Noxfile sets <code class="docutils literal notranslate"><span class="pre">nox.options.reuse_existing_virtualenvs</span></code>, you can override the Noxfile setting from the command line by using <code class="docutils literal notranslate"><span class="pre">--no-reuse-existing-virtualenvs</span></code>.</p>
+<p>Additionally, you can skip the re-installation of packages when a virtualenv is reused. Use <code class="docutils literal notranslate"><span class="pre">-R</span></code> or <code class="docutils literal notranslate"><span class="pre">--reuse-existing-virtualenvs</span> <span class="pre">--no-install</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -R</span>
+<span class="go">nox --reuse-existing-virtualenvs --no-install</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--no-install</span></code> option causes the following session methods to return early:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="config.html#nox.sessions.Session.install" title="nox.sessions.Session.install"><code class="xref py py-func docutils literal notranslate"><span class="pre">session.install</span></code></a></p></li>
+<li><p><a class="reference internal" href="config.html#nox.sessions.Session.conda_install" title="nox.sessions.Session.conda_install"><code class="xref py py-func docutils literal notranslate"><span class="pre">session.conda_install</span></code></a></p></li>
+<li><p><a class="reference internal" href="config.html#nox.sessions.Session.run_always" title="nox.sessions.Session.run_always"><code class="xref py py-func docutils literal notranslate"><span class="pre">session.run_always</span></code></a></p></li>
+</ul>
+<p>This option has no effect if the virtualenv is not being reused.</p>
+</section>
+<section id="running-additional-python-versions">
+<span id="opt-running-extra-pythons"></span><h2>Running additional Python versions<a class="headerlink" href="#running-additional-python-versions" title="永久链接至标题">¶</a></h2>
+<p>In addition to Nox supporting executing single sessions, it also supports running Python versions that aren’t specified using <code class="docutils literal notranslate"><span class="pre">--extra-pythons</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --extra-pythons 3.8 3.9</span>
+</pre></div>
+</div>
+<p>This will, in addition to specified Python versions in the Noxfile, also create sessions for the specified versions.</p>
+<p>This option can be combined with <code class="docutils literal notranslate"><span class="pre">--python</span></code> to replace, instead of appending, the Python interpreter for a given session:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span> <span class="o">--</span><span class="n">python</span> <span class="mf">3.10</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">python</span> <span class="mf">3.10</span> <span class="o">-</span><span class="n">s</span> <span class="n">lint</span>
+</pre></div>
+</div>
+<p>Instead of passing both options, you can use the <code class="docutils literal notranslate"><span class="pre">--force-python</span></code> shorthand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">python</span> <span class="mf">3.10</span> <span class="o">-</span><span class="n">s</span> <span class="n">lint</span>
+</pre></div>
+</div>
+<p>Also, you can specify <code class="docutils literal notranslate"><span class="pre">python</span></code> in place of a specific version. This will run the session
+using the <code class="docutils literal notranslate"><span class="pre">python</span></code> specified for the current <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="n">python</span> <span class="n">python</span> <span class="o">-</span><span class="n">s</span> <span class="n">lint</span>
+</pre></div>
+</div>
+</section>
+<section id="stopping-if-any-session-fails">
+<span id="opt-stop-on-first-error"></span><h2>Stopping if any session fails<a class="headerlink" href="#stopping-if-any-session-fails" title="永久链接至标题">¶</a></h2>
+<p>By default nox will continue to run all sessions even if one fails. You can use <code class="docutils literal notranslate"><span class="pre">--stop-on-first-error</span></code> to make nox abort as soon as the first session fails:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span> <span class="o">--</span><span class="n">stop</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">first</span><span class="o">-</span><span class="n">error</span>
+</pre></div>
+</div>
+<p>If the Noxfile sets <code class="docutils literal notranslate"><span class="pre">nox.options.stop_on_first_error</span></code>, you can override the Noxfile setting from the command line by using <code class="docutils literal notranslate"><span class="pre">--no-stop-on-first-error</span></code>.</p>
+</section>
+<section id="failing-sessions-when-the-interpreter-is-missing">
+<span id="opt-error-on-missing-interpreters"></span><h2>Failing sessions when the interpreter is missing<a class="headerlink" href="#failing-sessions-when-the-interpreter-is-missing" title="永久链接至标题">¶</a></h2>
+<p>By default, Nox will skip sessions where the Python interpreter can’t be found. If you want Nox to mark these sessions as failed, you can use <code class="docutils literal notranslate"><span class="pre">--error-on-missing-interpreters</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --error-on-missing-interpreters</span>
+</pre></div>
+</div>
+<p>If the Noxfile sets <code class="docutils literal notranslate"><span class="pre">nox.options.error_on_missing_interpreters</span></code>, you can override the Noxfile setting from the command line by using <code class="docutils literal notranslate"><span class="pre">--no-error-on-missing-interpreters</span></code>.</p>
+</section>
+<section id="disallowing-external-programs">
+<span id="opt-error-on-external-run"></span><h2>Disallowing external programs<a class="headerlink" href="#disallowing-external-programs" title="永久链接至标题">¶</a></h2>
+<p>By default Nox will warn but ultimately allow you to run programs not installed in the session’s virtualenv. You can use <code class="docutils literal notranslate"><span class="pre">--error-on-external-run</span></code> to make Nox fail the session if it uses any external program without explicitly passing <code class="docutils literal notranslate"><span class="pre">external=True</span></code> into <code class="xref py py-func docutils literal notranslate"><span class="pre">session.run</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --error-on-external-run</span>
+</pre></div>
+</div>
+<p>If the Noxfile sets <code class="docutils literal notranslate"><span class="pre">nox.options.error_on_external_run</span></code>, you can override the Noxfile setting from the command line by using <code class="docutils literal notranslate"><span class="pre">--no-error-on-external-run</span></code>.</p>
+</section>
+<section id="specifying-a-different-configuration-file">
+<h2>Specifying a different configuration file<a class="headerlink" href="#specifying-a-different-configuration-file" title="永久链接至标题">¶</a></h2>
+<p>If for some reason your noxfile is not named <em>noxfile.py</em>, you can use <code class="docutils literal notranslate"><span class="pre">--noxfile</span></code> or <code class="docutils literal notranslate"><span class="pre">-f</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --noxfile something.py</span>
+<span class="go">nox -f something.py</span>
+</pre></div>
+</div>
+</section>
+<section id="storing-virtualenvs-in-a-different-directory">
+<span id="opt-envdir"></span><h2>Storing virtualenvs in a different directory<a class="headerlink" href="#storing-virtualenvs-in-a-different-directory" title="永久链接至标题">¶</a></h2>
+<p>By default nox stores virtualenvs in <code class="docutils literal notranslate"><span class="pre">./.nox</span></code>, however, you can change this using <code class="docutils literal notranslate"><span class="pre">--envdir</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --envdir /tmp/envs</span>
+</pre></div>
+</div>
+</section>
+<section id="skipping-everything-but-install-commands">
+<h2>Skipping everything but install commands<a class="headerlink" href="#skipping-everything-but-install-commands" title="永久链接至标题">¶</a></h2>
+<p>There are a couple of cases where it makes sense to have Nox only run <code class="docutils literal notranslate"><span class="pre">install</span></code> commands, such as preparing an environment for offline testing or re-creating the same virtualenvs used for testing. You can use <code class="docutils literal notranslate"><span class="pre">--install-only</span></code> to skip <code class="docutils literal notranslate"><span class="pre">run</span></code> commands.</p>
+<p>For example, given this Noxfile:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --install-only</span>
+</pre></div>
+</div>
+<p>Would run both <code class="docutils literal notranslate"><span class="pre">install</span></code> commands, but skip the <code class="docutils literal notranslate"><span class="pre">run</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox &gt; Running session tests</span>
+<span class="go">nox &gt; Creating virtualenv using python3.7 in ./.nox/tests</span>
+<span class="go">nox &gt; python -m pip install pytest</span>
+<span class="go">nox &gt; python -m pip install .</span>
+<span class="go">nox &gt; Skipping pytest run, as --install-only is set.</span>
+<span class="go">nox &gt; Session tests was successful.</span>
+</pre></div>
+</div>
+</section>
+<section id="forcing-non-interactive-behavior">
+<h2>Forcing non-interactive behavior<a class="headerlink" href="#forcing-non-interactive-behavior" title="永久链接至标题">¶</a></h2>
+<p><a class="reference internal" href="config.html#nox.sessions.Session.interactive" title="nox.sessions.Session.interactive"><code class="xref py py-attr docutils literal notranslate"><span class="pre">session.interactive</span></code></a> can be used to tell if Nox is being run from an interactive terminal (such as an actual human running it on their computer) vs run in a non-interactive terminal (such as a continuous integration system).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">docs</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">interactive</span><span class="p">:</span>
+        <span class="n">nox</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;sphinx-autobuild&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nox</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;sphinx-build&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sometimes it’s useful to force Nox to see the session as non-interactive. You can use the <code class="docutils literal notranslate"><span class="pre">--non-interactive</span></code> argument to do this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox --non-interactive
+</pre></div>
+</div>
+<p>This will cause <code class="docutils literal notranslate"><span class="pre">session.interactive</span></code> to always return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</section>
+<section id="controlling-color-output">
+<h2>Controlling color output<a class="headerlink" href="#controlling-color-output" title="永久链接至标题">¶</a></h2>
+<p>By default, Nox will output colorful logs if you’re using in an interactive
+terminal. However, if you are redirecting <code class="docutils literal notranslate"><span class="pre">stderr</span></code> to a file or otherwise
+not using an interactive terminal, or the environment variable <code class="docutils literal notranslate"><span class="pre">NO_COLOR</span></code> is
+set, nox will output in plaintext. If this is not set, and <code class="docutils literal notranslate"><span class="pre">FORCE_COLOR</span></code> is
+present, color will be forced.</p>
+<p>You can manually control Nox’s output using the <code class="docutils literal notranslate"><span class="pre">--nocolor</span></code> and <code class="docutils literal notranslate"><span class="pre">--forcecolor</span></code> flags.</p>
+<p>For example, this will always output colorful logs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --forcecolor</span>
+</pre></div>
+</div>
+<p>However, this will never output colorful logs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --nocolor</span>
+</pre></div>
+</div>
+</section>
+<section id="controlling-commands-verbosity">
+<span id="opt-report"></span><h2>Controlling commands verbosity<a class="headerlink" href="#controlling-commands-verbosity" title="永久链接至标题">¶</a></h2>
+<p>By default, Nox will only show output of commands that fail, or, when the commands get passed <code class="docutils literal notranslate"><span class="pre">silent=False</span></code>.
+By passing <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to Nox, all output of all commands run is shown, regardless of the silent argument.</p>
+</section>
+<section id="outputting-a-machine-readable-report">
+<h2>Outputting a machine-readable report<a class="headerlink" href="#outputting-a-machine-readable-report" title="永久链接至标题">¶</a></h2>
+<p>You can output a report in <code class="docutils literal notranslate"><span class="pre">json</span></code> format by specifying <code class="docutils literal notranslate"><span class="pre">--report</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --report status.json</span>
+</pre></div>
+</div>
+</section>
+<section id="converting-from-tox">
+<h2>Converting from tox<a class="headerlink" href="#converting-from-tox" title="永久链接至标题">¶</a></h2>
+<p>Nox has experimental support for converting <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> files into <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> files. This doesn’t support every feature of tox and is intended to just do most of the mechanical work of converting over- you’ll likely still need to make a few changes to the converted <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code>.</p>
+<p>To use the converter, install <code class="docutils literal notranslate"><span class="pre">nox</span></code> with the <code class="docutils literal notranslate"><span class="pre">tox_to_nox</span></code> extra:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install --upgrade nox[tox_to_nox]</span>
+</pre></div>
+</div>
+<p>Then, just run <code class="docutils literal notranslate"><span class="pre">tox-to-nox</span></code> in the directory where your <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> resides:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">tox-to-nox</span>
+</pre></div>
+</div>
+<p>This will create a <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> based on the environments in your <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>. Some things to note:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://tox.readthedocs.io/en/latest/config.html#generating-environments-conditional-settings">Generative environments</a> work, but will be converted as individual environments. <code class="docutils literal notranslate"><span class="pre">tox-to-nox</span></code> isn’t quite smart enough to turn these into <a class="reference internal" href="#running-paramed-sessions"><span class="std std-ref">parametrized</span></a> sessions, but it should be straightforward to manually pull out common configuration for parametrization.</p></li>
+<li><p>Due to the way tox parses its configuration, all <a class="reference external" href="http://tox.readthedocs.io/en/latest/config.html#substitutions">substitutions</a> are baked in when converting. This means you’ll need to replace the static strings in the <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> with appropriate variables.</p></li>
+<li><p>Several non-common tox options aren’t implemented, but it’s possible to do so. Please file a feature request if you run into one you think will be useful.</p></li>
+</ul>
+</section>
+<section id="shell-completion">
+<h2>Shell Completion<a class="headerlink" href="#shell-completion" title="永久链接至标题">¶</a></h2>
+<p>Add the appropriate command to your shell’s config file
+so that it is run on startup. You will likely have to restart
+or re-login for the autocompletion to start working.</p>
+<p>bash</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">eval &quot;$(register-python-argcomplete nox)&quot;</span>
+</pre></div>
+</div>
+<p>zsh</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>To activate completions <span class="k">for</span> zsh you need to have
+<span class="gp"># </span>bashcompinit enabled <span class="k">in</span> zsh:
+<span class="go">autoload -U bashcompinit</span>
+<span class="go">bashcompinit</span>
+
+<span class="gp"># </span>Afterwards you can <span class="nb">enable</span> completion <span class="k">for</span> nox:
+<span class="go">eval &quot;$(register-python-argcomplete nox)&quot;</span>
+</pre></div>
+</div>
+<p>tcsh</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">eval `register-python-argcomplete --shell tcsh nox`</span>
+</pre></div>
+</div>
+<p>fish</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">register-python-argcomplete --shell fish nox | .</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置和 API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">命令行用法</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#invocation">调用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-available-sessions">列出可用的会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-all-sessions">运行所有会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-one-or-more-sessions">指定一个或多个会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-parametrized-sessions">Specifying parametrized sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-sessions-default-backend">Changing the sessions default backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forcing-the-sessions-backend">Forcing the sessions backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#re-using-virtualenvs">Re-using virtualenvs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-additional-python-versions">Running additional Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stopping-if-any-session-fails">Stopping if any session fails</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#failing-sessions-when-the-interpreter-is-missing">Failing sessions when the interpreter is missing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disallowing-external-programs">Disallowing external programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-a-different-configuration-file">Specifying a different configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storing-virtualenvs-in-a-different-directory">Storing virtualenvs in a different directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#skipping-everything-but-install-commands">Skipping everything but install commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forcing-non-interactive-behavior">Forcing non-interactive behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controlling-color-output">Controlling color output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controlling-commands-verbosity">Controlling commands verbosity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outputting-a-machine-readable-report">Outputting a machine-readable report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-from-tox">Converting from tox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shell-completion">Shell Completion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Nox 秘籍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">变更日志</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="config.html" title="上一章">配置和 API</a></li>
+      <li>Next: <a href="cookbook.html" title="下一章">Nox 秘籍</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

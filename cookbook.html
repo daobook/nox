@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Nox 秘籍 &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="贡献" href="CONTRIBUTING.html" />
+    <link rel="prev" title="命令行用法" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="the-nox-cookbook">
+<h1>Nox 秘籍<a class="headerlink" href="#the-nox-cookbook" title="永久链接至标题">¶</a></h1>
+<section id="the-what">
+<h2>什么？<a class="headerlink" href="#the-what" title="永久链接至标题">¶</a></h2>
+<p>很多人和很多项目都使用 Nox 的 python 自动化能力。</p>
+<p>这些会话中有些是经典的（”run pytest and linting”），有些是更独特、更有趣的！</p>
+<p>Nox 秘籍是这些会话的集合。</p>
+<p>Nox超级容易上手，而且开箱即用，超级强大。但是，当事情变得复杂或者你想把一些更强大的任务串联起来时，往往可以在 GitHub 上找到唯一的例子来猎取新颖的会话。</p>
+<p>那种让你觉得 “我不知道你能做到这一点！” 的会话。</p>
+<p>这本秘籍旨在成为一个集中的、由社区驱动的、令人敬畏的 Nox 会话库，作为灵感来源和 Nox 用户的参考指南。如果你正在用 Nox 做一些很酷的事情，为什么不在这里添加你的会话呢？</p>
+</section>
+<section id="contributing-a-session">
+<h2>贡献会话<a class="headerlink" href="#contributing-a-session" title="永久链接至标题">¶</a></h2>
+<p>任何人都可以为秘籍贡献会话。然而，有几条指导原则你应该牢记：</p>
+<ul class="simple">
+<li><p>你的会话应该是有趣的或独特的，它应该做一些不寻常的事情或其他有趣的事情。</p></li>
+<li><p>你应该简要地解释它的作用，以及为什么它很有趣。</p></li>
+</ul>
+<p>关于如何为 Nox 做贡献的一般建议，请参见 <a class="reference internal" href="CONTRIBUTING.html"><span class="doc">贡献</span></a> 指南</p>
+</section>
+<section id="recipes">
+<h2>绝技<a class="headerlink" href="#recipes" title="永久链接至标题">¶</a></h2>
+<section id="instant-dev-environment">
+<h3>即时开发环境<a class="headerlink" href="#instant-dev-environment" title="永久链接至标题">¶</a></h3>
+<p>在为 Python 项目做贡献时，常见的症结（尤其是对于初学者）是处理虚拟环境和安装依赖的问题。</p>
+<p>进入 <code class="docutils literal notranslate"><span class="pre">dev</span></code> nox 会话：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="c1"># It&#39;s a good idea to keep your dev session out of the default list</span>
+<span class="c1"># so it&#39;s not run twice accidentally</span>
+<span class="n">nox</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">sessions</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="c1"># Sessions other than &#39;dev&#39;</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">dev</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">nox</span><span class="o">.</span><span class="n">Session</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sets up a python development environment for the project.</span>
+
+<span class="sd">    This session will:</span>
+<span class="sd">    - Create a python virtualenv for the session</span>
+<span class="sd">    - Install the `virtualenv` cli tool into this environment</span>
+<span class="sd">    - Use `virtualenv` to create a global project virtual environment</span>
+<span class="sd">    - Invoke the python interpreter from the global project environment to install</span>
+<span class="sd">      the project and all it&#39;s development dependencies.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;virtualenv&quot;</span><span class="p">)</span>
+    <span class="c1"># VENV_DIR here is a pathlib.Path location of the project virtualenv</span>
+    <span class="c1"># e.g. .venv</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;virtualenv&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">fsdecode</span><span class="p">(</span><span class="n">VENV_DIR</span><span class="p">),</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">python</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fsdecode</span><span class="p">(</span><span class="n">VENV_DIR</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s2">&quot;bin/python&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Use the venv&#39;s interpreter to install the project along with</span>
+    <span class="c1"># all it&#39;s dev dependencies, this ensures it&#39;s installed in the right way</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;-e&quot;</span><span class="p">,</span> <span class="s2">&quot;.[dev]&quot;</span><span class="p">,</span> <span class="n">external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>有了这个，用户只需运行 <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">dev</span></code>，就能自动设置好他们的整个环境！</p>
+</section>
+<section id="the-auto-release">
+<h3>自动发布<a class="headerlink" href="#the-auto-release" title="永久链接至标题">¶</a></h3>
+<p>发布开源项目的新版本可能是真正的痛苦，有很多复杂的步骤。像 <a class="reference external" href="https://github.com/c4urself/bump2version">Bump2Version</a> 这样的工具在这里确实有帮助。</p>
+<p>洒上 Nox 后更是如此：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="n">session</span><span class="p">:</span> <span class="n">nox</span><span class="o">.</span><span class="n">Session</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Kicks off an automated release process by creating and pushing a new tag.</span>
+
+<span class="sd">    Invokes bump2version with the posarg setting the version.</span>
+
+<span class="sd">    Usage:</span>
+<span class="sd">    $ nox -s release -- [major|minor|patch]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Release a semver version.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;version&quot;</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The type of semver release to make.&quot;</span><span class="p">,</span>
+        <span class="n">choices</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="s2">&quot;minor&quot;</span><span class="p">,</span> <span class="s2">&quot;patch&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">args</span><span class="p">:</span> <span class="n">argparse</span><span class="o">.</span><span class="n">Namespace</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">session</span><span class="o">.</span><span class="n">posargs</span><span class="p">)</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="c1"># If we get here, we should be good to go</span>
+    <span class="c1"># Let&#39;s do a final check for safety</span>
+    <span class="n">confirm</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;You are about to bump the </span><span class="si">{</span><span class="n">version</span><span class="si">!r}</span><span class="s2"> version. Are you sure? [y/n]: &quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Abort on anything other than &#39;y&#39;</span>
+    <span class="k">if</span> <span class="n">confirm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You said no when prompted to bump the </span><span class="si">{</span><span class="n">version</span><span class="si">!r}</span><span class="s2"> version.&quot;</span><span class="p">)</span>
+
+
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;bump2version&quot;</span><span class="p">)</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bumping the </span><span class="si">{</span><span class="n">version</span><span class="si">!r}</span><span class="s2"> version&quot;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;bump2version&quot;</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Pushing the new tag&quot;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;push&quot;</span><span class="p">,</span> <span class="n">external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;git&quot;</span><span class="p">,</span> <span class="s2">&quot;push&quot;</span><span class="p">,</span> <span class="s2">&quot;--tags&quot;</span><span class="p">,</span> <span class="n">external</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在，简单的 <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">release</span> <span class="pre">--</span> <span class="pre">patch</span></code> 就能自动发布（前提是你已经设置了 Bump2Version 来改变你的文件）。如果你设置了 CI/CD 管道，这就特别强大！</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置和 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">命令行用法</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nox 秘籍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-what">什么？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-a-session">贡献会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recipes">绝技</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">变更日志</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="上一章">命令行用法</a></li>
+      <li>Next: <a href="CONTRIBUTING.html" title="下一章">贡献</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/cookbook.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

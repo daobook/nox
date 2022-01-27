@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>欢迎来到 Nox &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="教程" href="tutorial.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-nox">
+<h1>欢迎来到 Nox<a class="headerlink" href="#welcome-to-nox" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nox</span></code> 是一个命令行工具，可以在多个 Python 环境中自动测试，类似于 <a class="reference external" href="https://tox.readthedocs.org">tox</a>。与 tox 不同，Nox 使用标准的 Python 文件进行配置。</p>
+<p>使用 <a class="reference external" href="https://pip.readthedocs.org">pip</a> 安装 nox</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">nox</span>
+</pre></div>
+</div>
+<p>Nox 是通过你的项目目录中的 <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> 文件配置的。这里有一个简单的 noxfile，运行 lint 和一些测试</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">lint</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;flake8&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;flake8&#39;</span><span class="p">,</span> <span class="s1">&#39;--import-order-style&#39;</span><span class="p">,</span> <span class="s1">&#39;google&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要运行这两个会话，只需运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span>
+</pre></div>
+</div>
+<p>对于每个会话，Nox 将自动创建 <a class="reference external" href="https://virtualenv.readthedocs.org">virtualenv</a> 与适当的解释器，安装指定的依赖，并按顺序运行命令。</p>
+<p>要学习如何安装和使用 Nox，请参阅 <a class="reference internal" href="tutorial.html"><span class="doc">教程</span></a>。关于配置会话的文档，请看 <a class="reference internal" href="config.html"><span class="doc">配置和 API</span></a>。关于运行 <code class="docutils literal notranslate"><span class="pre">nox</span></code> 的文档，请看 <a class="reference internal" href="usage.html"><span class="doc">命令行用法</span></a>。</p>
+<section id="projects-that-use-nox">
+<h2>使用 Nox 的项目<a class="headerlink" href="#projects-that-use-nox" title="永久链接至标题">¶</a></h2>
+<p>Nox 很幸运，有几个精彩的项目使用它并提供反馈和贡献。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/dhermes/bezier">Bézier</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/cibuildwheel">cibuildwheel</a></p></li>
+<li><p><a class="reference external" href="https://github.com/googleapis/gapic-generator-python">gapic-generator-python</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cs01/gdbgui">gdbgui</a></p></li>
+<li><p><a class="reference external" href="https://github.com/googlesamples/assistant-sdk-python">Google Assistant SDK</a></p></li>
+<li><p><a class="reference external" href="https://github.com/googlecloudplatform/google-cloud-python">google-cloud-python</a></p></li>
+<li><p><a class="reference external" href="https://github.com/GoogleCloudPlatform/google-resumable-media-python">google-resumable-media-python</a></p></li>
+<li><p><a class="reference external" href="https://hydra.cc">Hydra</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/manylinux">manylinux</a></p></li>
+<li><p><a class="reference external" href="https://github.com/omry/omegaconf">OmegaConf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/census-instrumentation/opencensus-python">OpenCensus Python</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/packaging">packaging</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/python-packaging-user-guide">packaging.python.org</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/pip">pip</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pypa/pipx">pipx</a></p></li>
+<li><p><a class="reference external" href="https://github.com/saltstack/salt">Salt</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scikit-build/scikit-build">Scikit-build</a></p></li>
+<li><p><a class="reference external" href="https://scikit-hep.org/developer/tasks">Scikit-HEP</a></p></li>
+<li><p><a class="reference external" href="https://github.com/google/subpar">Subpar</a></p></li>
+<li><p><a class="reference external" href="https://github.com/urllib3/urllib3">Urllib3</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pradyunsg/zazo">Zazo</a></p></li>
+</ul>
+</section>
+<section id="other-useful-projects">
+<h2>其他有用的项目<a class="headerlink" href="#other-useful-projects" title="永久链接至标题">¶</a></h2>
+<p>Nox 不是唯一的同类工具。如果 Nox 不完全适合你的需要，或者你想做更多的研究，我们建议看看这些工具：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://tox.readthedocs.org">tox</a> 是管理多个 Python 测试环境的事实标准，也是 Nox 的直接精神祖先。</p></li>
+<li><p><a class="reference external" href="https://www.pyinvoke.org/">Invoke</a> 是一个通用的任务执行库，类似于 Make。Nox 可以被认为是 Invoke 专门为 Python 测试定制的，所以 Invoke 是需要包含远远超过 Nox 专业性的脚本的一个很好的选择。</p></li>
+</ul>
+</section>
+<section id="maintainers-contributors">
+<h2>维护者和贡献者<a class="headerlink" href="#maintainers-contributors" title="永久链接至标题">¶</a></h2>
+<p>Nox 是免费的开源软件，是由社区维护者和贡献者促成的。</p>
+<p>Our maintainers are (in alphabetical order):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/crwilcox">Chris Wilcox</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cjolowicz">Claudio Jolowicz</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dhermes">Danny Hermes</a></p></li>
+<li><p><a class="reference external" href="https://github.com/DiddiLeija">Diego Ramirez</a></p></li>
+<li><p><a class="reference external" href="https://github.com/lukesneeringer">Luke Sneeringer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/stsewd">Santos Gallegos</a></p></li>
+<li><p><a class="reference external" href="https://github.com/theacodes">Thea Flowers</a></p></li>
+<li><p><a class="reference external" href="https://github.com/followtheprocess">Tom Fleet</a></p></li>
+</ul>
+<p>Nox 的存在也是由于 <a class="reference external" href="https://github.com/theacodes/nox/graphs/contributors">社区</a> 贡献的各种补丁和工作。如果你想参与进来，请参阅 <a class="reference internal" href="CONTRIBUTING.html"><span class="doc">贡献</span></a>。我们使用 <a class="reference external" href="https://opencollective.com/python-nox">Open Collective</a> 支付我们的贡献者。</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="#">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置和 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">命令行用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Nox 秘籍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">变更日志</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="tutorial.html" title="下一章">教程</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

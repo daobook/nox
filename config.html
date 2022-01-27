@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>配置和 API &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="命令行用法" href="usage.html" />
+    <link rel="prev" title="教程" href="tutorial.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="configuration-api">
+<h1>配置和 API<a class="headerlink" href="#configuration-api" title="永久链接至标题">¶</a></h1>
+<section id="noxfile">
+<h2>Noxfile<a class="headerlink" href="#noxfile" title="永久链接至标题">¶</a></h2>
+<p>Nox 默认在名为 <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> 的文件中寻找配置。你可以在运行 <code class="docutils literal notranslate"><span class="pre">nox</span></code> 时使用 <code class="docutils literal notranslate"><span class="pre">--noxfile</span></code> 参数指定一个不同的文件。</p>
+</section>
+<section id="defining-sessions">
+<h2>定义会话<a class="headerlink" href="#defining-sessions" title="永久链接至标题">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="nox.session">
+<span class="sig-name descname"><span class="pre">session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">nox.registry.F</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">python</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">py</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reuse_venv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">venv_backend</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">venv_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">nox.registry.F</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">nox.registry.F</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">nox.registry.F</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nox.session" title="永久链接至目标">¶</a></dt>
+<dd><p>将装饰的函数指定为一个会话。</p>
+</dd></dl>
+
+<p>Nox 会话是通过标准的 Python 函数配置的，这些函数用 <code class="docutils literal notranslate"><span class="pre">&#64;nox.session</span></code> 装饰。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你也可以按照 <a class="reference internal" href="#virtualenv-config"><span class="std std-ref">配置会话的 virtualenv</span></a> 中的描述，配置会话以针对多个 Python 版本运行，并按照 <a class="reference internal" href="#parametrized"><span class="std std-ref">参数化会话</span></a> 中的描述，配置会话的参数。</p>
+</section>
+<section id="session-description">
+<h2>会话描述<a class="headerlink" href="#session-description" title="永久链接至标题">¶</a></h2>
+<p>你可以使用 <a class="reference external" href="https://www.python.org/dev/peps/pep-0257">docstring</a> 为你的会话添加描述。第一行将在列出会话时显示。比如说：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run the test suite.&quot;&quot;&quot;</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code> 命令将显示：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox --list
+<span class="go">Available sessions:</span>
+<span class="go">* tests -&gt; Run the test suite.</span>
+</pre></div>
+</div>
+</section>
+<section id="session-name">
+<h2>会话名字<a class="headerlink" href="#session-name" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，Nox 使用装饰后的函数名称作为会话名称。这对绝大多数项目来说是很好的，但是，如果你需要，你可以通过使用 <code class="docutils literal notranslate"><span class="pre">&#64;nox.session</span></code> 的 <code class="docutils literal notranslate"><span class="pre">name</span></code> 参数来定制会话的名称。比如说：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;custom-name&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">a_very_long_function_name</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code> 命令将显示：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox --list
+<span class="go">Available sessions:</span>
+<span class="go">* custom-name</span>
+</pre></div>
+</div>
+<p>你可以告诉 <code class="docutils literal notranslate"><span class="pre">nox</span></code> 使用自定义的名字来运行会话：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox --session <span class="s2">&quot;custom-name&quot;</span>
+<span class="go">Hello!</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-a-session-s-virtualenv">
+<span id="virtualenv-config"></span><h2>配置会话的 virtualenv<a class="headerlink" href="#configuring-a-session-s-virtualenv" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，Nox 将为每个会话创建新的 virtualenv，使用 Nox 使用的相同解释器。如果你使用 Python 3.6 安装 Nox，Nox 将默认为你的所有会话使用 Python 3.6。</p>
+<p>你可以通过向 <code class="docutils literal notranslate"><span class="pre">&#64;nox.session</span></code> 指定 <code class="docutils literal notranslate"><span class="pre">python</span></code> 参数（或其别名 <code class="docutils literal notranslate"><span class="pre">py</span></code>），告诉 Nox 使用不同的 Python 解释器/版本：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="s1">&#39;2.7&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Windows 上的 Python 二进制文件是通过 Python <a class="reference external" href="https://docs.python.org/3/using/windows.html#python-launcher-for-windows">Launcher</a> for Windows (<code class="docutils literal notranslate"><span class="pre">py</span></code>) 找到的。例如，Python 3.9 可以通过确定哪个可执行文件被 <code class="docutils literal notranslate"><span class="pre">py</span> <span class="pre">-3.9</span></code> 调用来找到。如果某个测试需要使用某个 Python 的 32 位版本，那么应该使用 <code class="docutils literal notranslate"><span class="pre">X.Y-32</span></code> 作为版本。</p>
+</div>
+<p>你也可以告诉 Nox 针对多个 Python 解释器运行你的会话。Nox 将创建一个单独的 virtualenv，为你指定的每个解释器运行会话。例如，这个会话将运行两次–一次用于 Python 2.7，另一次用于 Python 3.6：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;3.6&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>当你提供版本号时，Nox 会自动在前面加上 python 来确定可执行文件的名称。然而，Nox 也接受完整的可执行文件名。如果你想用 pypy 来测试，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;3.6&#39;</span><span class="p">,</span> <span class="s1">&#39;pypy-6.0&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>当收集你的会话时，Nox 将为每个解释器创建一个单独的会话。你可以在运行 <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code> 时看到这些会话。 例如这个 Noxfile：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;3.6&#39;</span><span class="p">,</span> <span class="s1">&#39;3.7&#39;</span><span class="p">,</span> <span class="s1">&#39;3.8&#39;</span><span class="p">,</span> <span class="s1">&#39;3.9&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>将制作这些会话：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">* tests-2.7</span>
+<span class="go">* tests-3.6</span>
+<span class="go">* tests-3.7</span>
+<span class="go">* tests-3.8</span>
+<span class="go">* tests-3.9</span>
+</pre></div>
+</div>
+<p>注意，这种扩展发生在参数化之前，所以你仍然可以用多个解释器对会话进行参数化。</p>
+<p>如果你想完全禁用 virtualenv 的创建，你可以把 <code class="docutils literal notranslate"><span class="pre">python</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">False</span></code>，或者把 <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code>，两者都是等同的。注意，这也可以通过 <a class="reference internal" href="usage.html#opt-force-venv-backend"><span class="std std-ref">–no-venv</span></a> 命令行标志临时完成。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">session.install()</span></code> 在没有 virtualenv 的情况下是被弃用的，因为它修改了全局 Python 环境。如果这是你真正想要的，使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">session.run()</span></code> 和 pip 来代替。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pip&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">,</span> <span class="s2">&quot;nox&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你也可以指定 virtualenv 应该一直被重用，而不是每次都重新创建：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span>
+    <span class="n">python</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2.7&#39;</span><span class="p">,</span> <span class="s1">&#39;3.6&#39;</span><span class="p">],</span>
+    <span class="n">reuse_venv</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>你并不局限于 virtualenv，你可以选择 venv、conda、mamba 或 virtualenv（默认）等后端：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">venv_backend</span><span class="o">=</span><span class="s1">&#39;venv&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>最后，支持自定义后端参数：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">venv_params</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--no-download&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="passing-arguments-into-sessions">
+<h2>将参数传入会话<a class="headerlink" href="#passing-arguments-into-sessions" title="永久链接至标题">¶</a></h2>
+<p>通常情况下，向你的测试会话传递参数是很有用的。这里有一个快速的例子，演示了如何使用参数来运行针对特定文件的测试：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">session</span><span class="o">.</span><span class="n">posargs</span><span class="p">:</span>
+        <span class="n">test_files</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">posargs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">test_files</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;test_a.py&#39;</span><span class="p">,</span> <span class="s1">&#39;test_b.py&#39;</span><span class="p">]</span>
+
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">test_files</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>现在你如果运行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox</span>
+</pre></div>
+</div>
+<p>然后 nox 将运行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pytest test_a.py test_b.py</span>
+</pre></div>
+</div>
+<p>但如果你运行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -- test_c.py</span>
+</pre></div>
+</div>
+<p>然后 nox 将运行：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pytest test_c.py</span>
+</pre></div>
+</div>
+</section>
+<section id="parametrizing-sessions">
+<span id="parametrized"></span><h2>参数化会话<a class="headerlink" href="#parametrizing-sessions" title="永久链接至标题">¶</a></h2>
+<p>会话实参可以用 <a class="reference internal" href="#nox.parametrize" title="nox.parametrize"><code class="xref py py-func docutils literal notranslate"><span class="pre">nox.parametrize()</span></code></a> 装饰器来参数化。下面是一个典型的参数化 Django 安装版本的例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;django==</span><span class="si">{</span><span class="n">django</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>当你运行 <code class="docutils literal notranslate"><span class="pre">nox</span></code> 时，它将创建两个不同的会话：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nox
+<span class="go">nox &gt; Running session tests(django=&#39;1.9&#39;)</span>
+<span class="go">nox &gt; python -m pip install django==1.9</span>
+<span class="go">...</span>
+<span class="go">nox &gt; Running session tests(django=&#39;2.0&#39;)</span>
+<span class="go">nox &gt; python -m pip install django==2.0</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#nox.parametrize" title="nox.parametrize"><code class="xref py py-func docutils literal notranslate"><span class="pre">nox.parametrize()</span></code></a> 的接口和用法有意类似于 <a class="reference external" href="https://pytest.org/latest/parametrize.html#_pytest.python.Metafunc.parametrize">pytest 的 parametrize</a>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="nox.parametrize">
+<span class="sig-name descname"><span class="pre">parametrize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg_values_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">nox._parametrize.Param</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">nox._parametrize.Param</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nox.parametrize" title="永久链接至目标">¶</a></dt>
+<dd><p>参数化会话</p>
+<p>使用给定的 <code class="docutils literal notranslate"><span class="pre">arg_names</span></code> 的 <code class="docutils literal notranslate"><span class="pre">arg_values_list</span></code> 列表，向底层会话函数添加新的调用。参数化是在会话发现期间进行的，每个调用都作为一个单独的会话出现在 nox 中。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arg_names</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – 参数名称的列表。</p></li>
+<li><p><strong>arg_values_list</strong> (<em>Sequence</em><em>[</em><em>Union</em><em>[</em><em>Any</em><em>, </em><em>Tuple</em><em>]</em><em>]</em>) – 参数值列表决定了一个会话在不同参数值下被调用的频率。如果只指定了一个参数名，那么这就是一个简单的值列表，例如 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>。如果指定了 N 个参数名，这必须是一个 N 个元组的列表，其中每个元组元素为其各自的参数名指定一个值，例如 <code class="docutils literal notranslate"><span class="pre">[(1,</span> <span class="pre">'a'),</span> <span class="pre">(2,</span> <span class="pre">'b')]</span></code>。</p></li>
+<li><p><strong>ids</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – 可选的测试 ID 序列，用于参数化的实参。</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p>你也可以将装饰器堆叠起来，产生的会话是参数的组合，例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">])</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;database&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span> <span class="s1">&#39;mysql&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>如果你运行 <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code>，你会看到这产生了以下一组会话：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">* tests(database=&#39;postgres&#39;, django=&#39;1.9&#39;)</span>
+<span class="go">* tests(database=&#39;mysql&#39;, django=&#39;1.9&#39;)</span>
+<span class="go">* tests(database=&#39;postgres&#39;, django=&#39;2.0&#39;)</span>
+<span class="go">* tests(database=&#39;mysql&#39;, django=&#39;2.0&#39;)</span>
+</pre></div>
+</div>
+<p>如果你只想运行其中一个参数化的会话，请参阅 <a class="reference internal" href="usage.html#running-paramed-sessions"><span class="std std-ref">Specifying parametrized sessions</span></a>。</p>
+</section>
+<section id="giving-friendly-names-to-parametrized-sessions">
+<h2>给予参数化的会话以友好的名称<a class="headerlink" href="#giving-friendly-names-to-parametrized-sessions" title="永久链接至标题">¶</a></h2>
+<p>The automatically generated names for parametrized sessions, such as <code class="docutils literal notranslate"><span class="pre">tests(django='1.9',</span> <span class="pre">database='postgres')</span></code>, can be long and unwieldy to work with even with using <a class="reference internal" href="usage.html#opt-sessions-pythons-and-keywords"><span class="std std-ref">keyword filtering</span></a>. You can give parametrized sessions custom IDs to help in this scenario. These two examples are equivalent:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">],</span>
+    <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;old&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="n">nox</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">),</span>
+    <span class="n">nox</span><span class="o">.</span><span class="n">param</span><span class="p">(</span><span class="s1">&#39;2.0&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">),</span>
+<span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>When running <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code> you’ll see their new IDs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">* tests(old)</span>
+<span class="go">* tests(new)</span>
+</pre></div>
+</div>
+<p>And you can run them with <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--sessions</span> <span class="pre">&quot;tests(old)&quot;</span></code> and so on.</p>
+<p>This works with stacked parameterizations as well. The IDs are combined during the combination. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s1">&#39;django&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">],</span>
+    <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">])</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s1">&#39;database&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span> <span class="s1">&#39;mysql&#39;</span><span class="p">],</span>
+    <span class="n">ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;psql&quot;</span><span class="p">,</span> <span class="s2">&quot;mysql&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Produces these sessions when running <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--list</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">* tests(psql, old)</span>
+<span class="go">* tests(mysql, old)</span>
+<span class="go">* tests(psql, new)</span>
+<span class="go">* tests(mysql, new)</span>
+</pre></div>
+</div>
+</section>
+<section id="parametrizing-the-session-python">
+<h2>Parametrizing the session Python<a class="headerlink" href="#parametrizing-the-session-python" title="永久链接至标题">¶</a></h2>
+<p>You can use parametrization to select the Python interpreter for a session.
+These two examples are equivalent:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;3.6&quot;</span><span class="p">,</span> <span class="s2">&quot;3.7&quot;</span><span class="p">,</span> <span class="s2">&quot;3.8&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">python</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;3.6&quot;</span><span class="p">,</span> <span class="s2">&quot;3.7&quot;</span><span class="p">,</span> <span class="s2">&quot;3.8&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The first form can be useful if you need to exclude some combinations of Python
+versions with other parameters. For example, you may want to test against
+multiple versions of a dependency, but the latest version doesn’t run on older
+Pythons:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s2">&quot;python,dependency&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="n">dependency</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">python</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;3.6&quot;</span><span class="p">,</span> <span class="s2">&quot;3.7&quot;</span><span class="p">,</span> <span class="s2">&quot;3.8&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">dependency</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span> <span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">python</span><span class="p">,</span> <span class="n">dependency</span><span class="p">)</span> <span class="o">!=</span> <span class="p">(</span><span class="s2">&quot;3.6&quot;</span><span class="p">,</span> <span class="s2">&quot;2.0&quot;</span><span class="p">)</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">dependency</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="module-nox.sessions">
+<span id="the-session-object"></span><h2>The session object<a class="headerlink" href="#module-nox.sessions" title="永久链接至标题">¶</a></h2>
+<p>Nox will call your session functions with a an instance of the <a class="reference internal" href="#nox.sessions.Session" title="nox.sessions.Session"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session</span></code></a>
+class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="nox.sessions.Session">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">nox.sessions.SessionRunner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nox.sessions.Session" title="永久链接至目标">¶</a></dt>
+<dd><p>The Session object is passed into each user-defined session function.</p>
+<p>This is your primary means for installing package and running commands in
+your Nox session.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.bin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#nox.sessions.Session.bin" title="永久链接至目标">¶</a></dt>
+<dd><p>The first bin directory for the virtualenv.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.bin_paths">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bin_paths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nox.sessions.Session.bin_paths" title="永久链接至目标">¶</a></dt>
+<dd><p>The bin directories for the virtualenv.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.cache_dir">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cache_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pathlib.Path</span></em><a class="headerlink" href="#nox.sessions.Session.cache_dir" title="永久链接至目标">¶</a></dt>
+<dd><p>Create and return a ‘shared cache’ directory to be used across sessions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.cd">
+<span class="sig-name descname"><span class="pre">cd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">os.PathLike</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">nox.sessions._WorkingDirContext</span></span></span><a class="headerlink" href="#nox.sessions.Session.cd" title="永久链接至目标">¶</a></dt>
+<dd><p>An alias for <a class="reference internal" href="#nox.sessions.Session.chdir" title="nox.sessions.Session.chdir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">chdir()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.chdir">
+<span class="sig-name descname"><span class="pre">chdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">os.PathLike</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">nox.sessions._WorkingDirContext</span></span></span><a class="headerlink" href="#nox.sessions.Session.chdir" title="永久链接至目标">¶</a></dt>
+<dd><p>Change the current working directory.</p>
+<p>Can be used as a context manager to automatically restore the working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;somewhere/deep/in/monorepo&quot;</span><span class="p">):</span>
+    <span class="c1"># Runs in &quot;/somewhere/deep/in/monorepo&quot;</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+
+<span class="c1"># Runs in original working directory</span>
+<span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;flake8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.conda_install">
+<span class="sig-name descname"><span class="pre">conda_install</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_offline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.conda_install" title="永久链接至目标">¶</a></dt>
+<dd><p>Install invokes <a class="reference internal" href="#conda-install">conda install</a> to install packages inside of the
+session’s environment.</p>
+<p>To install packages directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">conda_install</span><span class="p">(</span><span class="s1">&#39;pandas&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">conda_install</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">,</span> <span class="s1">&#39;scipy&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">conda_install</span><span class="p">(</span><span class="s1">&#39;dask==2.1.0&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;conda-forge&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To install packages from a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">conda_install</span><span class="p">(</span><span class="s1">&#39;--file&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements.txt&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">conda_install</span><span class="p">(</span><span class="s1">&#39;--file&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements-dev.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default this method will detect when internet connection is not
+available and will add the <cite>–offline</cite> flag automatically in that case.
+To disable this behaviour, set <cite>auto_offline=False</cite>.</p>
+<p>To install the current package without clobbering conda-installed
+dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;--no-deps&#39;</span><span class="p">)</span>
+<span class="c1"># Install in editable mode.</span>
+<span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;--no-deps&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can specify a conda channel using <cite>channel=</cite>; a falsy value will
+not change the current channels. You can specify a list of channels if
+needed.</p>
+<p>Additional keyword args are the same as for <a class="reference internal" href="#nox.sessions.Session.run" title="nox.sessions.Session.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>.</p>
+<span class="target" id="conda-install"></span></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.create_tmp">
+<span class="sig-name descname"><span class="pre">create_tmp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#nox.sessions.Session.create_tmp" title="永久链接至目标">¶</a></dt>
+<dd><p>Create, and return, a temporary directory.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.debug" title="永久链接至目标">¶</a></dt>
+<dd><p>Outputs a debug-level message during the session.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.env">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span></em><a class="headerlink" href="#nox.sessions.Session.env" title="永久链接至目标">¶</a></dt>
+<dd><p>A dictionary of environment variables to pass into all commands.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.error">
+<span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#nox.sessions.Session.error" title="永久链接至目标">¶</a></dt>
+<dd><p>Immediately aborts the session and optionally logs an error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.install">
+<span class="sig-name descname"><span class="pre">install</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.install" title="永久链接至目标">¶</a></dt>
+<dd><p>Install invokes <a class="reference external" href="https://pip.readthedocs.org">pip</a> to install packages inside of the session’s
+virtualenv.</p>
+<p>To install packages directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;requests&#39;</span><span class="p">,</span> <span class="s1">&#39;mock&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;requests[security]==2.9.1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To install packages from a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements.txt&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements-dev.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To install the current package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="c1"># Install in editable mode.</span>
+<span class="n">session</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s1">&#39;-e&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additional keyword args are the same as for <a class="reference internal" href="#nox.sessions.Session.run" title="nox.sessions.Session.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.interactive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interactive</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#nox.sessions.Session.interactive" title="永久链接至目标">¶</a></dt>
+<dd><p>Returns True if Nox is being run in an interactive session or False otherwise.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.invoked_from">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">invoked_from</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#nox.sessions.Session.invoked_from" title="永久链接至目标">¶</a></dt>
+<dd><p>The directory that Nox was originally invoked from.</p>
+<p>Since you can use the <code class="docutils literal notranslate"><span class="pre">--noxfile</span> <span class="pre">/</span> <span class="pre">-f</span></code> command-line
+argument to run a Noxfile in a location different from your shell’s
+current working directory, Nox automatically changes the working directory
+to the Noxfile’s directory before running any sessions. This gives
+you the original working directory that Nox was invoked form.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.log" title="永久链接至目标">¶</a></dt>
+<dd><p>Outputs a log during the session.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#nox.sessions.Session.name" title="永久链接至目标">¶</a></dt>
+<dd><p>The name of this session.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.notify">
+<span class="sig-name descname"><span class="pre">notify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">nox.sessions.SessionRunner</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.notify" title="永久链接至目标">¶</a></dt>
+<dd><p>Place the given session at the end of the queue.</p>
+<p>This method is idempotent; multiple notifications to the same session
+have no effect.</p>
+<p>A common use case is to notify a code coverage analysis session
+from a test session:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="s2">&quot;coverage&quot;</span><span class="p">)</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">coverage</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;coverage&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now if you run <cite>nox -s test</cite>, the coverage session will run afterwards.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><em>Callable</em><em>]</em>) – The session to be notified. This
+may be specified as the appropriate string (same as used for
+<code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span></code>) or using the function object.</p></li>
+<li><p><strong>posargs</strong> (<em>Optional</em><em>[</em><em>Iterable</em><em>[</em><em>str</em><em>]</em><em>]</em>) – If given, sets the positional
+arguments <em>only</em> for the queued session. Otherwise, the
+standard globally available positional arguments will be
+used instead.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.posargs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">posargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nox.sessions.Session.posargs" title="永久链接至目标">¶</a></dt>
+<dd><p>Any extra arguments from the <code class="docutils literal notranslate"><span class="pre">nox</span></code> commandline or <a class="reference internal" href="#nox.sessions.Session.notify" title="nox.sessions.Session.notify"><code class="xref py py-class docutils literal notranslate"><span class="pre">Session.notify</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.python">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">python</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nox.sessions.Session.python" title="永久链接至目标">¶</a></dt>
+<dd><p>The python version passed into <code class="docutils literal notranslate"><span class="pre">&#64;nox.session</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nox.sessions.Session.run" title="永久链接至目标">¶</a></dt>
+<dd><p>Run a command.</p>
+<p>Commands must be specified as a list of strings, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="s1">&#39;tests/&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;flake8&#39;</span><span class="p">,</span> <span class="s1">&#39;--import-order-style=google&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You <strong>can not</strong> just pass everything as one string. For example, this
+<strong>will not work</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;pytest -k fast tests/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can set environment variables for the command using <code class="docutils literal notranslate"><span class="pre">env</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s1">&#39;bash&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;echo $SOME_ENV&#39;</span><span class="p">,</span>
+    <span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;SOME_ENV&#39;</span><span class="p">:</span> <span class="s1">&#39;Hello&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>You can also tell nox to treat non-zero exit codes as success using
+<code class="docutils literal notranslate"><span class="pre">success_codes</span></code>. For example, if you wanted to treat the <code class="docutils literal notranslate"><span class="pre">pytest</span></code>
+“tests discovered, but none selected” error as success:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="s1">&#39;not slow&#39;</span><span class="p">,</span>
+    <span class="n">success_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>On Windows, builtin commands like <code class="docutils literal notranslate"><span class="pre">del</span></code> cannot be directly invoked,
+but you can use <code class="docutils literal notranslate"><span class="pre">cmd</span> <span class="pre">/c</span></code> to invoke them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;cmd&#39;</span><span class="p">,</span> <span class="s1">&#39;/c&#39;</span><span class="p">,</span> <span class="s1">&#39;del&#39;</span><span class="p">,</span> <span class="s1">&#39;docs/modules.rst&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">session.run</span></code> fails, it will stop the session and will not run the next steps.
+Basically, this will raise a Python exception. Taking this in count, you can use a
+<code class="docutils literal notranslate"><span class="pre">try...finally</span></code> block for cleanup runs, that will run even if the other runs fail:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;coverage&quot;</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># Display coverage report even when tests fail.</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;coverage&quot;</span><span class="p">,</span> <span class="s2">&quot;report&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<em>dict</em><em> or </em><em>None</em>) – A dictionary of environment variables to expose to the
+command. By default, all environment variables are passed.</p></li>
+<li><p><strong>silent</strong> (<em>bool</em>) – Silence command output, unless the command fails.
+<code class="docutils literal notranslate"><span class="pre">False</span></code> by default.</p></li>
+<li><p><strong>success_codes</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>None</em>) – A list of return codes that are considered
+successful. By default, only <code class="docutils literal notranslate"><span class="pre">0</span></code> is considered success.</p></li>
+<li><p><strong>external</strong> (<em>bool</em>) – If False (the default) then programs not in the
+virtualenv path will cause a warning. If True, no warning will be
+emitted. These warnings can be turned into errors using
+<code class="docutils literal notranslate"><span class="pre">--error-on-external-run</span></code>. This has no effect for sessions that
+do not have a virtualenv.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.run_always">
+<span class="sig-name descname"><span class="pre">run_always</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">env</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#nox.sessions.Session.run_always" title="永久链接至目标">¶</a></dt>
+<dd><p>Run a command <strong>always</strong>.</p>
+<p>This is a variant of <a class="reference internal" href="#nox.sessions.Session.run" title="nox.sessions.Session.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a> that runs even in the presence of
+<code class="docutils literal notranslate"><span class="pre">--install-only</span></code>. This method returns early if <code class="docutils literal notranslate"><span class="pre">--no-install</span></code> is
+specified and the virtualenv is being reused.</p>
+<p>Here are some cases where this method is useful:</p>
+<ul class="simple">
+<li><p>You need to install packages using a command other than <code class="docutils literal notranslate"><span class="pre">pip</span>
+<span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code>.</p></li>
+<li><p>You need to run a command as a prerequisite of package installation,
+such as building a package or compiling a binary extension.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<em>dict</em><em> or </em><em>None</em>) – A dictionary of environment variables to expose to the
+command. By default, all environment variables are passed.</p></li>
+<li><p><strong>silent</strong> (<em>bool</em>) – Silence command output, unless the command fails.
+<code class="docutils literal notranslate"><span class="pre">False</span></code> by default.</p></li>
+<li><p><strong>success_codes</strong> (<em>list</em><em>, </em><em>tuple</em><em>, or </em><em>None</em>) – A list of return codes that are considered
+successful. By default, only <code class="docutils literal notranslate"><span class="pre">0</span></code> is considered success.</p></li>
+<li><p><strong>external</strong> (<em>bool</em>) – If False (the default) then programs not in the
+virtualenv path will cause a warning. If True, no warning will be
+emitted. These warnings can be turned into errors using
+<code class="docutils literal notranslate"><span class="pre">--error-on-external-run</span></code>. This has no effect for sessions that
+do not have a virtualenv.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.skip">
+<span class="sig-name descname"><span class="pre">skip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#nox.sessions.Session.skip" title="永久链接至目标">¶</a></dt>
+<dd><p>Immediately skips the session and optionally logs a warning.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nox.sessions.Session.virtualenv">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">virtualenv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">nox.virtualenv.ProcessEnv</span></em><a class="headerlink" href="#nox.sessions.Session.virtualenv" title="永久链接至目标">¶</a></dt>
+<dd><p>The virtualenv that all commands are run in.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nox.sessions.Session.warn">
+<span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#nox.sessions.Session.warn" title="永久链接至目标">¶</a></dt>
+<dd><p>Outputs a warning during the session.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modifying-nox-s-behavior-in-the-noxfile">
+<h2>Modifying Nox’s behavior in the Noxfile<a class="headerlink" href="#modifying-nox-s-behavior-in-the-noxfile" title="永久链接至标题">¶</a></h2>
+<p>Nox has various <a class="reference internal" href="usage.html"><span class="doc">command line arguments</span></a> that can be used to modify its behavior. Some of these can also be specified in the Noxfile using <code class="docutils literal notranslate"><span class="pre">nox.options</span></code>. For example, if you wanted to store Nox’s virtualenvs in a different directory without needing to pass it into <code class="docutils literal notranslate"><span class="pre">nox</span></code> every time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="n">nox</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">envdir</span> <span class="o">=</span> <span class="s2">&quot;.cache&quot;</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span>
+<span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Or, if you wanted to provide a set of sessions that are run by default:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="n">nox</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">sessions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lint&quot;</span><span class="p">,</span> <span class="s2">&quot;tests-3.6&quot;</span><span class="p">]</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>The following options can be specified in the Noxfile:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.envdir</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-envdir"><span class="std std-ref">–envdir</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.sessions</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-sessions-pythons-and-keywords"><span class="std std-ref">-s or –sessions</span></a>. If set to an empty list, no sessions will be run if no sessions were given on the command line, and the list of available sessions will be shown instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.pythons</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-sessions-pythons-and-keywords"><span class="std std-ref">-p or –pythons</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.keywords</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-sessions-pythons-and-keywords"><span class="std std-ref">-k or –keywords</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.default_venv_backend</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-default-venv-backend"><span class="std std-ref">-db or –default-venv-backend</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.force_venv_backend</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-force-venv-backend"><span class="std std-ref">-fb or –force-venv-backend</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.reuse_existing_virtualenvs</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-reuse-existing-virtualenvs"><span class="std std-ref">–reuse-existing-virtualenvs</span></a>. You can force this off by specifying <code class="docutils literal notranslate"><span class="pre">--no-reuse-existing-virtualenvs</span></code> during invocation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.stop_on_first_error</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-stop-on-first-error"><span class="std std-ref">–stop-on-first-error</span></a>. You can force this off by specifying <code class="docutils literal notranslate"><span class="pre">--no-stop-on-first-error</span></code> during invocation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.error_on_missing_interpreters</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-error-on-missing-interpreters"><span class="std std-ref">–error-on-missing-interpreters</span></a>. You can force this off by specifying <code class="docutils literal notranslate"><span class="pre">--no-error-on-missing-interpreters</span></code> during invocation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.error_on_external_run</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-error-on-external-run"><span class="std std-ref">–error-on-external-run</span></a>. You can force this off by specifying <code class="docutils literal notranslate"><span class="pre">--no-error-on-external-run</span></code> during invocation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox.options.report</span></code> is equivalent to specifying <a class="reference internal" href="usage.html#opt-report"><span class="std std-ref">–report</span></a>.</p></li>
+</ul>
+<p>When invoking <code class="docutils literal notranslate"><span class="pre">nox</span></code>, any options specified on the command line take precedence over the options specified in the Noxfile. If either <code class="docutils literal notranslate"><span class="pre">--sessions</span></code> or <code class="docutils literal notranslate"><span class="pre">--keywords</span></code> is specified on the command line, <em>both</em> options specified in the Noxfile will be ignored.</p>
+</section>
+<section id="nox-version-requirements">
+<h2>Nox version requirements<a class="headerlink" href="#nox-version-requirements" title="永久链接至标题">¶</a></h2>
+<p>Nox version requirements can be specified in your Noxfile by setting
+<code class="docutils literal notranslate"><span class="pre">nox.needs_version</span></code>. If the Nox version does not satisfy the requirements, Nox
+exits with a friendly error message. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nox</span>
+
+<span class="n">nox</span><span class="o">.</span><span class="n">needs_version</span> <span class="o">=</span> <span class="s2">&quot;&gt;=2019.5.30&quot;</span>
+
+<span class="nd">@nox</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>  <span class="c1"># name argument was added in 2019.5.30</span>
+<span class="k">def</span> <span class="nf">pytest</span><span class="p">(</span><span class="n">session</span><span class="p">):</span>
+    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pytest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Any of the version specifiers defined in <a class="reference external" href="https://www.python.org/dev/peps/pep-0440/">PEP 440</a> can be used.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Version requirements <em>must</em> be specified as a string literal,
+using a simple assignment to <code class="docutils literal notranslate"><span class="pre">nox.needs_version</span></code> at the module level. This
+allows Nox to check the version without importing the Noxfile.</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">配置和 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#noxfile">Noxfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-sessions">定义会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#session-description">会话描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#session-name">会话名字</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-a-session-s-virtualenv">配置会话的 virtualenv</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-arguments-into-sessions">将参数传入会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametrizing-sessions">参数化会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#giving-friendly-names-to-parametrized-sessions">给予参数化的会话以友好的名称</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parametrizing-the-session-python">Parametrizing the session Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-nox.sessions">The session object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modifying-nox-s-behavior-in-the-noxfile">Modifying Nox’s behavior in the Noxfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nox-version-requirements">Nox version requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">命令行用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Nox 秘籍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">贡献</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">变更日志</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="tutorial.html" title="上一章">教程</a></li>
+      <li>Next: <a href="usage.html" title="下一章">命令行用法</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/config.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

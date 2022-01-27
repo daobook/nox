@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>贡献 &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="变更日志" href="CHANGELOG.html" />
+    <link rel="prev" title="Nox 秘籍" href="cookbook.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="contributing">
+<h1>贡献<a class="headerlink" href="#contributing" title="永久链接至标题">¶</a></h1>
+<p>感谢您对改进 Nox 的兴趣。Nox 在 <a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License Version 2.0</a> 下是开源的，欢迎以错误报告、功能请求和拉动请求的形式作出贡献。</p>
+<p>Nox 托管在 <a class="reference external" href="https://github.com/theacodes/nox">GitHub</a>。</p>
+<section id="support-questions-and-feature-requests">
+<h2>支持、问题和功能请求<a class="headerlink" href="#support-questions-and-feature-requests" title="永久链接至标题">¶</a></h2>
+<p>欢迎在 <a class="reference external" href="https://github.com/theacodes/nox">GitHub</a> 上提交错误。</p>
+</section>
+<section id="reporting-issues">
+<h2>报告议题<a class="headerlink" href="#reporting-issues" title="永久链接至标题">¶</a></h2>
+<p>在 <a class="reference external" href="https://github.com/theacodes/nox">GitHub</a> 上提交错误。为了帮助我们弄清楚发生了什么事，请尽量包含大量的信息，例如：</p>
+<ul class="simple">
+<li><p>操作系统。</p></li>
+<li><p>Python 版本。</p></li>
+<li><p>如果可能的话，能重现该问题的最小案例。</p></li>
+</ul>
+</section>
+<section id="pull-requests">
+<h2>Pull requests<a class="headerlink" href="#pull-requests" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>建议在开始工作之前提出一个错误。这将使我们有机会与 owner 进行讨论，并验证你的方法。</p></li>
+<li><p>Nox 保持 100% 的测试覆盖率。所有拉动请求必须保持这一点。</p></li>
+<li><p>遵从 <a class="reference external" href="https://pep8.org">pep8</a>。</p></li>
+<li><p>更新文档，如果相关的话。</p></li>
+</ul>
+</section>
+<section id="running-tests">
+<h2>运行测试<a class="headerlink" href="#running-tests" title="永久链接至标题">¶</a></h2>
+<p>Nox 运行自己的测试（它是递归的！）。最好的办法是从一个已知的好的 Nox 安装开始，例如从 PyPI 开始：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install --pre --upgrade nox
+</pre></div>
+</div>
+<p>如果只是检查 lint 错误，可以运行：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nox --session lint
+</pre></div>
+</div>
+<p>要针对一个特定的 Python 版本运行：</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>nox --session tests-3.6
+nox --session tests-3.7
+nox --session tests-3.8
+nox --session tests-3.9
+</pre></div>
+</div>
+<p>当你发送一个拉动请求时，CI将处理运行所有的东西，但建议在推送之前尽可能在本地测试。</p>
+</section>
+<section id="getting-a-sticker">
+<h2>获得贴纸<a class="headerlink" href="#getting-a-sticker" title="永久链接至标题">¶</a></h2>
+<p>如果你对 Nox 有贡献，你可以得到一个可爱的Nox小贴纸。请联系 Thea，me&#64;thea.codes，索取一张</p>
+</section>
+<section id="getting-paid">
+<h2>获得报酬<a class="headerlink" href="#getting-paid" title="永久链接至标题">¶</a></h2>
+<p>对 Nox 的贡献可以通过 <a class="reference external" href="https://opencollective.com/python-nox">我们的开放集体</a> 进行支出。维护者会让你知道什么时候和多少钱可以支出贡献，但请随时询问。</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置和 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">命令行用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Nox 秘籍</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">贡献</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#support-questions-and-feature-requests">支持、问题和功能请求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-issues">报告议题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-requests">Pull requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">运行测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-a-sticker">获得贴纸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-paid">获得报酬</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">变更日志</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="cookbook.html" title="上一章">Nox 秘籍</a></li>
+      <li>Next: <a href="CHANGELOG.html" title="下一章">变更日志</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/CONTRIBUTING.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>变更日志 &#8212; Nox 2022.1.7 文档</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="贡献" href="CONTRIBUTING.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="changelog">
+<h1>变更日志<a class="headerlink" href="#changelog" title="永久链接至标题">¶</a></h1>
+<section id="id1">
+<h2>2022.1.7<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>Claudio Jolowicz、Diego Ramirez 和 Tom Fleet 已经成为 Nox 的维护者。我们要感谢为这个版本做出贡献的以下人员：</p>
+<ul class="simple">
+<li><p>&#64;brettcannon</p></li>
+<li><p>&#64;cjolowicz</p></li>
+<li><p>&#64;dhermes</p></li>
+<li><p>&#64;DiddiLeija</p></li>
+<li><p>&#64;FollowTheProcess</p></li>
+<li><p>&#64;franekmagiera</p></li>
+<li><p>&#64;henryiii</p></li>
+<li><p>&#64;jugmac00</p></li>
+<li><p>&#64;maciej-lech</p></li>
+<li><p>&#64;nawatts</p></li>
+<li><p>&#64;Tolker-KU</p></li>
+</ul>
+<p>新特性：</p>
+<ul class="simple">
+<li><p>添加 <code class="docutils literal notranslate"><span class="pre">mamba</span></code> 后端（#444, #448, #546, #551）</p></li>
+<li><p>增加 <code class="docutils literal notranslate"><span class="pre">session.debug</span></code> 以显示调试级信息（#489）</p></li>
+<li><p>在文档中添加 cookbook 页面（#483）</p></li>
+<li><p>增加对 <code class="docutils literal notranslate"><span class="pre">FORCE_COLOR</span></code> 环境变量的支持（#524, #548）。</p></li>
+<li><p>允许使用 <code class="docutils literal notranslate"><span class="pre">session.chdir()</span></code> 作为上下文管理器（#543）。</p></li>
+<li><p>废弃在没有有效后端的情况下使用 <code class="docutils literal notranslate"><span class="pre">session.install()</span></code> 的做法（#537）</p></li>
+</ul>
+<p>改进：</p>
+<ul class="simple">
+<li><p>针对 Python 3.10 的测试（#495, $502, #506）</p></li>
+<li><p>当使用 <code class="docutils literal notranslate"><span class="pre">conda</span></code> 后端时，增加对 <code class="docutils literal notranslate"><span class="pre">channel</span></code> 选项的支持（#522）</p></li>
+<li><p>当 <code class="docutils literal notranslate"><span class="pre">--keywords</span></code> 表达式包含一个语法错误时，显示更具体的错误信息（#493）</p></li>
+<li><p>在教程页面中包括对 <code class="docutils literal notranslate"><span class="pre">session.notify()</span></code> 的引用（#500）</p></li>
+<li><p>记录 <code class="docutils literal notranslate"><span class="pre">session.run()</span></code> 如何失败以及如何处理失败（#533）</p></li>
+<li><p>允许会话列表为空（#523）</p></li>
+</ul>
+<p>错误修正：</p>
+<ul class="simple">
+<li><p>修正使用 <code class="docutils literal notranslate"><span class="pre">session.chdir()</span></code> 时临时目录的损坏（#555, #556）</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">CONDA_PREFIX</span></code> environment variable (#538)</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory for the <code class="docutils literal notranslate"><span class="pre">conda</span></code> backend on Windows (#535)</p></li>
+</ul>
+<p>Internal changes:</p>
+<ul class="simple">
+<li><p>Replace deprecated <code class="docutils literal notranslate"><span class="pre">load_module</span></code> with <code class="docutils literal notranslate"><span class="pre">exec_module</span></code> (#498)</p></li>
+<li><p>Include tests with source distributions (#552)</p></li>
+<li><p>Add missing copyright notices (#509)</p></li>
+<li><p>Use the new ReadTheDocs configurations (#527)</p></li>
+<li><p>Bump the Python version used by ReadTheDocs to 3.8 (#496)</p></li>
+<li><p>Improve the Sphinx config file (#499)</p></li>
+<li><p>Update all linter versions (#528)</p></li>
+<li><p>Add pre-commit and new checks (#530, #539)</p></li>
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">MANIFEST.in</span></code> during CI (#552)</p></li>
+<li><p>Remove redundant <code class="docutils literal notranslate"><span class="pre">LICENSE</span></code> from <code class="docutils literal notranslate"><span class="pre">MANIFEST.in</span></code> (#505)</p></li>
+<li><p>Make <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> use the standard library’s <code class="docutils literal notranslate"><span class="pre">distutils</span></code> to work around <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> bug. (#547, #549)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">shlex.join()</span></code> when logging a command (#490)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">shutil.rmtree()</span></code> over shelling out to <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span></code> in noxfile (#519)</p></li>
+<li><p>Fix missing Python 3.9 CI session (#529)</p></li>
+<li><p>Unpin docs session and add <code class="docutils literal notranslate"><span class="pre">--error-on-missing-interpreter</span></code> to CI (#532)</p></li>
+<li><p>Enable color output from Nox, pytest, and pre-commit during CI (#542)</p></li>
+<li><p>Only run <code class="docutils literal notranslate"><span class="pre">conda_tests</span></code> session by default if user has conda installed (#521)</p></li>
+<li><p>Update dependencies in <code class="docutils literal notranslate"><span class="pre">requirements-conda-test.txt</span></code> (#536)</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>2021.10.1<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>新特性：</p>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session.warn</span></code> to output warnings (#482)</p></li>
+<li><p>Add a shared session cache directory (#476)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session.invoked_from</span></code> (#472)</p></li>
+</ul>
+<p>改进：</p>
+<ul class="simple">
+<li><p>Conda logs now respect <code class="docutils literal notranslate"><span class="pre">nox.options.verbose</span></code> (#466)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session.notify</span></code> example to docs (#467)</p></li>
+<li><p>Add friendlier message if no <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> is found (#463)</p></li>
+<li><p>Show the <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> docstring when using <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-l</span></code> (#459)</p></li>
+<li><p>Mention more projects that use Nox in the docs (#460)</p></li>
+</ul>
+<p>Internal changes:</p>
+<ul class="simple">
+<li><p>Move configs into pyproject.toml or setup.cfg (flake8) (#484)</p></li>
+<li><p>Decouple <code class="docutils literal notranslate"><span class="pre">test_session_completer</span></code> from project level noxfile (#480)</p></li>
+<li><p>Run Flynt to convert str.format to f-strings (#464)</p></li>
+<li><p>Add python 3.10.0-rc2 to GitHub Actions (#475, #479)</p></li>
+<li><p>Simplify CI build (#461)</p></li>
+<li><p>Use PEP 517 build system, remove <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, use <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code> (#456, #457, #458)</p></li>
+<li><p>Upgrade to mypy 0.902 (#455)</p></li>
+</ul>
+<p>Special thanks to our contributors:</p>
+<ul class="simple">
+<li><p>&#64;henryiii</p></li>
+<li><p>&#64;cjolowicz</p></li>
+<li><p>&#64;FollowTheProcess</p></li>
+<li><p>&#64;franekmagiera</p></li>
+<li><p>&#64;DiddiLeija</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>2021.6.12<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix crash on Python 2 when reusing environments. (#450)</p></li>
+<li><p>Hide staleness check behind a feature flag. (#451)</p></li>
+<li><p>Group command-line options in <code class="docutils literal notranslate"><span class="pre">--help</span></code> message by function. (#442)</p></li>
+<li><p>Avoid polluting tests with a .nox directory. (#445)</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>2021.6.6<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add option <code class="docutils literal notranslate"><span class="pre">--no-install</span></code> to skip install commands in reused environments. (#432)</p></li>
+<li><p>Add option <code class="docutils literal notranslate"><span class="pre">--force-python</span></code> as shorthand for <code class="docutils literal notranslate"><span class="pre">--python</span></code> and <code class="docutils literal notranslate"><span class="pre">--extra-python</span></code>. (#427)</p></li>
+<li><p>Do not reuse environments if the interpreter or the environment type has changed. (#418, #425, #428)</p></li>
+<li><p>Allow common variations in session names with parameters, such as double quotes instead of single quotes. Session names are considered equal if they produce the same Python AST. (#417, #434)</p></li>
+<li><p>Preserve the order of parameters in session names. (#401)</p></li>
+<li><p>Allow <code class="docutils literal notranslate"><span class="pre">&#64;nox.parametrize</span></code> to select the session Python. (#413)</p></li>
+<li><p>Allow passing <code class="docutils literal notranslate"><span class="pre">posargs</span></code> when scheduling another session via <code class="docutils literal notranslate"><span class="pre">session.notify</span></code>. (#397)</p></li>
+<li><p>Prevent sessions from modifying each other’s posargs. (#439)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">nox.needs_version</span></code> to specify Nox version requirements. (#388)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session.name</span></code> to get the session name. (#386)</p></li>
+<li><p>Gracefully shutdown child processes. (#393)</p></li>
+<li><p>Decode command output using the system locale if UTF-8 decoding fails. (#380)</p></li>
+<li><p>Fix creation of Conda environments when <code class="docutils literal notranslate"><span class="pre">venv_params</span></code> is used. (#420)</p></li>
+<li><p>Various improvements to Nox’s type annotations. (#376, #377, #378)</p></li>
+<li><p>Remove outdated notes on Windows compatibility from the documentation. (#382)</p></li>
+<li><p>Increase Nox’s test coverage on Windows. (#300)</p></li>
+<li><p>Avoid mypy searching for configuration files in other directories. (#402)</p></li>
+<li><p>Replace AppVeyor and Travis CI by GitHub Actions. (#389, #390, #403)</p></li>
+<li><p>Allow colorlog &lt;7.0.0. (#431)</p></li>
+<li><p>Drop contexter from test requirements. (#426)</p></li>
+<li><p>Upgrade linters to the latest version. (#438)</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>2020.12.31<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">NoxColoredFormatter.format</span></code> (#374)</p></li>
+<li><p>Use conda remove to clean up existing conda environments (#373)</p></li>
+<li><p>Support users specifying an undeclared parametrization of python via <code class="docutils literal notranslate"><span class="pre">--extra-python</span></code> (#361)</p></li>
+<li><p>Support double-digit minor version in <code class="docutils literal notranslate"><span class="pre">python</span></code> keyword (#367)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">py.typed</span></code> to <code class="docutils literal notranslate"><span class="pre">manifest.in</span></code> (#360)</p></li>
+<li><p>Update nox to latest supported python versions. (#362)</p></li>
+<li><p>Decouple merging of <code class="docutils literal notranslate"><span class="pre">--python</span></code> with <code class="docutils literal notranslate"><span class="pre">nox.options</span></code> from <code class="docutils literal notranslate"><span class="pre">--sessions</span></code> and <code class="docutils literal notranslate"><span class="pre">--keywords</span></code> (#359)</p></li>
+<li><p>Do not merge command-line options in place (#357)</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>2020.8.22<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">conda_install</span></code> and <code class="docutils literal notranslate"><span class="pre">install</span></code> args are now automatically double-quoted when needed. (#312)</p></li>
+<li><p>Offline mode is now auto-detected by default by <code class="docutils literal notranslate"><span class="pre">conda_install</span></code>. This allows users to continue executing Nox sessions on already installed environments. (#314)</p></li>
+<li><p>Fix the default paths for Conda on Windows where the <code class="docutils literal notranslate"><span class="pre">python.exe</span></code> found was not the correct one. (#310)</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">--add-timestamp</span></code> option (#323)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">Session.run_always()</span></code>. (#331)</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>2020.5.24<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add new options for <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code>, including the ability to set the backend globally. (#326)</p></li>
+<li><p>Fix various typos in the documentation. (#325, #326, #281)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session.create_tmp</span></code>. (#320)</p></li>
+<li><p>Place all of Nox’s command-line options into argparse groups. (#306)</p></li>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">--pythons</span></code> command-line option to allow specifying which versions of Python to run. (#304)</p></li>
+<li><p>Add a significant amount of type annotations. (#297, #294, #290, #282, #274)</p></li>
+<li><p>Stop building universal wheels since we don’t support Python 2. (#293)</p></li>
+<li><p>Add the ability to specify additional options for the virtualenv backend using <code class="docutils literal notranslate"><span class="pre">venv_params</span></code>. (#280)</p></li>
+<li><p>Prefer <code class="docutils literal notranslate"><span class="pre">importlib.metadata</span></code> for metadata loading, removing our dependency on <code class="docutils literal notranslate"><span class="pre">pkg_resources</span></code>. (#277)</p></li>
+<li><p>Add OmegaConf and Hydra to list of projects that use Nox. (#279)</p></li>
+<li><p>Use a more accurate error message, along with the cause, if loading of noxfile runs into error. (#272)</p></li>
+<li><p>Test against Python 3.8. (#270)</p></li>
+<li><p>Fix a syntax highlighting mistake in configuration docs. (#268)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">stdout.isatty</span></code> to finalize color instead of <code class="docutils literal notranslate"><span class="pre">stdin.isatty</span></code>. (#267)</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>2019.11.9<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix example installation call for pip. (#259)</p></li>
+<li><p>Allow colorlog 4. (#257)</p></li>
+<li><p>Order Pythons in descending version in <code class="docutils literal notranslate"><span class="pre">appveyor.yml</span></code>. (#258)</p></li>
+<li><p>Add link to GitHub Action for Nox. (#255)</p></li>
+<li><p>Use double “`” for inline code. (#254)</p></li>
+<li><p>Add types to <code class="docutils literal notranslate"><span class="pre">_option_set.py</span></code>. (#249)</p></li>
+<li><p>Add type hints to <code class="docutils literal notranslate"><span class="pre">tasks.py</span></code>. (#241)</p></li>
+<li><p>Fix typo (virtulenvs). (#247)</p></li>
+<li><p>Replace flake8 sorter with isort. (#242)</p></li>
+<li><p>Pass <code class="docutils literal notranslate"><span class="pre">VIRTUAL_ENV</span></code> environment variable to commands executed in a virtualenv. (#245)</p></li>
+<li><p>Fix docs to show correct list for parametrize. (#244)</p></li>
+<li><p>Add argcomplete dependency to conda test session. (#240)</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>2019.8.20<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> for showing the output from all commands. (#174)</p></li>
+<li><p>Immediately exit if unknown arguments are passed. (#229)</p></li>
+<li><p>Document complex test_virtualenv fixtures. (#236)</p></li>
+<li><p>Resolve to interpreter ‘python’ in PATH if ‘–version’ fits. (#224)</p></li>
+<li><p>Add shell autocomplete. (#228)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">venv</span></code> as an option for <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code>. (#231)</p></li>
+<li><p>Add gdbgui to list of projects. (#235)</p></li>
+<li><p>Add mypy to Nox’s lint. (#230)</p></li>
+<li><p>Add pipx to projects that use nox. (#225)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">session(venv_backend='conda')</span></code> option to use Conda environments. (#217, #221)</p></li>
+<li><p>Document how to call builtins on Windows. (#223)</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">imp.load_source()</span></code> with <code class="docutils literal notranslate"><span class="pre">importlib</span></code>. (#214)</p></li>
+<li><p>Fix incorrect type in docstring &amp; replace old-style format string. (#213)</p></li>
+<li><p>Allow specifying <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> to <code class="docutils literal notranslate"><span class="pre">session.run</span></code>.</p></li>
+<li><p>Add Salt to the list of projects that use Nox. (#209)</p></li>
+<li><p>Remove Python 2-specific code. (#203, #208)</p></li>
+<li><p>Grammar fixes. (#205, 206, 207)</p></li>
+<li><p>Update Nox’s <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> to use python3.7. (#204)</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>2019.5.30<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add interactive property to session. (#196)</p></li>
+<li><p>Promote contributors to maintainers, add Open Collective details. (#201)</p></li>
+<li><p>Fix funding external link. (#200)</p></li>
+<li><p>Refactor how Nox defines and process options. (#187)</p></li>
+<li><p>Fix typo in tutorial. (#194)</p></li>
+<li><p>Use ‘pytest’ instead of ‘py.test’ in examples and configuration. (#193)</p></li>
+<li><p>Fix some CSS issues on mobile. (#192)</p></li>
+<li><p>Use short form of virtualenv path when creating the virtualenv. (#191)</p></li>
+<li><p>Refresh tutorial and fixup small docs things. (#190)</p></li>
+<li><p>Add the ability to give parametrized sessions a custom ID. (#186)</p></li>
+<li><p>Make –list list all available sessions, not just the selected ones. (#185)</p></li>
+<li><p>Allow providing a friendlier CLI name to sessions. (#170)</p></li>
+<li><p>Add urllib3 to the list of projects that use Nox (#182)</p></li>
+<li><p>Fix documentation link for Docker Cloud vs Hub (#179)</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>2019.4.11<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Include changelog in documentation. (#177)</p></li>
+<li><p>Use the relative path of the virtualenv in the “creating virtualenv” log message. (#176)</p></li>
+<li><p>Allow not passing “–upgrade” to <code class="docutils literal notranslate"><span class="pre">session.install</span></code> and change its default behavior to not upgrade. (#172)</p></li>
+<li><p>Expand environment variables when loading the noxfile from provided path. (#171)</p></li>
+<li><p>Add documentation around using Docker to run Nox. (#164)</p></li>
+<li><p>Don’t colour output if <code class="docutils literal notranslate"><span class="pre">NO_COLOR</span></code> is set. (#163)</p></li>
+<li><p>Fix tox casing to be consistent with their docs, remove `.`` from pytest. (#160)</p></li>
+<li><p>Update issue templates.</p></li>
+<li><p>Add CODE_OF_CONDUCT.md.</p></li>
+<li><p>Add –install-only flag to install dependencies without running anything (#153)</p></li>
+<li><p>Fix function name in docs. (#155)</p></li>
+<li><p>Allow silent argument to be set in <code class="docutils literal notranslate"><span class="pre">session.install</span></code>. (#157)</p></li>
+<li><p>Run sessions in the same order specified on the command line. (#152)</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>2018.10.17<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix bug where empty parametrized sessions would fail. (#151)</p></li>
+</ul>
+</section>
+<section id="id13">
+<h2>2018.10.15<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Hide the python interpreter on sessions with only one. (#148)</p></li>
+<li><p>Warn when programs not in the virtualenv are used, allow erroring and silencing the warning. (#147)</p></li>
+<li><p>Add –warn-on-external-run flag and the “external” keyword arg to session.run. (#147)</p></li>
+<li><p>Add nox.options which allows specifying command-line configuration in the Noxfile (#145)</p></li>
+<li><p>Add python_requires (&gt;= 3.5) to setup.py.</p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>2018.10.9<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<p>Breaking changes:</p>
+<ul class="simple">
+<li><p>Skip sessions with missing interpreters. Previously, missing interpreters would cause a failed session. Now they just cause a warning. The previous behavior can be used via <code class="docutils literal notranslate"><span class="pre">--error-on-missing-interpreters</span></code>. (#140)</p></li>
+</ul>
+<p>新特性：</p>
+<ul class="simple">
+<li><p>Add session.python property.</p></li>
+</ul>
+<p>Other changes:</p>
+<ul class="simple">
+<li><p>Fix some warnings about escape sequences.</p></li>
+<li><p>Group command line args by usage for readability.</p></li>
+<li><p>Blacklist more Tox env vars in nox-to-tox.</p></li>
+<li><p>Documentation fixes, spelling, etc. (#134)</p></li>
+<li><p>Mention stickers in the contributors guide.</p></li>
+<li><p>Mention Invoke as a Nox alternative.</p></li>
+</ul>
+</section>
+<section id="id15">
+<h2>2018.9.14<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Check for <code class="docutils literal notranslate"><span class="pre">NOXSESSION</span></code> environment variable (#121)</p></li>
+<li><p>Fix typo in OpenCensus Python (#132)</p></li>
+<li><p>Add new documentation art created by Andrea Caprotti</p></li>
+<li><p>Add Python 3.7 to Travis CI (#129)</p></li>
+</ul>
+</section>
+<section id="id16">
+<h2>2018.8.28<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>错误修正：</p>
+<ul class="simple">
+<li><p>Adding <code class="docutils literal notranslate"><span class="pre">Session.__slots__</span></code>. (#128)</p></li>
+<li><p>Don’t modify <code class="docutils literal notranslate"><span class="pre">Virtualenv.interpreter</span></code> in <code class="docutils literal notranslate"><span class="pre">_resolved_interpreter</span></code>. (#127)</p></li>
+<li><p>Fix tox-to-nox template.</p></li>
+<li><p>Add the ability to add descriptions to sessions. (#117)</p></li>
+<li><p>Using more specific regex in <code class="docutils literal notranslate"><span class="pre">_resolved_interpreter()</span></code>. (#119)</p></li>
+</ul>
+<p>新特性：</p>
+<ul class="simple">
+<li><p>Adding support for 32-bit binaries on Windows. (#100)</p></li>
+</ul>
+<p>Internal/testing changes:</p>
+<ul class="simple">
+<li><p>Storing <code class="docutils literal notranslate"><span class="pre">platform.system()</span></code> as global in <code class="docutils literal notranslate"><span class="pre">nox.virtualenv</span></code>. (#124)</p></li>
+<li><p>Fix deploy script for Travis.</p></li>
+<li><p>Run docs on travis. (#122)</p></li>
+<li><p>Documentation style updates.</p></li>
+</ul>
+</section>
+<section id="id17">
+<h2>2018.8.23<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h2>
+<p><strong>Heads up!</strong> This is a very big release for Nox. Please read these release notes thoroughly and reach out to us on GitHub if you run into issues.</p>
+<p>Breaking changes and other important notes:</p>
+<ul class="simple">
+<li><p>Nox is now published as “nox” on PyPI. This means that Nox is installed via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nox</span></code> instead of <code class="docutils literal notranslate"><span class="pre">nox-automation</span></code>. Since the new release makes so many breaking changes, we won’t be updating the old <code class="docutils literal notranslate"><span class="pre">nox-automation</span></code> package.</p></li>
+<li><p>Nox’s configuration file is now called <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> instead of <code class="docutils literal notranslate"><span class="pre">nox.py</span></code>.</p></li>
+<li><p>Nox no longer supports Python 2.7. You can still create and run Python 2.7 sessions, but Nox itself must be installed using Python 3.5+.</p></li>
+<li><p>Nox’s behavior has been changed from <em>declarative</em>  to <em>imperative</em>. Session actions now run immediately. Existing code to setup session virtualenv, such as <code class="docutils literal notranslate"><span class="pre">session.interpreter</span></code> <strong>will break</strong>! Please consult the documentation on how to use <code class="docutils literal notranslate"><span class="pre">&#64;nox.session(python=[...])</span></code> to configure virtualenvs for sessions.</p></li>
+<li><p>Nox now uses calver for releases.</p></li>
+<li><p>Support for the legacy naming convention (for example, <code class="docutils literal notranslate"><span class="pre">session_tests</span></code>) has been removed.</p></li>
+</ul>
+<p>Other changes:</p>
+<ul class="simple">
+<li><p>Update colorlog dependency range.</p></li>
+<li><p>Update installation command in contributing. (#101)</p></li>
+<li><p>Remove Python 2.x object inheritance. (#109)</p></li>
+<li><p>Fix python syntax error on docs. (#111)</p></li>
+<li><p>Show additional links on PyPI. (#108)</p></li>
+<li><p>Add contributors file. (#113)</p></li>
+<li><p>Run sphinx with -W option. (#115)</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">os.pathsep</span></code> instead of a hardcoded <code class="docutils literal notranslate"><span class="pre">':'</span></code>. (#105)</p></li>
+<li><p>Use a configuration file for readthedocs. (#107)</p></li>
+<li><p>Add ‘py’ alias for <code class="docutils literal notranslate"><span class="pre">nox.session(python=...)</span></code>.</p></li>
+<li><p>Fix processing of numeric Python versions that specify a patch version.</p></li>
+<li><p>Use Black to format code.</p></li>
+<li><p>Support invoking Nox using <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">nox</span></code>.</p></li>
+<li><p>Produce better error message when sessions can’t be found.</p></li>
+<li><p>Fix missing links in README.rst.</p></li>
+<li><p>Remove usage of future imports.</p></li>
+<li><p>Remove usage of six.</p></li>
+<li><p>Make session.install a simple alias for session.run.</p></li>
+<li><p>Refactor nox.command.Command as nox.command.run, reducing complexity.</p></li>
+<li><p>Add list of projects that use Nox.</p></li>
+<li><p>Use witchhazel pygments theme.</p></li>
+</ul>
+</section>
+<section id="v0-19-1">
+<h2>v0.19.1<a class="headerlink" href="#v0-19-1" title="永久链接至标题">¶</a></h2>
+<p><strong>Note</strong>:: v0.19.1 was the last version released as “nox-automation” on PyPI. Subsequent releases are published as “nox”.</p>
+<ul class="simple">
+<li><p>Updates copyright information and contact addresses. No code changes.</p></li>
+</ul>
+</section>
+<section id="v0-19-0">
+<h2>v0.19.0<a class="headerlink" href="#v0-19-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Add missing parameter in docs (#89)</p></li>
+<li><p>Don’t skip install commands when re-using existing virtualenvs. (#86)</p></li>
+<li><p>Add –nocolor and –forcecolor options (#85)</p></li>
+<li><p>Simulating <code class="docutils literal notranslate"><span class="pre">unittest.mock</span></code> backport in the Python 2 standard library. (#81)</p></li>
+<li><p>Fixing tox-to-nox docs reference. (#80)</p></li>
+<li><p>Removing patch of <code class="docutils literal notranslate"><span class="pre">py.exe</span></code> on AppVeyor. (#74)</p></li>
+<li><p>Adding Python 3.6 to AppVeyor. (#69)</p></li>
+<li><p>Adding AppVeyor badge to README. (#70)</p></li>
+</ul>
+</section>
+<section id="v0-18-2">
+<h2>v0.18.2<a class="headerlink" href="#v0-18-2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>On Windows, use the <code class="docutils literal notranslate"><span class="pre">py.exe</span></code> <a class="reference external" href="https://docs.python.org/3/using/windows.html#launcher">launcher</a> (e.g. <code class="docutils literal notranslate"><span class="pre">py.exe</span> <span class="pre">-2.7</span></code>) to locate
+Python executables. (<a class="reference external" href="https://github.com/theacodes/nox/pull/53">#53</a>)</p></li>
+</ul>
+</section>
+<section id="v0-18-1">
+<h2>v0.18.1<a class="headerlink" href="#v0-18-1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Fix nox not returning a non-zero exit code on failure. (#55)</p></li>
+<li><p>Restore result and report output. (#57)</p></li>
+</ul>
+</section>
+<section id="v0-18-0">
+<h2>v0.18.0<a class="headerlink" href="#v0-18-0" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>Blacklist problematic virtualenv environment variables (#49)</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">virtualenv</span></code> to invoke virtualenv (#47)</p></li>
+<li><p>Making sure all <code class="docutils literal notranslate"><span class="pre">Command</span></code>s use run in <code class="docutils literal notranslate"><span class="pre">__call__</span></code>. (#48)</p></li>
+<li><p>Addition of <code class="docutils literal notranslate"><span class="pre">session.notify</span></code>. (#39)</p></li>
+<li><p>Refactor the list of sessions into a manifest class. (#38)</p></li>
+<li><p>Changed some instances of session to be plural (#37)</p></li>
+<li><p>Small documentation updates (#36)</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/alice.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Nox</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Flexible test automation</p>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">配置和 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">命令行用法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cookbook.html">Nox 秘籍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">贡献</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">变更日志</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2022.1.7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2021.10.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">2021.6.12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2021.6.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">2020.12.31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">2020.8.22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">2020.5.24</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">2019.11.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">2019.8.20</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">2019.5.30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">2019.4.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">2018.10.17</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">2018.10.15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">2018.10.9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">2018.9.14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">2018.8.28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id17">2018.8.23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-19-1">v0.19.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-19-0">v0.19.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-18-2">v0.18.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-18-1">v0.18.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v0-18-0">v0.18.0</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="CONTRIBUTING.html" title="上一章">贡献</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Alethea Katherine Flowers.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/CHANGELOG.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/theacodes/nox" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
