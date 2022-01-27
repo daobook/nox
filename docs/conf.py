@@ -75,8 +75,8 @@ release = version
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
 language = 'zh_CN'
-locale_dirs = ['locales/']  # path is example but recommended.
-gettext_compact = False  # optional.
+locale_dirs = ['locales/']
+gettext_compact = False
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -254,7 +254,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "nox.tex", "nox Documentation", "Alethea Katherine Flowers", "manual"),
+    (master_doc, "nox.tex", "nox Documentation",
+     "Alethea Katherine Flowers", "manual"),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

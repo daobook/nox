@@ -90,7 +90,7 @@ def cover(session):
     session.run("coverage", "erase")
 
 
-@nox.session(python="3.9")
+@nox.session(python="3.10")
 def lint(session):
     """Run pre-commit linting."""
     session.install("pre-commit")
