@@ -82,18 +82,19 @@ msgid ""
 "If you have a :ref:`configured session's virtualenv <virtualenv config>`,"
 " you can choose to run only sessions with given Python versions:"
 msgstr ""
+"如果你有 :ref:`配置的会话的 virtualenv <virtualenv config>`，你可以选择只运行具有指定 Python 版本的会话："
 
 #: ../../usage.rst:77
 msgid "You can also use `pytest-style keywords`_ to filter test sessions:"
-msgstr ""
+msgstr "你也可以使用 `pytest-style keywords`_ 来过滤测试会话。"
 
 #: ../../usage.rst:90
 msgid "Specifying parametrized sessions"
-msgstr ""
+msgstr "指定参数化的会话"
 
 #: ../../usage.rst:92
 msgid "If you have a :ref:`parametrized <parametrized>` session such as:"
-msgstr ""
+msgstr "如果你有 :ref:`参数化 <parametrized>` 会话，如："
 
 #: ../../usage.rst:100
 msgid ""
@@ -102,10 +103,12 @@ msgid ""
 "particular set of parametrized arguments, you can specify them with the "
 "session name:"
 msgstr ""
+"然后运行 ``nox --session tests`` 实际上将运行所有参数化的会话版本。"
+"如果你想用一组特定的参数来运行会话，你可以用会话名称来指定它们："
 
 #: ../../usage.rst:111
 msgid "Changing the sessions default backend"
-msgstr ""
+msgstr "改变会话的默认后端"
 
 #: ../../usage.rst:113
 msgid ""
@@ -116,6 +119,10 @@ msgid ""
 "<backend>`` or ``--default-venv-backend <backend>``. Supported names are "
 "``('none', 'virtualenv', 'conda', 'mamba', 'venv')``."
 msgstr ""
+"默认情况下，nox 使用 ``virtualenv`` 作为会话的虚拟环境后端，"
+"但它也支持 ``conda``、``mamba`` 和 ``venv`` 以及无后端（直通到 nox 运行的任何 python 环境）。"
+"你可以通过使用 ``-db <backend>`` 或 ``--default-venv-backend <backend>`` 来改变默认行为。"
+"支持的名称是 ``('none', 'virtualenv', 'conda', 'mamba', 'venv')``。"
 
 #: ../../usage.rst:121
 msgid ""
@@ -123,16 +130,19 @@ msgid ""
 "``nox.options.default_venv_backend``. In case both are provided, the "
 "commandline argument takes precedence."
 msgstr ""
+"你也可以在 Noxfile 中用 ``nox.options.default_venv_backend`` 设置这个选项。"
+"如果两者都提供，则以命令行参数为准。"
 
 #: ../../usage.rst:123
 msgid ""
 "Note that using this option does not change the backend for sessions "
 "where ``venv_backend`` is explicitly set."
 msgstr ""
+"注意，使用这个选项不会改变明确设置了 ``venv_backend`` 的会话的后端。"
 
 #: ../../usage.rst:129
 msgid "Forcing the sessions backend"
-msgstr ""
+msgstr "强制使用会话后端"
 
 #: ../../usage.rst:131
 msgid ""
