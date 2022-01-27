@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../index.rst:2
+msgid "Welcome to Nox"
+msgstr ""
+
+#: ../../index.rst:15
+msgid ""
+"``nox`` is a command-line tool that automates testing in multiple Python "
+"environments, similar to `tox`_. Unlike tox, Nox uses a standard Python "
+"file for configuration."
+msgstr ""
+
+#: ../../index.rst:17
+msgid "Install nox via `pip`_::"
+msgstr ""
+
+#: ../../index.rst:22
+msgid ""
+"Nox is configured via a ``noxfile.py`` file in your project's directory. "
+"Here's a simple noxfile that runs lint and some tests::"
+msgstr ""
+
+#: ../../index.rst:36
+msgid "To run both of these sessions, just run::"
+msgstr ""
+
+#: ../../index.rst:40
+msgid ""
+"For each session, Nox will automatically create `virtualenv`_ with the "
+"appropriate interpreter, install the specified dependencies, and run the "
+"commands in order."
+msgstr ""
+
+#: ../../index.rst:42
+msgid ""
+"To learn how to install and use Nox, see the :doc:`tutorial`. For "
+"documentation on configuring sessions, see :doc:`config`. For "
+"documentation on running ``nox``, see :doc:`usage`."
+msgstr ""
+
+#: ../../index.rst:50
+msgid "Projects that use Nox"
+msgstr ""
+
+#: ../../index.rst:52
+msgid ""
+"Nox is lucky to have several wonderful projects that use it and provide "
+"feedback and contributions."
+msgstr ""
+
+#: ../../index.rst:54
+msgid "`Bézier <https://github.com/dhermes/bezier>`__"
+msgstr ""
+
+#: ../../index.rst:55
+msgid "`cibuildwheel <https://github.com/pypa/cibuildwheel>`__"
+msgstr ""
+
+#: ../../index.rst:56
+msgid ""
+"`gapic-generator-python <https://github.com/googleapis/gapic-generator-"
+"python>`__"
+msgstr ""
+
+#: ../../index.rst:57
+msgid "`gdbgui <https://github.com/cs01/gdbgui>`__"
+msgstr ""
+
+#: ../../index.rst:58
+msgid ""
+"`Google Assistant SDK <https://github.com/googlesamples/assistant-sdk-"
+"python>`__"
+msgstr ""
+
+#: ../../index.rst:59
+msgid ""
+"`google-cloud-python <https://github.com/googlecloudplatform/google-"
+"cloud-python>`__"
+msgstr ""
+
+#: ../../index.rst:60
+msgid ""
+"`google-resumable-media-python <https://github.com/GoogleCloudPlatform"
+"/google-resumable-media-python>`__"
+msgstr ""
+
+#: ../../index.rst:61
+msgid "`Hydra <https://hydra.cc>`__"
+msgstr ""
+
+#: ../../index.rst:62
+msgid "`manylinux <https://github.com/pypa/manylinux>`__"
+msgstr ""
+
+#: ../../index.rst:63
+msgid "`OmegaConf <https://github.com/omry/omegaconf>`__"
+msgstr ""
+
+#: ../../index.rst:64
+msgid ""
+"`OpenCensus Python <https://github.com/census-instrumentation/opencensus-"
+"python>`__"
+msgstr ""
+
+#: ../../index.rst:65
+msgid "`packaging <https://github.com/pypa/packaging>`__"
+msgstr ""
+
+#: ../../index.rst:66
+msgid ""
+"`packaging.python.org <https://github.com/pypa/python-packaging-user-"
+"guide>`__"
+msgstr ""
+
+#: ../../index.rst:67
+msgid "`pip <https://github.com/pypa/pip>`__"
+msgstr ""
+
+#: ../../index.rst:68
+msgid "`pipx <https://github.com/pypa/pipx>`__"
+msgstr ""
+
+#: ../../index.rst:69
+msgid "`Salt <https://github.com/saltstack/salt>`__"
+msgstr ""
+
+#: ../../index.rst:70
+msgid "`Scikit-build <https://github.com/scikit-build/scikit-build>`__"
+msgstr ""
+
+#: ../../index.rst:71
+msgid "`Scikit-HEP <https://scikit-hep.org/developer/tasks>`__"
+msgstr ""
+
+#: ../../index.rst:72
+msgid "`Subpar <https://github.com/google/subpar>`__"
+msgstr ""
+
+#: ../../index.rst:73
+msgid "`Urllib3 <https://github.com/urllib3/urllib3>`__"
+msgstr ""
+
+#: ../../index.rst:74
+msgid "`Zazo <https://github.com/pradyunsg/zazo>`__"
+msgstr ""
+
+#: ../../index.rst:77
+msgid "Other useful projects"
+msgstr ""
+
+#: ../../index.rst:79
+msgid ""
+"Nox is not the only tool of its kind. If Nox doesn't quite fit your needs"
+" or you want to do more research, we recommend looking at these tools:"
+msgstr ""
+
+#: ../../index.rst:81
+msgid ""
+"`tox <https://tox.readthedocs.org>`__ is the de-facto standard for "
+"managing multiple Python test environments, and is the direct spiritual "
+"ancestor to Nox."
+msgstr ""
+
+#: ../../index.rst:82
+msgid ""
+"`Invoke <https://www.pyinvoke.org/>`__ is a general-purpose task "
+"execution library, similar to Make. Nox can be thought of as if Invoke "
+"were tailored specifically to Python testing, so Invoke is a great choice"
+" for scripts that need to encompass far more than Nox's specialization."
+msgstr ""
+
+#: ../../index.rst:86
+msgid "Maintainers & contributors"
+msgstr ""
+
+#: ../../index.rst:88
+msgid ""
+"Nox is free & open-source software and is made possible by community "
+"maintainers and contributors."
+msgstr ""
+
+#: ../../index.rst:90
+msgid "Our maintainers are (in alphabetical order):"
+msgstr ""
+
+#: ../../index.rst:92
+msgid "`Chris Wilcox <https://github.com/crwilcox>`__"
+msgstr ""
+
+#: ../../index.rst:93
+msgid "`Claudio Jolowicz <https://github.com/cjolowicz>`__"
+msgstr ""
+
+#: ../../index.rst:94
+msgid "`Danny Hermes <https://github.com/dhermes>`__"
+msgstr ""
+
+#: ../../index.rst:95
+msgid "`Diego Ramirez <https://github.com/DiddiLeija>`__"
+msgstr ""
+
+#: ../../index.rst:96
+msgid "`Luke Sneeringer <https://github.com/lukesneeringer>`__"
+msgstr ""
+
+#: ../../index.rst:97
+msgid "`Santos Gallegos <https://github.com/stsewd>`__"
+msgstr ""
+
+#: ../../index.rst:98
+msgid "`Thea Flowers <https://github.com/theacodes>`__"
+msgstr ""
+
+#: ../../index.rst:99
+msgid "`Tom Fleet <https://github.com/followtheprocess>`__"
+msgstr ""
+
+#: ../../index.rst:101
+msgid ""
+"Nox also exists due to the various patches and work contributed by `the "
+"community <https://github.com/theacodes/nox/graphs/contributors>`__. If "
+"you'd like to get involved, see :doc:`CONTRIBUTING`. We pay our "
+"contributors using `Open Collective <https://opencollective.com/python-"
+"nox>`__."
+msgstr ""
+

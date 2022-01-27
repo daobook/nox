@@ -1,0 +1,388 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../tutorial.rst:2
+msgid "Tutorial"
+msgstr ""
+
+#: ../../tutorial.rst:4
+msgid ""
+"This tutorial will walk you through installing, configuring, and running "
+"Nox."
+msgstr ""
+
+#: ../../tutorial.rst:8
+msgid "Installation"
+msgstr ""
+
+#: ../../tutorial.rst:10
+msgid "Nox can be easily installed via `pip`_:"
+msgstr ""
+
+#: ../../tutorial.rst:16
+msgid ""
+"You may want to use the `user site`_ to avoid messing with your global "
+"Python install:"
+msgstr ""
+
+#: ../../tutorial.rst:22
+msgid "Or you can be extra fancy and use `pipx`_:"
+msgstr ""
+
+#: ../../tutorial.rst:28
+msgid ""
+"Either way, Nox is usually installed *globally*, similar to ``tox``, "
+"``pip``, and other similar tools."
+msgstr ""
+
+#: ../../tutorial.rst:30
+msgid ""
+"If you're interested in running ``nox`` within `docker`_, you can use the"
+" `thekevjames/nox images`_ on DockerHub which contain builds for all "
+"``nox`` versions and all supported ``python`` versions."
+msgstr ""
+
+#: ../../tutorial.rst:32
+msgid ""
+"If you want to run ``nox`` within `GitHub Actions`_, you can use the "
+"`excitedleigh/setup-nox action`_, which installs the latest ``nox`` and "
+"makes available all Python versions provided by the GitHub Actions "
+"environment."
+msgstr ""
+
+#: ../../tutorial.rst:43
+msgid "Writing the configuration file"
+msgstr ""
+
+#: ../../tutorial.rst:45
+msgid ""
+"Nox is configured via a file called ``noxfile.py`` in your project's "
+"directory. This file is a Python file that defines a set of *sessions*. A"
+" *session* is an environment and a set of commands to run in that "
+"environment. If you're familiar with tox sessions are analogous to "
+"*environments*. If you're familiar with GNU Make, sessions are analogous "
+"to *targets*."
+msgstr ""
+
+#: ../../tutorial.rst:51
+msgid ""
+"Sessions are declared using the ``@nox.session`` decorator. This is "
+"similar to how Flask uses ``@app.route``."
+msgstr ""
+
+#: ../../tutorial.rst:54
+msgid ""
+"Here's a basic Noxfile that runs `flake8`_ against ``example.py`` (you "
+"can create ``example.py`` yourself)::"
+msgstr ""
+
+#: ../../tutorial.rst:68
+msgid "Running Nox for the first time"
+msgstr ""
+
+#: ../../tutorial.rst:70
+msgid ""
+"Now that you've installed Nox and have a Noxfile you can run Nox! Open "
+"your project's directory in a terminal and run ``nox``. You should see "
+"something like this:"
+msgstr ""
+
+#: ../../tutorial.rst:84
+msgid "**✨ You've now successfully used Nox for the first time! ✨**"
+msgstr ""
+
+#: ../../tutorial.rst:86
+msgid ""
+"The rest of this tutorial will take you through other common things "
+"you'll likely want to do with Nox. You can also jump into :doc:`usage` "
+"and :doc:`config` docs if you want."
+msgstr ""
+
+#: ../../tutorial.rst:92
+msgid "Installing dependencies"
+msgstr ""
+
+#: ../../tutorial.rst:94
+msgid ""
+"Nox more or less passes ``session.install`` through to ``pip``, so you "
+"can install stuff in the usual way. Here's some examples:"
+msgstr ""
+
+#: ../../tutorial.rst:97
+msgid "To install one or more packages at a time:"
+msgstr ""
+
+#: ../../tutorial.rst:107
+msgid "To install a ``requirements.txt`` file:"
+msgstr ""
+
+#: ../../tutorial.rst:117
+msgid "If your project is a Python package and you want to install it:"
+msgstr ""
+
+#: ../../tutorial.rst:127
+msgid ""
+"In some cases such as Python binary extensions, your package may depend "
+"on code compiled outside of the Python ecosystem. To make sure a low-"
+"level dependency (e.g. ``libfoo``) is available during installation"
+msgstr ""
+
+#: ../../tutorial.rst:153
+msgid "Running commands"
+msgstr ""
+
+#: ../../tutorial.rst:155
+msgid ""
+"The ``session.run`` function lets you run commands within the context of "
+"your session's virtual environment. Here's a few examples:"
+msgstr ""
+
+#: ../../tutorial.rst:158
+msgid "You can install and run Python tools:"
+msgstr ""
+
+#: ../../tutorial.rst:168
+msgid ""
+"If you want to pass more arguments to a program just add more arguments "
+"to ``run``:"
+msgstr ""
+
+#: ../../tutorial.rst:178
+msgid "You can also pass environment variables:"
+msgstr ""
+
+#: ../../tutorial.rst:192
+msgid ""
+"See :func:`nox.sessions.Session.run` for more options and examples for "
+"running programs."
+msgstr ""
+
+#: ../../tutorial.rst:196
+msgid "Selecting which sessions to run"
+msgstr ""
+
+#: ../../tutorial.rst:198
+msgid ""
+"Once you have multiple sessions in your Noxfile you'll notice that Nox "
+"will run them all by default. While this is useful, it often useful to "
+"just run one or two at a time. You can use the ``--sessions`` argument "
+"(or ``-s``) to select which sessions to run. You can use the ``--list`` "
+"argument to show which sessions are available and which will be run. "
+"Here's some examples:"
+msgstr ""
+
+#: ../../tutorial.rst:204
+msgid "Here's a Noxfile with three sessions:"
+msgstr ""
+
+#: ../../tutorial.rst:223
+msgid "If you just run ``nox --list`` you'll see that all sessions are selected:"
+msgstr ""
+
+#: ../../tutorial.rst:237
+msgid ""
+"If you run ``nox --list --sessions lint`` you'll see that only the lint "
+"session is selected:"
+msgstr ""
+
+#: ../../tutorial.rst:252
+msgid "And if you run ``nox --sessions lint`` Nox will just run the lint session:"
+msgstr ""
+
+#: ../../tutorial.rst:262
+msgid ""
+"In the noxfile, you can specify a default set of sessions to run. If so, "
+"a plain ``nox`` call will only trigger certain sessions:"
+msgstr ""
+
+#: ../../tutorial.rst:271
+msgid ""
+"If you set this to an empty list, Nox will not run any sessions by "
+"default, and will print a helpful message with the ``--list`` output when"
+" a user does not specify a session to run."
+msgstr ""
+
+#: ../../tutorial.rst:275
+msgid ""
+"There are many more ways to select and run sessions! You can read more "
+"about invoking Nox in :doc:`usage`."
+msgstr ""
+
+#: ../../tutorial.rst:279
+msgid "Queuing sessions"
+msgstr ""
+
+#: ../../tutorial.rst:281
+msgid ""
+"If you want to queue up (or \"notify\") another session from the current "
+"one, you can use the ``session.notify`` function:"
+msgstr ""
+
+#: ../../tutorial.rst:297
+msgid ""
+"You can queue up any session you want, not just test and coverage "
+"sessions, but this is a very commonly used pattern."
+msgstr ""
+
+#: ../../tutorial.rst:300
+msgid ""
+"Now running ``nox --session tests`` will run the tests session and then "
+"the coverage session."
+msgstr ""
+
+#: ../../tutorial.rst:302
+msgid "You can also pass the notified session positional arguments:"
+msgstr ""
+
+#: ../../tutorial.rst:318
+msgid ""
+"Note that this will only have the desired effect if selecting sessions to"
+" run via the ``--session/-s`` flag. If you simply run ``nox``, all "
+"selected sessions will be run."
+msgstr ""
+
+#: ../../tutorial.rst:321
+msgid "Testing against different and multiple Pythons"
+msgstr ""
+
+#: ../../tutorial.rst:323
+msgid ""
+"Many projects need to support either a specific version of Python or "
+"multiple Python versions. You can have Nox run your session against "
+"multiple interpreters by specifying ``python`` to ``@nox.session``. "
+"Here's some examples:"
+msgstr ""
+
+#: ../../tutorial.rst:327
+msgid ""
+"If you want your session to specifically run against a single version of "
+"Python only:"
+msgstr ""
+
+#: ../../tutorial.rst:335
+msgid "If you want your session to run against multiple versions of Python:"
+msgstr ""
+
+#: ../../tutorial.rst:343
+msgid ""
+"You'll notice that running ``nox --list`` will show that this one session"
+" has been expanded into three distinct sessions:"
+msgstr ""
+
+#: ../../tutorial.rst:354
+msgid ""
+"You can run all of the ``test`` sessions using ``nox --sessions test`` or"
+" run an individual one using the full name as displayed in the list, for "
+"example, ``nox --sessions test-3.5``. More details on selecting sessions "
+"can be found over in the :doc:`usage` documentation."
+msgstr ""
+
+#: ../../tutorial.rst:359
+msgid ""
+"You can read more about configuring the virtual environment used by your "
+"sessions over at :ref:`virtualenv config`."
+msgstr ""
+
+#: ../../tutorial.rst:364
+msgid "Testing with conda"
+msgstr ""
+
+#: ../../tutorial.rst:366
+msgid ""
+"Some projects, especially in the data science community, need to test "
+"that they work in a conda environment. If you want your session to run in"
+" a conda environment:"
+msgstr ""
+
+#: ../../tutorial.rst:376
+msgid "Install packages with conda:"
+msgstr ""
+
+#: ../../tutorial.rst:382
+msgid ""
+"It is possible to install packages with pip into the conda environment, "
+"but it's a best practice only install pip packages with the ``--no-deps``"
+" option. This prevents pip from breaking the conda environment by "
+"installing incompatible versions of packages already installed with "
+"conda."
+msgstr ""
+
+#: ../../tutorial.rst:392
+msgid ""
+"``\"mamba\"`` is also allowed as a choice for ``venv_backend``, which "
+"will use/require `mamba <https://github.com/mamba-org/mamba>`_ instead of"
+" conda."
+msgstr ""
+
+#: ../../tutorial.rst:397
+msgid "Parametrization"
+msgstr ""
+
+#: ../../tutorial.rst:399
+msgid ""
+"Just like Nox can handle running against multiple interpreters, Nox can "
+"also handle running your sessions with a list of different arguments "
+"using the :func:`nox.parametrize` decorator."
+msgstr ""
+
+#: ../../tutorial.rst:403
+msgid ""
+"Here's a short example of using parametrization to test against two "
+"different versions of Django:"
+msgstr ""
+
+#: ../../tutorial.rst:415
+msgid ""
+"If you run ``nox --list`` you'll see that Nox expands your one session "
+"into multiple sessions. One for each argument value that you want to be "
+"passed to your session:"
+msgstr ""
+
+#: ../../tutorial.rst:427
+msgid ""
+":func:`nox.parametrize` has an interface and usage intentionally similar "
+"to `pytest's parametrize`_. It's an extremely powerful feature of Nox. "
+"You can read more about parametrization and see more examples over at "
+":ref:`parametrized`."
+msgstr ""
+
+#: ../../tutorial.rst:436
+msgid "Next steps"
+msgstr ""
+
+#: ../../tutorial.rst:438
+msgid "Look at you! You're now basically an expert at Nox! ✨"
+msgstr ""
+
+#: ../../tutorial.rst:440
+msgid "For this point you can:"
+msgstr ""
+
+#: ../../tutorial.rst:442
+msgid "Read more docs, such as :doc:`usage` and :doc:`config`."
+msgstr ""
+
+#: ../../tutorial.rst:443
+msgid "Give us feedback or contribute, see :doc:`CONTRIBUTING`."
+msgstr ""
+
+#: ../../tutorial.rst:445
+msgid "Have fun! 💜"
+msgstr ""
+

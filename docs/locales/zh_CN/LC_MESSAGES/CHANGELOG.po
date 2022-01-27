@@ -1,0 +1,1225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../CHANGELOG.md:3
+msgid "2022.1.7"
+msgstr ""
+
+#: ../../CHANGELOG.md:5
+msgid ""
+"Claudio Jolowicz, Diego Ramirez, and Tom Fleet have become maintainers of"
+" Nox. We'd like to thank the following folks who contributed to this "
+"release:"
+msgstr ""
+
+#: ../../CHANGELOG.md:7
+msgid "@brettcannon"
+msgstr ""
+
+#: ../../CHANGELOG.md:8 ../../CHANGELOG.md:86
+msgid "@cjolowicz"
+msgstr ""
+
+#: ../../CHANGELOG.md:9
+msgid "@dhermes"
+msgstr ""
+
+#: ../../CHANGELOG.md:10 ../../CHANGELOG.md:89
+msgid "@DiddiLeija"
+msgstr ""
+
+#: ../../CHANGELOG.md:11 ../../CHANGELOG.md:87
+msgid "@FollowTheProcess"
+msgstr ""
+
+#: ../../CHANGELOG.md:12 ../../CHANGELOG.md:88
+msgid "@franekmagiera"
+msgstr ""
+
+#: ../../CHANGELOG.md:13 ../../CHANGELOG.md:85
+msgid "@henryiii"
+msgstr ""
+
+#: ../../CHANGELOG.md:14
+msgid "@jugmac00"
+msgstr ""
+
+#: ../../CHANGELOG.md:15
+msgid "@maciej-lech"
+msgstr ""
+
+#: ../../CHANGELOG.md:16
+msgid "@nawatts"
+msgstr ""
+
+#: ../../CHANGELOG.md:17
+msgid "@Tolker-KU"
+msgstr ""
+
+#: ../../CHANGELOG.md:19 ../../CHANGELOG.md:63 ../../CHANGELOG.md:245
+#: ../../CHANGELOG.md:276
+msgid "New features:"
+msgstr ""
+
+#: ../../CHANGELOG.md:20
+msgid "Add `mamba` backend (#444, #448, #546, #551)"
+msgstr ""
+
+#: ../../CHANGELOG.md:21
+msgid "Add `session.debug` to show debug-level messages (#489)"
+msgstr ""
+
+#: ../../CHANGELOG.md:22
+msgid "Add cookbook page to the documentation (#483)"
+msgstr ""
+
+#: ../../CHANGELOG.md:23
+msgid "Add support for the `FORCE_COLOR` environment variable (#524, #548)"
+msgstr ""
+
+#: ../../CHANGELOG.md:24
+msgid "Allow using `session.chdir()` as a context manager (#543)"
+msgstr ""
+
+#: ../../CHANGELOG.md:25
+msgid "Deprecate use of `session.install()` without a valid backend (#537)"
+msgstr ""
+
+#: ../../CHANGELOG.md:27 ../../CHANGELOG.md:68
+msgid "Improvements:"
+msgstr ""
+
+#: ../../CHANGELOG.md:28
+msgid "Test against Python 3.10 (#495, $502, #506)"
+msgstr ""
+
+#: ../../CHANGELOG.md:29
+msgid "Add support for the `channel` option when using the `conda` backend (#522)"
+msgstr ""
+
+#: ../../CHANGELOG.md:30
+msgid ""
+"Show more specific error message when the `--keywords` expression "
+"contains a syntax error (#493)"
+msgstr ""
+
+#: ../../CHANGELOG.md:31
+msgid "Include reference to `session.notify()` in tutorial page (#500)"
+msgstr ""
+
+#: ../../CHANGELOG.md:32
+msgid "Document how `session.run()` fails and how to handle failures  (#533)"
+msgstr ""
+
+#: ../../CHANGELOG.md:33
+msgid "Allow the list of sessions to be empty (#523)"
+msgstr ""
+
+#: ../../CHANGELOG.md:35 ../../CHANGELOG.md:268
+msgid "Bugfixes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:36
+msgid "Fix broken temporary directory when using `session.chdir()` (#555, #556)"
+msgstr ""
+
+#: ../../CHANGELOG.md:37
+msgid "Set the `CONDA_PREFIX` environment variable (#538)"
+msgstr ""
+
+#: ../../CHANGELOG.md:38
+msgid "Fix `bin` directory for the `conda` backend on Windows (#535)"
+msgstr ""
+
+#: ../../CHANGELOG.md:40 ../../CHANGELOG.md:75
+msgid "Internal changes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:41
+msgid "Replace deprecated `load_module` with `exec_module` (#498)"
+msgstr ""
+
+#: ../../CHANGELOG.md:42
+msgid "Include tests with source distributions (#552)"
+msgstr ""
+
+#: ../../CHANGELOG.md:43
+msgid "Add missing copyright notices (#509)"
+msgstr ""
+
+#: ../../CHANGELOG.md:44
+msgid "Use the new ReadTheDocs configurations (#527)"
+msgstr ""
+
+#: ../../CHANGELOG.md:45
+msgid "Bump the Python version used by ReadTheDocs to 3.8 (#496)"
+msgstr ""
+
+#: ../../CHANGELOG.md:46
+msgid "Improve the Sphinx config file (#499)"
+msgstr ""
+
+#: ../../CHANGELOG.md:47
+msgid "Update all linter versions (#528)"
+msgstr ""
+
+#: ../../CHANGELOG.md:48
+msgid "Add pre-commit and new checks (#530, #539)"
+msgstr ""
+
+#: ../../CHANGELOG.md:49
+msgid "Check `MANIFEST.in` during CI (#552)"
+msgstr ""
+
+#: ../../CHANGELOG.md:50
+msgid "Remove redundant `LICENSE` from `MANIFEST.in` (#505)"
+msgstr ""
+
+#: ../../CHANGELOG.md:51
+msgid ""
+"Make `setuptools` use the standard library's `distutils` to work around "
+"`virtualenv` bug. (#547, #549)"
+msgstr ""
+
+#: ../../CHANGELOG.md:52
+msgid "Use `shlex.join()` when logging a command (#490)"
+msgstr ""
+
+#: ../../CHANGELOG.md:53
+msgid "Use `shutil.rmtree()` over shelling out to `rm -rf` in noxfile (#519)"
+msgstr ""
+
+#: ../../CHANGELOG.md:54
+msgid "Fix missing Python 3.9 CI session (#529)"
+msgstr ""
+
+#: ../../CHANGELOG.md:55
+msgid "Unpin docs session and add `--error-on-missing-interpreter` to CI (#532)"
+msgstr ""
+
+#: ../../CHANGELOG.md:56
+msgid "Enable color output from Nox, pytest, and pre-commit during CI (#542)"
+msgstr ""
+
+#: ../../CHANGELOG.md:57
+msgid ""
+"Only run `conda_tests` session by default if user has conda installed "
+"(#521)"
+msgstr ""
+
+#: ../../CHANGELOG.md:58
+msgid "Update dependencies in `requirements-conda-test.txt` (#536)"
+msgstr ""
+
+#: ../../CHANGELOG.md:61
+msgid "2021.10.1"
+msgstr ""
+
+#: ../../CHANGELOG.md:64
+msgid "Add `session.warn` to output warnings (#482)"
+msgstr ""
+
+#: ../../CHANGELOG.md:65
+msgid "Add a shared session cache directory (#476)"
+msgstr ""
+
+#: ../../CHANGELOG.md:66
+msgid "Add `session.invoked_from` (#472)"
+msgstr ""
+
+#: ../../CHANGELOG.md:69
+msgid "Conda logs now respect `nox.options.verbose` (#466)"
+msgstr ""
+
+#: ../../CHANGELOG.md:70
+msgid "Add `session.notify` example to docs (#467)"
+msgstr ""
+
+#: ../../CHANGELOG.md:71
+msgid "Add friendlier message if no `noxfile.py` is found (#463)"
+msgstr ""
+
+#: ../../CHANGELOG.md:72
+msgid "Show the `noxfile.py` docstring when using `nox -l` (#459)"
+msgstr ""
+
+#: ../../CHANGELOG.md:73
+msgid "Mention more projects that use Nox in the docs (#460)"
+msgstr ""
+
+#: ../../CHANGELOG.md:76
+msgid "Move configs into pyproject.toml or setup.cfg (flake8) (#484)"
+msgstr ""
+
+#: ../../CHANGELOG.md:77
+msgid "Decouple `test_session_completer` from project level noxfile (#480)"
+msgstr ""
+
+#: ../../CHANGELOG.md:78
+msgid "Run Flynt to convert str.format to f-strings (#464)"
+msgstr ""
+
+#: ../../CHANGELOG.md:79
+msgid "Add python 3.10.0-rc2 to GitHub Actions (#475, #479)"
+msgstr ""
+
+#: ../../CHANGELOG.md:80
+msgid "Simplify CI build (#461)"
+msgstr ""
+
+#: ../../CHANGELOG.md:81
+msgid ""
+"Use PEP 517 build system, remove `setup.py`, use `setup.cfg` (#456, #457,"
+" #458)"
+msgstr ""
+
+#: ../../CHANGELOG.md:82
+msgid "Upgrade to mypy 0.902 (#455)"
+msgstr ""
+
+#: ../../CHANGELOG.md:84
+msgid "Special thanks to our contributors:"
+msgstr ""
+
+#: ../../CHANGELOG.md:91
+msgid "2021.6.12"
+msgstr ""
+
+#: ../../CHANGELOG.md:93
+msgid "Fix crash on Python 2 when reusing environments. (#450)"
+msgstr ""
+
+#: ../../CHANGELOG.md:94
+msgid "Hide staleness check behind a feature flag. (#451)"
+msgstr ""
+
+#: ../../CHANGELOG.md:95
+msgid "Group command-line options in `--help` message by function. (#442)"
+msgstr ""
+
+#: ../../CHANGELOG.md:96
+msgid "Avoid polluting tests with a .nox directory. (#445)"
+msgstr ""
+
+#: ../../CHANGELOG.md:98
+msgid "2021.6.6"
+msgstr ""
+
+#: ../../CHANGELOG.md:100
+msgid ""
+"Add option `--no-install` to skip install commands in reused "
+"environments. (#432)"
+msgstr ""
+
+#: ../../CHANGELOG.md:101
+msgid ""
+"Add option `--force-python` as shorthand for `--python` and `--extra-"
+"python`. (#427)"
+msgstr ""
+
+#: ../../CHANGELOG.md:102
+msgid ""
+"Do not reuse environments if the interpreter or the environment type has "
+"changed. (#418, #425, #428)"
+msgstr ""
+
+#: ../../CHANGELOG.md:103
+msgid ""
+"Allow common variations in session names with parameters, such as double "
+"quotes instead of single quotes. Session names are considered equal if "
+"they produce the same Python AST. (#417, #434)"
+msgstr ""
+
+#: ../../CHANGELOG.md:104
+msgid "Preserve the order of parameters in session names. (#401)"
+msgstr ""
+
+#: ../../CHANGELOG.md:105
+msgid "Allow `@nox.parametrize` to select the session Python. (#413)"
+msgstr ""
+
+#: ../../CHANGELOG.md:106
+msgid ""
+"Allow passing `posargs` when scheduling another session via "
+"`session.notify`. (#397)"
+msgstr ""
+
+#: ../../CHANGELOG.md:107
+msgid "Prevent sessions from modifying each other's posargs. (#439)"
+msgstr ""
+
+#: ../../CHANGELOG.md:108
+msgid "Add `nox.needs_version` to specify Nox version requirements. (#388)"
+msgstr ""
+
+#: ../../CHANGELOG.md:109
+msgid "Add `session.name` to get the session name. (#386)"
+msgstr ""
+
+#: ../../CHANGELOG.md:110
+msgid "Gracefully shutdown child processes. (#393)"
+msgstr ""
+
+#: ../../CHANGELOG.md:111
+msgid ""
+"Decode command output using the system locale if UTF-8 decoding fails. "
+"(#380)"
+msgstr ""
+
+#: ../../CHANGELOG.md:112
+msgid "Fix creation of Conda environments when `venv_params` is used. (#420)"
+msgstr ""
+
+#: ../../CHANGELOG.md:113
+msgid "Various improvements to Nox's type annotations. (#376, #377, #378)"
+msgstr ""
+
+#: ../../CHANGELOG.md:114
+msgid ""
+"Remove outdated notes on Windows compatibility from the documentation. "
+"(#382)"
+msgstr ""
+
+#: ../../CHANGELOG.md:115
+msgid "Increase Nox's test coverage on Windows. (#300)"
+msgstr ""
+
+#: ../../CHANGELOG.md:116
+msgid "Avoid mypy searching for configuration files in other directories. (#402)"
+msgstr ""
+
+#: ../../CHANGELOG.md:117
+msgid "Replace AppVeyor and Travis CI by GitHub Actions. (#389, #390, #403)"
+msgstr ""
+
+#: ../../CHANGELOG.md:118
+msgid "Allow colorlog <7.0.0. (#431)"
+msgstr ""
+
+#: ../../CHANGELOG.md:119
+msgid "Drop contexter from test requirements. (#426)"
+msgstr ""
+
+#: ../../CHANGELOG.md:120
+msgid "Upgrade linters to the latest version. (#438)"
+msgstr ""
+
+#: ../../CHANGELOG.md:122
+msgid "2020.12.31"
+msgstr ""
+
+#: ../../CHANGELOG.md:124
+msgid "Fix `NoxColoredFormatter.format` (#374)"
+msgstr ""
+
+#: ../../CHANGELOG.md:125
+msgid "Use conda remove to clean up existing conda environments (#373)"
+msgstr ""
+
+#: ../../CHANGELOG.md:126
+msgid ""
+"Support users specifying an undeclared parametrization of python via "
+"`--extra-python` (#361)"
+msgstr ""
+
+#: ../../CHANGELOG.md:127
+msgid "Support double-digit minor version in `python` keyword (#367)"
+msgstr ""
+
+#: ../../CHANGELOG.md:128
+msgid "Add `py.typed` to `manifest.in` (#360)"
+msgstr ""
+
+#: ../../CHANGELOG.md:129
+msgid "Update nox to latest supported python versions. (#362)"
+msgstr ""
+
+#: ../../CHANGELOG.md:130
+msgid ""
+"Decouple merging of `--python` with `nox.options` from `--sessions` and "
+"`--keywords` (#359)"
+msgstr ""
+
+#: ../../CHANGELOG.md:131
+msgid "Do not merge command-line options in place (#357)"
+msgstr ""
+
+#: ../../CHANGELOG.md:133
+msgid "2020.8.22"
+msgstr ""
+
+#: ../../CHANGELOG.md:135
+msgid ""
+"`conda_install` and `install` args are now automatically double-quoted "
+"when needed. (#312)"
+msgstr ""
+
+#: ../../CHANGELOG.md:136
+msgid ""
+"Offline mode is now auto-detected by default by `conda_install`. This "
+"allows users to continue executing Nox sessions on already installed "
+"environments. (#314)"
+msgstr ""
+
+#: ../../CHANGELOG.md:137
+msgid ""
+"Fix the default paths for Conda on Windows where the `python.exe` found "
+"was not the correct one. (#310)"
+msgstr ""
+
+#: ../../CHANGELOG.md:138
+msgid "Add the `--add-timestamp` option (#323)"
+msgstr ""
+
+#: ../../CHANGELOG.md:139
+msgid "Add `Session.run_always()`. (#331)"
+msgstr ""
+
+#: ../../CHANGELOG.md:141
+msgid "2020.5.24"
+msgstr ""
+
+#: ../../CHANGELOG.md:143
+msgid ""
+"Add new options for `venv_backend`, including the ability to set the "
+"backend globally. (#326)"
+msgstr ""
+
+#: ../../CHANGELOG.md:144
+msgid "Fix various typos in the documentation. (#325, #326, #281)"
+msgstr ""
+
+#: ../../CHANGELOG.md:145
+msgid "Add `session.create_tmp`. (#320)"
+msgstr ""
+
+#: ../../CHANGELOG.md:146
+msgid "Place all of Nox's command-line options into argparse groups. (#306)"
+msgstr ""
+
+#: ../../CHANGELOG.md:147
+msgid ""
+"Add the `--pythons` command-line option to allow specifying which "
+"versions of Python to run. (#304)"
+msgstr ""
+
+#: ../../CHANGELOG.md:148
+msgid ""
+"Add a significant amount of type annotations. (#297, #294, #290, #282, "
+"#274)"
+msgstr ""
+
+#: ../../CHANGELOG.md:149
+msgid "Stop building universal wheels since we don't support Python 2. (#293)"
+msgstr ""
+
+#: ../../CHANGELOG.md:150
+msgid ""
+"Add the ability to specify additional options for the virtualenv backend "
+"using `venv_params`. (#280)"
+msgstr ""
+
+#: ../../CHANGELOG.md:151
+msgid ""
+"Prefer `importlib.metadata` for metadata loading, removing our dependency"
+" on `pkg_resources`. (#277)"
+msgstr ""
+
+#: ../../CHANGELOG.md:152
+msgid "Add OmegaConf and Hydra to list of projects that use Nox. (#279)"
+msgstr ""
+
+#: ../../CHANGELOG.md:153
+msgid ""
+"Use a more accurate error message, along with the cause, if loading of "
+"noxfile runs into error. (#272)"
+msgstr ""
+
+#: ../../CHANGELOG.md:154
+msgid "Test against Python 3.8. (#270)"
+msgstr ""
+
+#: ../../CHANGELOG.md:155
+msgid "Fix a syntax highlighting mistake in configuration docs. (#268)"
+msgstr ""
+
+#: ../../CHANGELOG.md:156
+msgid "Use `stdout.isatty` to finalize color instead of `stdin.isatty`. (#267)"
+msgstr ""
+
+#: ../../CHANGELOG.md:158
+msgid "2019.11.9"
+msgstr ""
+
+#: ../../CHANGELOG.md:160
+msgid "Fix example installation call for pip. (#259)"
+msgstr ""
+
+#: ../../CHANGELOG.md:161
+msgid "Allow colorlog 4. (#257)"
+msgstr ""
+
+#: ../../CHANGELOG.md:162
+msgid "Order Pythons in descending version in `appveyor.yml`. (#258)"
+msgstr ""
+
+#: ../../CHANGELOG.md:163
+msgid "Add link to GitHub Action for Nox. (#255)"
+msgstr ""
+
+#: ../../CHANGELOG.md:164
+msgid "Use double \"\\`\" for inline code. (#254)"
+msgstr ""
+
+#: ../../CHANGELOG.md:165
+msgid "Add types to `_option_set.py`. (#249)"
+msgstr ""
+
+#: ../../CHANGELOG.md:166
+msgid "Add type hints to `tasks.py`. (#241)"
+msgstr ""
+
+#: ../../CHANGELOG.md:167
+msgid "Fix typo (virtulenvs). (#247)"
+msgstr ""
+
+#: ../../CHANGELOG.md:168
+msgid "Replace flake8 sorter with isort. (#242)"
+msgstr ""
+
+#: ../../CHANGELOG.md:169
+msgid ""
+"Pass `VIRTUAL_ENV` environment variable to commands executed in a "
+"virtualenv. (#245)"
+msgstr ""
+
+#: ../../CHANGELOG.md:170
+msgid "Fix docs to show correct list for parametrize. (#244)"
+msgstr ""
+
+#: ../../CHANGELOG.md:171
+msgid "Add argcomplete dependency to conda test session. (#240)"
+msgstr ""
+
+#: ../../CHANGELOG.md:173
+msgid "2019.8.20"
+msgstr ""
+
+#: ../../CHANGELOG.md:175
+msgid "Add `--verbose` for showing the output from all commands. (#174)"
+msgstr ""
+
+#: ../../CHANGELOG.md:176
+msgid "Immediately exit if unknown arguments are passed. (#229)"
+msgstr ""
+
+#: ../../CHANGELOG.md:177
+msgid "Document complex test_virtualenv fixtures. (#236)"
+msgstr ""
+
+#: ../../CHANGELOG.md:178
+msgid "Resolve to interpreter 'python' in PATH if '--version' fits. (#224)"
+msgstr ""
+
+#: ../../CHANGELOG.md:179
+msgid "Add shell autocomplete. (#228)"
+msgstr ""
+
+#: ../../CHANGELOG.md:180
+msgid "Add `venv` as an option for `venv_backend`. (#231)"
+msgstr ""
+
+#: ../../CHANGELOG.md:181
+msgid "Add gdbgui to list of projects. (#235)"
+msgstr ""
+
+#: ../../CHANGELOG.md:182
+msgid "Add mypy to Nox's lint. (#230)"
+msgstr ""
+
+#: ../../CHANGELOG.md:183
+msgid "Add pipx to projects that use nox. (#225)"
+msgstr ""
+
+#: ../../CHANGELOG.md:184
+msgid ""
+"Add `session(venv_backend='conda')` option to use Conda environments. "
+"(#217, #221)"
+msgstr ""
+
+#: ../../CHANGELOG.md:185
+msgid "Document how to call builtins on Windows. (#223)"
+msgstr ""
+
+#: ../../CHANGELOG.md:186
+msgid "Replace `imp.load_source()` with `importlib`. (#214)"
+msgstr ""
+
+#: ../../CHANGELOG.md:187
+msgid "Fix incorrect type in docstring & replace old-style format string. (#213)"
+msgstr ""
+
+#: ../../CHANGELOG.md:188
+msgid "Allow specifying `stdout` and `stderr` to `session.run`."
+msgstr ""
+
+#: ../../CHANGELOG.md:189
+msgid "Add Salt to the list of projects that use Nox. (#209)"
+msgstr ""
+
+#: ../../CHANGELOG.md:190
+msgid "Remove Python 2-specific code. (#203, #208)"
+msgstr ""
+
+#: ../../CHANGELOG.md:191
+msgid "Grammar fixes. (#205, 206, 207)"
+msgstr ""
+
+#: ../../CHANGELOG.md:192
+msgid "Update Nox's `noxfile.py` to use python3.7. (#204)"
+msgstr ""
+
+#: ../../CHANGELOG.md:194
+msgid "2019.5.30"
+msgstr ""
+
+#: ../../CHANGELOG.md:196
+msgid "Add interactive property to session. (#196)"
+msgstr ""
+
+#: ../../CHANGELOG.md:197
+msgid "Promote contributors to maintainers, add Open Collective details. (#201)"
+msgstr ""
+
+#: ../../CHANGELOG.md:198
+msgid "Fix funding external link. (#200)"
+msgstr ""
+
+#: ../../CHANGELOG.md:199
+msgid "Refactor how Nox defines and process options. (#187)"
+msgstr ""
+
+#: ../../CHANGELOG.md:200
+msgid "Fix typo in tutorial. (#194)"
+msgstr ""
+
+#: ../../CHANGELOG.md:201
+msgid "Use 'pytest' instead of 'py.test' in examples and configuration. (#193)"
+msgstr ""
+
+#: ../../CHANGELOG.md:202
+msgid "Fix some CSS issues on mobile. (#192)"
+msgstr ""
+
+#: ../../CHANGELOG.md:203
+msgid "Use short form of virtualenv path when creating the virtualenv. (#191)"
+msgstr ""
+
+#: ../../CHANGELOG.md:204
+msgid "Refresh tutorial and fixup small docs things. (#190)"
+msgstr ""
+
+#: ../../CHANGELOG.md:205
+msgid "Add the ability to give parametrized sessions a custom ID. (#186)"
+msgstr ""
+
+#: ../../CHANGELOG.md:206
+msgid ""
+"Make --list list all available sessions, not just the selected ones. "
+"(#185)"
+msgstr ""
+
+#: ../../CHANGELOG.md:207
+msgid "Allow providing a friendlier CLI name to sessions. (#170)"
+msgstr ""
+
+#: ../../CHANGELOG.md:208
+msgid "Add urllib3 to the list of projects that use Nox (#182)"
+msgstr ""
+
+#: ../../CHANGELOG.md:209
+msgid "Fix documentation link for Docker Cloud vs Hub (#179)"
+msgstr ""
+
+#: ../../CHANGELOG.md:211
+msgid "2019.4.11"
+msgstr ""
+
+#: ../../CHANGELOG.md:213
+msgid "Include changelog in documentation. (#177)"
+msgstr ""
+
+#: ../../CHANGELOG.md:214
+msgid ""
+"Use the relative path of the virtualenv in the \"creating virtualenv\" "
+"log message. (#176)"
+msgstr ""
+
+#: ../../CHANGELOG.md:215
+msgid ""
+"Allow not passing \"--upgrade\" to `session.install` and change its "
+"default behavior to not upgrade. (#172)"
+msgstr ""
+
+#: ../../CHANGELOG.md:216
+msgid ""
+"Expand environment variables when loading the noxfile from provided path."
+" (#171)"
+msgstr ""
+
+#: ../../CHANGELOG.md:217
+msgid "Add documentation around using Docker to run Nox. (#164)"
+msgstr ""
+
+#: ../../CHANGELOG.md:218
+msgid "Don't colour output if `NO_COLOR` is set. (#163)"
+msgstr ""
+
+#: ../../CHANGELOG.md:219
+msgid ""
+"Fix tox casing to be consistent with their docs, remove `.`` from pytest."
+" (#160)"
+msgstr ""
+
+#: ../../CHANGELOG.md:220
+msgid "Update issue templates."
+msgstr ""
+
+#: ../../CHANGELOG.md:221
+msgid "Add CODE_OF_CONDUCT.md."
+msgstr ""
+
+#: ../../CHANGELOG.md:222
+msgid ""
+"Add --install-only flag to install dependencies without running anything "
+"(#153)"
+msgstr ""
+
+#: ../../CHANGELOG.md:223
+msgid "Fix function name in docs. (#155)"
+msgstr ""
+
+#: ../../CHANGELOG.md:224
+msgid "Allow silent argument to be set in `session.install`. (#157)"
+msgstr ""
+
+#: ../../CHANGELOG.md:225
+msgid "Run sessions in the same order specified on the command line. (#152)"
+msgstr ""
+
+#: ../../CHANGELOG.md:227
+msgid "2018.10.17"
+msgstr ""
+
+#: ../../CHANGELOG.md:229
+msgid "Fix bug where empty parametrized sessions would fail. (#151)"
+msgstr ""
+
+#: ../../CHANGELOG.md:231
+msgid "2018.10.15"
+msgstr ""
+
+#: ../../CHANGELOG.md:233
+msgid "Hide the python interpreter on sessions with only one. (#148)"
+msgstr ""
+
+#: ../../CHANGELOG.md:234
+msgid ""
+"Warn when programs not in the virtualenv are used, allow erroring and "
+"silencing the warning. (#147)"
+msgstr ""
+
+#: ../../CHANGELOG.md:235
+msgid ""
+"Add --warn-on-external-run flag and the \"external\" keyword arg to "
+"session.run. (#147)"
+msgstr ""
+
+#: ../../CHANGELOG.md:236
+msgid ""
+"Add nox.options which allows specifying command-line configuration in the"
+" Noxfile (#145)"
+msgstr ""
+
+#: ../../CHANGELOG.md:237
+msgid "Add python_requires (>= 3.5) to setup.py."
+msgstr ""
+
+#: ../../CHANGELOG.md:239
+msgid "2018.10.9"
+msgstr ""
+
+#: ../../CHANGELOG.md:241
+msgid "Breaking changes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:243
+msgid ""
+"Skip sessions with missing interpreters. Previously, missing interpreters"
+" would cause a failed session. Now they just cause a warning. The "
+"previous behavior can be used via `--error-on-missing-interpreters`. "
+"(#140)"
+msgstr ""
+
+#: ../../CHANGELOG.md:247
+msgid "Add session.python property."
+msgstr ""
+
+#: ../../CHANGELOG.md:249 ../../CHANGELOG.md:300
+msgid "Other changes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:251
+msgid "Fix some warnings about escape sequences."
+msgstr ""
+
+#: ../../CHANGELOG.md:252
+msgid "Group command line args by usage for readability."
+msgstr ""
+
+#: ../../CHANGELOG.md:253
+msgid "Blacklist more Tox env vars in nox-to-tox."
+msgstr ""
+
+#: ../../CHANGELOG.md:254
+msgid "Documentation fixes, spelling, etc. (#134)"
+msgstr ""
+
+#: ../../CHANGELOG.md:255
+msgid "Mention stickers in the contributors guide."
+msgstr ""
+
+#: ../../CHANGELOG.md:256
+msgid "Mention Invoke as a Nox alternative."
+msgstr ""
+
+#: ../../CHANGELOG.md:259
+msgid "2018.9.14"
+msgstr ""
+
+#: ../../CHANGELOG.md:261
+msgid "Check for ``NOXSESSION`` environment variable (#121)"
+msgstr ""
+
+#: ../../CHANGELOG.md:262
+msgid "Fix typo in OpenCensus Python (#132)"
+msgstr ""
+
+#: ../../CHANGELOG.md:263
+msgid "Add new documentation art created by Andrea Caprotti"
+msgstr ""
+
+#: ../../CHANGELOG.md:264
+msgid "Add Python 3.7 to Travis CI (#129)"
+msgstr ""
+
+#: ../../CHANGELOG.md:266
+msgid "2018.8.28"
+msgstr ""
+
+#: ../../CHANGELOG.md:270
+msgid "Adding `Session.__slots__`. (#128)"
+msgstr ""
+
+#: ../../CHANGELOG.md:271
+msgid "Don't modify `Virtualenv.interpreter` in `_resolved_interpreter`. (#127)"
+msgstr ""
+
+#: ../../CHANGELOG.md:272
+msgid "Fix tox-to-nox template."
+msgstr ""
+
+#: ../../CHANGELOG.md:273
+msgid "Add the ability to add descriptions to sessions. (#117)"
+msgstr ""
+
+#: ../../CHANGELOG.md:274
+msgid "Using more specific regex in `_resolved_interpreter()`. (#119)"
+msgstr ""
+
+#: ../../CHANGELOG.md:278
+msgid "Adding support for 32-bit binaries on Windows. (#100)"
+msgstr ""
+
+#: ../../CHANGELOG.md:280
+msgid "Internal/testing changes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:282
+msgid "Storing `platform.system()` as global in `nox.virtualenv`. (#124)"
+msgstr ""
+
+#: ../../CHANGELOG.md:283
+msgid "Fix deploy script for Travis."
+msgstr ""
+
+#: ../../CHANGELOG.md:284
+msgid "Run docs on travis. (#122)"
+msgstr ""
+
+#: ../../CHANGELOG.md:285
+msgid "Documentation style updates."
+msgstr ""
+
+#: ../../CHANGELOG.md:287
+msgid "2018.8.23"
+msgstr ""
+
+#: ../../CHANGELOG.md:289
+msgid ""
+"**Heads up!** This is a very big release for Nox. Please read these "
+"release notes thoroughly and reach out to us on GitHub if you run into "
+"issues."
+msgstr ""
+
+#: ../../CHANGELOG.md:291
+msgid "Breaking changes and other important notes:"
+msgstr ""
+
+#: ../../CHANGELOG.md:293
+msgid ""
+"Nox is now published as \"nox\" on PyPI. This means that Nox is installed"
+" via `pip install nox` instead of `nox-automation`. Since the new release"
+" makes so many breaking changes, we won't be updating the old `nox-"
+"automation` package."
+msgstr ""
+
+#: ../../CHANGELOG.md:294
+msgid "Nox's configuration file is now called `noxfile.py` instead of `nox.py`."
+msgstr ""
+
+#: ../../CHANGELOG.md:295
+msgid ""
+"Nox no longer supports Python 2.7. You can still create and run Python "
+"2.7 sessions, but Nox itself must be installed using Python 3.5+."
+msgstr ""
+
+#: ../../CHANGELOG.md:296
+msgid ""
+"Nox's behavior has been changed from *declarative*  to *imperative*. "
+"Session actions now run immediately. Existing code to setup session "
+"virtualenv, such as `session.interpreter` **will break**! Please consult "
+"the documentation on how to use `@nox.session(python=[...])` to configure"
+" virtualenvs for sessions."
+msgstr ""
+
+#: ../../CHANGELOG.md:297
+msgid "Nox now uses calver for releases."
+msgstr ""
+
+#: ../../CHANGELOG.md:298
+msgid ""
+"Support for the legacy naming convention (for example, `session_tests`) "
+"has been removed."
+msgstr ""
+
+#: ../../CHANGELOG.md:302
+msgid "Update colorlog dependency range."
+msgstr ""
+
+#: ../../CHANGELOG.md:303
+msgid "Update installation command in contributing. (#101)"
+msgstr ""
+
+#: ../../CHANGELOG.md:304
+msgid "Remove Python 2.x object inheritance. (#109)"
+msgstr ""
+
+#: ../../CHANGELOG.md:305
+msgid "Fix python syntax error on docs. (#111)"
+msgstr ""
+
+#: ../../CHANGELOG.md:306
+msgid "Show additional links on PyPI. (#108)"
+msgstr ""
+
+#: ../../CHANGELOG.md:307
+msgid "Add contributors file. (#113)"
+msgstr ""
+
+#: ../../CHANGELOG.md:308
+msgid "Run sphinx with -W option. (#115)"
+msgstr ""
+
+#: ../../CHANGELOG.md:309
+msgid "Using `os.pathsep` instead of a hardcoded `':'`. (#105)"
+msgstr ""
+
+#: ../../CHANGELOG.md:310
+msgid "Use a configuration file for readthedocs. (#107)"
+msgstr ""
+
+#: ../../CHANGELOG.md:311
+msgid "Add 'py' alias for `nox.session(python=...)`."
+msgstr ""
+
+#: ../../CHANGELOG.md:312
+msgid "Fix processing of numeric Python versions that specify a patch version."
+msgstr ""
+
+#: ../../CHANGELOG.md:313
+msgid "Use Black to format code."
+msgstr ""
+
+#: ../../CHANGELOG.md:314
+msgid "Support invoking Nox using `python -m nox`."
+msgstr ""
+
+#: ../../CHANGELOG.md:315
+msgid "Produce better error message when sessions can't be found."
+msgstr ""
+
+#: ../../CHANGELOG.md:316
+msgid "Fix missing links in README.rst."
+msgstr ""
+
+#: ../../CHANGELOG.md:317
+msgid "Remove usage of future imports."
+msgstr ""
+
+#: ../../CHANGELOG.md:318
+msgid "Remove usage of six."
+msgstr ""
+
+#: ../../CHANGELOG.md:319
+msgid "Make session.install a simple alias for session.run."
+msgstr ""
+
+#: ../../CHANGELOG.md:320
+msgid "Refactor nox.command.Command as nox.command.run, reducing complexity."
+msgstr ""
+
+#: ../../CHANGELOG.md:321
+msgid "Add list of projects that use Nox."
+msgstr ""
+
+#: ../../CHANGELOG.md:322
+msgid "Use witchhazel pygments theme."
+msgstr ""
+
+#: ../../CHANGELOG.md:324
+msgid "v0.19.1"
+msgstr ""
+
+#: ../../CHANGELOG.md:326
+msgid ""
+"**Note**:: v0.19.1 was the last version released as \"nox-automation\" on"
+" PyPI. Subsequent releases are published as \"nox\"."
+msgstr ""
+
+#: ../../CHANGELOG.md:328
+msgid "Updates copyright information and contact addresses. No code changes."
+msgstr ""
+
+#: ../../CHANGELOG.md:330
+msgid "v0.19.0"
+msgstr ""
+
+#: ../../CHANGELOG.md:332
+msgid "Add missing parameter in docs (#89)"
+msgstr ""
+
+#: ../../CHANGELOG.md:333
+msgid "Don't skip install commands when re-using existing virtualenvs. (#86)"
+msgstr ""
+
+#: ../../CHANGELOG.md:334
+msgid "Add --nocolor and --forcecolor options (#85)"
+msgstr ""
+
+#: ../../CHANGELOG.md:335
+msgid ""
+"Simulating `unittest.mock` backport in the Python 2 standard library. "
+"(#81)"
+msgstr ""
+
+#: ../../CHANGELOG.md:336
+msgid "Fixing tox-to-nox docs reference. (#80)"
+msgstr ""
+
+#: ../../CHANGELOG.md:337
+msgid "Removing patch of `py.exe` on AppVeyor. (#74)"
+msgstr ""
+
+#: ../../CHANGELOG.md:338
+msgid "Adding Python 3.6 to AppVeyor. (#69)"
+msgstr ""
+
+#: ../../CHANGELOG.md:339
+msgid "Adding AppVeyor badge to README. (#70)"
+msgstr ""
+
+#: ../../CHANGELOG.md:341
+msgid "v0.18.2"
+msgstr ""
+
+#: ../../CHANGELOG.md:343
+msgid ""
+"On Windows, use the `py.exe` [launcher][2] (e.g. `py.exe -2.7`) to locate"
+" Python executables. ([#53][1])"
+msgstr ""
+
+#: ../../CHANGELOG.md:346
+msgid "v0.18.1"
+msgstr ""
+
+#: ../../CHANGELOG.md:348
+msgid "Fix nox not returning a non-zero exit code on failure. (#55)"
+msgstr ""
+
+#: ../../CHANGELOG.md:349
+msgid "Restore result and report output. (#57)"
+msgstr ""
+
+#: ../../CHANGELOG.md:351
+msgid "v0.18.0"
+msgstr ""
+
+#: ../../CHANGELOG.md:353
+msgid "Blacklist problematic virtualenv environment variables (#49)"
+msgstr ""
+
+#: ../../CHANGELOG.md:354
+msgid "Use `python -m virtualenv` to invoke virtualenv (#47)"
+msgstr ""
+
+#: ../../CHANGELOG.md:355
+msgid "Making sure all `Command`s use run in `__call__`. (#48)"
+msgstr ""
+
+#: ../../CHANGELOG.md:356
+msgid "Addition of `session.notify`. (#39)"
+msgstr ""
+
+#: ../../CHANGELOG.md:357
+msgid "Refactor the list of sessions into a manifest class. (#38)"
+msgstr ""
+
+#: ../../CHANGELOG.md:358
+msgid "Changed some instances of session to be plural (#37)"
+msgstr ""
+
+#: ../../CHANGELOG.md:359
+msgid "Small documentation updates (#36)"
+msgstr ""
+

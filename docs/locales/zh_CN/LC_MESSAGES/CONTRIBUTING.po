@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../CONTRIBUTING.md:1
+msgid "Contributing"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:3
+msgid ""
+"Thank you for your interest in improving Nox. Nox is open-source under "
+"the [Apache License Version "
+"2.0](http://www.apache.org/licenses/LICENSE-2.0) and welcomes "
+"contributions in the form of bug reports, feature requests, and pull "
+"requests."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:6
+msgid "Nox is hosted on [GitHub](https://github.com/theacodes/nox)."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:8
+msgid "Support, questions, and feature requests"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:10
+msgid "Feel free to file a bug on [GitHub](https://github.com/theacodes/nox)."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:12
+msgid "Reporting issues"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:14
+msgid ""
+"File a bug on [GitHub](https://github.com/theacodes/nox). To help us "
+"figure out what's going on, please err on the side of including lots of "
+"information, such as:"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:17
+msgid "Operating system."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:18
+msgid "Python version."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:19
+msgid "If possible, a minimal case that can reproduce the issue."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:21
+msgid "Pull requests"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:23
+msgid ""
+"It's recommended to file a bug before starting work on anything. It'll "
+"allow chance to talk it over with the owners and validate your approach."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:25
+msgid "Nox maintains 100% test coverage. All pull requests must maintain this."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:26
+msgid "Follow [pep8](https://pep8.org)."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:27
+msgid "Update documentation, if relevant."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:29
+msgid "Running tests"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:31
+msgid ""
+"Nox runs its own tests (it's recursive!). The best thing to do is start "
+"with a known-good nox installation, e.g. from PyPI:"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:36
+msgid "To just check for lint errors, run:"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:40
+msgid "To run against a particular Python version:"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:48
+msgid ""
+"When you send a pull request the CI will handle running everything, but "
+"it is recommended to test as much as possible locally before pushing."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:51
+msgid "Getting a sticker"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:53
+msgid ""
+"If you've contributed to Nox, you can get a cute little Nox sticker. "
+"Reach out to Thea at me@thea.codes to request one."
+msgstr ""
+
+#: ../../CONTRIBUTING.md:55
+msgid "Getting paid"
+msgstr ""
+
+#: ../../CONTRIBUTING.md:57
+msgid ""
+"Contributions to Nox can be expensed through [our Open "
+"Collective](https://opencollective.com/python-nox). The maintainers will "
+"let you know when and for how much you can expense contributions, but "
+"always feel free to ask."
+msgstr ""
+

@@ -1,0 +1,494 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../usage.rst:2
+msgid "Command-line usage"
+msgstr ""
+
+#: ../../usage.rst:5
+msgid "Invocation"
+msgstr ""
+
+#: ../../usage.rst:7
+msgid "Nox is normally invoked on the command line:"
+msgstr ""
+
+#: ../../usage.rst:14
+msgid "You can also invoke Nox via the Python interpreter:"
+msgstr ""
+
+#: ../../usage.rst:22
+msgid "Listing available sessions"
+msgstr ""
+
+#: ../../usage.rst:24
+msgid "To list all available sessions, including parametrized sessions:"
+msgstr ""
+
+#: ../../usage.rst:37
+msgid "Running all sessions"
+msgstr ""
+
+#: ../../usage.rst:39
+msgid "You can run every session by just executing ``nox`` without any arguments:"
+msgstr ""
+
+#: ../../usage.rst:45
+msgid ""
+"The order that sessions are executed is the order that they appear in the"
+" Noxfile."
+msgstr ""
+
+#: ../../usage.rst:51
+msgid "Specifying one or more sessions"
+msgstr ""
+
+#: ../../usage.rst:53
+msgid ""
+"By default Nox will run all sessions defined in the noxfile. However, you"
+" can choose to run a particular set of them using ``--session``, ``-s``, "
+"or ``-e``:"
+msgstr ""
+
+#: ../../usage.rst:61
+msgid "You can also use the ``NOXSESSION`` environment variable:"
+msgstr ""
+
+#: ../../usage.rst:68
+msgid "Nox will run these sessions in the same order they are specified."
+msgstr ""
+
+#: ../../usage.rst:70
+msgid ""
+"If you have a :ref:`configured session's virtualenv <virtualenv config>`,"
+" you can choose to run only sessions with given Python versions:"
+msgstr ""
+
+#: ../../usage.rst:77
+msgid "You can also use `pytest-style keywords`_ to filter test sessions:"
+msgstr ""
+
+#: ../../usage.rst:90
+msgid "Specifying parametrized sessions"
+msgstr ""
+
+#: ../../usage.rst:92
+msgid "If you have a :ref:`parametrized <parametrized>` session such as:"
+msgstr ""
+
+#: ../../usage.rst:100
+msgid ""
+"Then running ``nox --session tests`` will actually run all parametrized "
+"versions of the session. If you want the run the session with a "
+"particular set of parametrized arguments, you can specify them with the "
+"session name:"
+msgstr ""
+
+#: ../../usage.rst:111
+msgid "Changing the sessions default backend"
+msgstr ""
+
+#: ../../usage.rst:113
+msgid ""
+"By default nox uses ``virtualenv`` as the virtual environment backend for"
+" the sessions, but it also supports ``conda``, ``mamba``, and ``venv`` as"
+" well as no backend (passthrough to whatever python environment nox is "
+"running on). You can change the default behaviour by using ``-db "
+"<backend>`` or ``--default-venv-backend <backend>``. Supported names are "
+"``('none', 'virtualenv', 'conda', 'mamba', 'venv')``."
+msgstr ""
+
+#: ../../usage.rst:121
+msgid ""
+"You can also set this option in the Noxfile with "
+"``nox.options.default_venv_backend``. In case both are provided, the "
+"commandline argument takes precedence."
+msgstr ""
+
+#: ../../usage.rst:123
+msgid ""
+"Note that using this option does not change the backend for sessions "
+"where ``venv_backend`` is explicitly set."
+msgstr ""
+
+#: ../../usage.rst:129
+msgid "Forcing the sessions backend"
+msgstr ""
+
+#: ../../usage.rst:131
+msgid ""
+"You might work in a different environment than a project's default "
+"continuous integration settings, and might wish to get a quick way to "
+"execute the same tasks but on a different venv backend. For this purpose,"
+" you can temporarily force the backend used by **all** sessions in the "
+"current nox execution by using ``-fb <backend>`` or ``--force-venv-"
+"backend <backend>``. No exceptions are made, the backend will be forced "
+"for all sessions run whatever the other options values and nox file "
+"configuration. Supported names are ``('none', 'virtualenv', 'conda', "
+"'venv')``."
+msgstr ""
+
+#: ../../usage.rst:139
+msgid ""
+"You can also set this option in the Noxfile with "
+"``nox.options.force_venv_backend``. In case both are provided, the "
+"commandline argument takes precedence."
+msgstr ""
+
+#: ../../usage.rst:141
+msgid ""
+"Finally note that the ``--no-venv`` flag is a shortcut for ``--force-"
+"venv-backend none`` and allows to temporarily run all selected sessions "
+"on the current python interpreter (the one running nox)."
+msgstr ""
+
+#: ../../usage.rst:150
+msgid "Re-using virtualenvs"
+msgstr ""
+
+#: ../../usage.rst:152
+msgid ""
+"By default, Nox deletes and recreates virtualenvs every time it is run. "
+"This is usually fine for most projects and continuous integration "
+"environments as `pip's caching "
+"<https://pip.pypa.io/en/stable/cli/pip_install/#caching>`_ makes re-"
+"install rather quick. However, there are some situations where it is "
+"advantageous to re-use the virtualenvs between runs. Use ``-r`` or "
+"``--reuse-existing-virtualenvs``:"
+msgstr ""
+
+#: ../../usage.rst:160
+msgid ""
+"If the Noxfile sets ``nox.options.reuse_existing_virtualenvs``, you can "
+"override the Noxfile setting from the command line by using ``--no-reuse-"
+"existing-virtualenvs``."
+msgstr ""
+
+#: ../../usage.rst:162
+msgid ""
+"Additionally, you can skip the re-installation of packages when a "
+"virtualenv is reused. Use ``-R`` or ``--reuse-existing-virtualenvs --no-"
+"install``:"
+msgstr ""
+
+#: ../../usage.rst:169
+msgid ""
+"The ``--no-install`` option causes the following session methods to "
+"return early:"
+msgstr ""
+
+#: ../../usage.rst:171
+msgid ":func:`session.install <nox.sessions.Session.install>`"
+msgstr ""
+
+#: ../../usage.rst:172
+msgid ":func:`session.conda_install <nox.sessions.Session.conda_install>`"
+msgstr ""
+
+#: ../../usage.rst:173
+msgid ":func:`session.run_always <nox.sessions.Session.run_always>`"
+msgstr ""
+
+#: ../../usage.rst:175
+msgid "This option has no effect if the virtualenv is not being reused."
+msgstr ""
+
+#: ../../usage.rst:180
+msgid "Running additional Python versions"
+msgstr ""
+
+#: ../../usage.rst:182
+msgid ""
+"In addition to Nox supporting executing single sessions, it also supports"
+" running Python versions that aren't specified using ``--extra-pythons``."
+msgstr ""
+
+#: ../../usage.rst:188
+msgid ""
+"This will, in addition to specified Python versions in the Noxfile, also "
+"create sessions for the specified versions."
+msgstr ""
+
+#: ../../usage.rst:190
+msgid ""
+"This option can be combined with ``--python`` to replace, instead of "
+"appending, the Python interpreter for a given session::"
+msgstr ""
+
+#: ../../usage.rst:194
+msgid ""
+"Instead of passing both options, you can use the ``--force-python`` "
+"shorthand::"
+msgstr ""
+
+#: ../../usage.rst:198
+msgid ""
+"Also, you can specify ``python`` in place of a specific version. This "
+"will run the session using the ``python`` specified for the current "
+"``PATH``::"
+msgstr ""
+
+#: ../../usage.rst:207
+msgid "Stopping if any session fails"
+msgstr ""
+
+#: ../../usage.rst:209
+msgid ""
+"By default nox will continue to run all sessions even if one fails. You "
+"can use ``--stop-on-first-error`` to make nox abort as soon as the first "
+"session fails::"
+msgstr ""
+
+#: ../../usage.rst:213
+msgid ""
+"If the Noxfile sets ``nox.options.stop_on_first_error``, you can override"
+" the Noxfile setting from the command line by using ``--no-stop-on-first-"
+"error``."
+msgstr ""
+
+#: ../../usage.rst:219
+msgid "Failing sessions when the interpreter is missing"
+msgstr ""
+
+#: ../../usage.rst:221
+msgid ""
+"By default, Nox will skip sessions where the Python interpreter can't be "
+"found. If you want Nox to mark these sessions as failed, you can use "
+"``--error-on-missing-interpreters``:"
+msgstr ""
+
+#: ../../usage.rst:227
+msgid ""
+"If the Noxfile sets ``nox.options.error_on_missing_interpreters``, you "
+"can override the Noxfile setting from the command line by using ``--no-"
+"error-on-missing-interpreters``."
+msgstr ""
+
+#: ../../usage.rst:232
+msgid "Disallowing external programs"
+msgstr ""
+
+#: ../../usage.rst:234
+msgid ""
+"By default Nox will warn but ultimately allow you to run programs not "
+"installed in the session's virtualenv. You can use ``--error-on-external-"
+"run`` to make Nox fail the session if it uses any external program "
+"without explicitly passing ``external=True`` into :func:`session.run "
+"<nox.session.Session.run>`:"
+msgstr ""
+
+#: ../../usage.rst:240
+msgid ""
+"If the Noxfile sets ``nox.options.error_on_external_run``, you can "
+"override the Noxfile setting from the command line by using ``--no-error-"
+"on-external-run``."
+msgstr ""
+
+#: ../../usage.rst:243
+msgid "Specifying a different configuration file"
+msgstr ""
+
+#: ../../usage.rst:245
+msgid ""
+"If for some reason your noxfile is not named *noxfile.py*, you can use "
+"``--noxfile`` or ``-f``:"
+msgstr ""
+
+#: ../../usage.rst:256
+msgid "Storing virtualenvs in a different directory"
+msgstr ""
+
+#: ../../usage.rst:258
+msgid ""
+"By default nox stores virtualenvs in ``./.nox``, however, you can change "
+"this using ``--envdir``:"
+msgstr ""
+
+#: ../../usage.rst:266
+msgid "Skipping everything but install commands"
+msgstr ""
+
+#: ../../usage.rst:268
+msgid ""
+"There are a couple of cases where it makes sense to have Nox only run "
+"``install`` commands, such as preparing an environment for offline "
+"testing or re-creating the same virtualenvs used for testing. You can use"
+" ``--install-only`` to skip ``run`` commands."
+msgstr ""
+
+#: ../../usage.rst:270
+msgid "For example, given this Noxfile:"
+msgstr ""
+
+#: ../../usage.rst:281
+msgid "Running:"
+msgstr ""
+
+#: ../../usage.rst:288
+msgid "Would run both ``install`` commands, but skip the ``run`` command:"
+msgstr ""
+
+#: ../../usage.rst:301
+msgid "Forcing non-interactive behavior"
+msgstr ""
+
+#: ../../usage.rst:303
+msgid ""
+":attr:`session.interactive <nox.sessions.Session.interactive>` can be "
+"used to tell if Nox is being run from an interactive terminal (such as an"
+" actual human running it on their computer) vs run in a non-interactive "
+"terminal (such as a continuous integration system)."
+msgstr ""
+
+#: ../../usage.rst:316
+msgid ""
+"Sometimes it's useful to force Nox to see the session as non-interactive."
+" You can use the ``--non-interactive`` argument to do this:"
+msgstr ""
+
+#: ../../usage.rst:323
+msgid "This will cause ``session.interactive`` to always return ``False``."
+msgstr ""
+
+#: ../../usage.rst:327
+msgid "Controlling color output"
+msgstr ""
+
+#: ../../usage.rst:329
+msgid ""
+"By default, Nox will output colorful logs if you're using in an "
+"interactive terminal. However, if you are redirecting ``stderr`` to a "
+"file or otherwise not using an interactive terminal, or the environment "
+"variable ``NO_COLOR`` is set, nox will output in plaintext. If this is "
+"not set, and ``FORCE_COLOR`` is present, color will be forced."
+msgstr ""
+
+#: ../../usage.rst:335
+msgid ""
+"You can manually control Nox's output using the ``--nocolor`` and "
+"``--forcecolor`` flags."
+msgstr ""
+
+#: ../../usage.rst:337
+msgid "For example, this will always output colorful logs:"
+msgstr ""
+
+#: ../../usage.rst:343
+msgid "However, this will never output colorful logs:"
+msgstr ""
+
+#: ../../usage.rst:354
+msgid "Controlling commands verbosity"
+msgstr ""
+
+#: ../../usage.rst:356
+msgid ""
+"By default, Nox will only show output of commands that fail, or, when the"
+" commands get passed ``silent=False``. By passing ``--verbose`` to Nox, "
+"all output of all commands run is shown, regardless of the silent "
+"argument."
+msgstr ""
+
+#: ../../usage.rst:361
+msgid "Outputting a machine-readable report"
+msgstr ""
+
+#: ../../usage.rst:363
+msgid "You can output a report in ``json`` format by specifying ``--report``:"
+msgstr ""
+
+#: ../../usage.rst:371
+msgid "Converting from tox"
+msgstr ""
+
+#: ../../usage.rst:373
+msgid ""
+"Nox has experimental support for converting ``tox.ini`` files into "
+"``noxfile.py`` files. This doesn't support every feature of tox and is "
+"intended to just do most of the mechanical work of converting over- "
+"you'll likely still need to make a few changes to the converted "
+"``noxfile.py``."
+msgstr ""
+
+#: ../../usage.rst:375
+msgid "To use the converter, install ``nox`` with the ``tox_to_nox`` extra:"
+msgstr ""
+
+#: ../../usage.rst:381
+msgid ""
+"Then, just run ``tox-to-nox`` in the directory where your ``tox.ini`` "
+"resides:"
+msgstr ""
+
+#: ../../usage.rst:387
+msgid ""
+"This will create a ``noxfile.py`` based on the environments in your "
+"``tox.ini``. Some things to note:"
+msgstr ""
+
+#: ../../usage.rst:389
+msgid ""
+"`Generative environments`_ work, but will be converted as individual "
+"environments. ``tox-to-nox`` isn't quite smart enough to turn these into "
+":ref:`parametrized <running_paramed_sessions>` sessions, but it should be"
+" straightforward to manually pull out common configuration for "
+"parametrization."
+msgstr ""
+
+#: ../../usage.rst:390
+msgid ""
+"Due to the way tox parses its configuration, all `substitutions`_ are "
+"baked in when converting. This means you'll need to replace the static "
+"strings in the ``noxfile.py`` with appropriate variables."
+msgstr ""
+
+#: ../../usage.rst:391
+msgid ""
+"Several non-common tox options aren't implemented, but it's possible to "
+"do so. Please file a feature request if you run into one you think will "
+"be useful."
+msgstr ""
+
+#: ../../usage.rst:398
+msgid "Shell Completion"
+msgstr ""
+
+#: ../../usage.rst:399
+msgid ""
+"Add the appropriate command to your shell's config file so that it is run"
+" on startup. You will likely have to restart or re-login for the "
+"autocompletion to start working."
+msgstr ""
+
+#: ../../usage.rst:403
+msgid "bash"
+msgstr ""
+
+#: ../../usage.rst:409
+msgid "zsh"
+msgstr ""
+
+#: ../../usage.rst:421
+msgid "tcsh"
+msgstr ""
+
+#: ../../usage.rst:427
+msgid "fish"
+msgstr ""
+

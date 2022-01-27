@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016, Alethea Katherine Flowers
+# This file is distributed under the same license as the Nox package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nox 2022.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-27 11:17+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.0\n"
+
+#: ../../cookbook.rst:2
+msgid "The Nox Cookbook"
+msgstr ""
+
+#: ../../cookbook.rst:5
+msgid "The What?"
+msgstr ""
+
+#: ../../cookbook.rst:7
+msgid ""
+"A lot of people and a lot of projects use Nox for their python automation"
+" powers."
+msgstr ""
+
+#: ../../cookbook.rst:9
+msgid ""
+"Some of these sessions are the classic \"run pytest and linting\", some "
+"are more unique and more interesting!"
+msgstr ""
+
+#: ../../cookbook.rst:11
+msgid "The Nox cookbook is a collection of these such sessions."
+msgstr ""
+
+#: ../../cookbook.rst:13
+msgid ""
+"Nox is super easy to get started with, and super powerful right out of "
+"the box. But when things get complex or you want to chain together some "
+"more powerful tasks, often the only examples can be found hunting around "
+"GitHub for novel sessions."
+msgstr ""
+
+#: ../../cookbook.rst:15
+msgid ""
+"The kind of sessions that make you think \"I didn't know you could do "
+"that!\""
+msgstr ""
+
+#: ../../cookbook.rst:17
+msgid ""
+"This cookbook is intended to be a centralized, community-driven "
+"repository of awesome Nox sessions to act as a source of inspiration and "
+"a reference guide for nox's users. If you're doing something cool with "
+"Nox, why not add your session here?"
+msgstr ""
+
+#: ../../cookbook.rst:21
+msgid "Contributing a Session"
+msgstr ""
+
+#: ../../cookbook.rst:23
+msgid ""
+"Anyone can contribute sessions to the cookbook. However, there are a few "
+"guiding principles you should keep in mind:"
+msgstr ""
+
+#: ../../cookbook.rst:25
+msgid ""
+"Your session should be interesting or unique, it should do something out "
+"of the ordinary or otherwise interesting."
+msgstr ""
+
+#: ../../cookbook.rst:26
+msgid "You should explain briefly what it does and why it's interesting."
+msgstr ""
+
+#: ../../cookbook.rst:28
+msgid ""
+"For general advice on how to contribute to Nox see our "
+":doc:`CONTRIBUTING` guide"
+msgstr ""
+
+#: ../../cookbook.rst:31
+msgid "Recipes"
+msgstr ""
+
+#: ../../cookbook.rst:34
+msgid "Instant Dev Environment"
+msgstr ""
+
+#: ../../cookbook.rst:36
+msgid ""
+"A common sticking point in contributing to python projects (especially "
+"for beginners) is the problem of wrangling virtual environments and "
+"installing dependencies."
+msgstr ""
+
+#: ../../cookbook.rst:38
+msgid "Enter the ``dev`` nox session:"
+msgstr ""
+
+#: ../../cookbook.rst:74
+msgid ""
+"With this, a user can simply run ``nox -s dev`` and have their entire "
+"environment set up automatically!"
+msgstr ""
+
+#: ../../cookbook.rst:78
+msgid "The Auto-Release"
+msgstr ""
+
+#: ../../cookbook.rst:80
+msgid ""
+"Releasing a new version of an open source project can be a real pain, "
+"with lots of intricate steps. Tools like `Bump2Version "
+"<https://github.com/c4urself/bump2version>`_ really help here."
+msgstr ""
+
+#: ../../cookbook.rst:82
+msgid "Even more so with a sprinkling of Nox:"
+msgstr ""
+
+#: ../../cookbook.rst:129
+msgid ""
+"Now a simple ``nox -s release -- patch`` will automate your release "
+"(provided you have Bump2Version set up to change your files). This is "
+"especially powerful if you have a CI/CD pipeline set up!"
+msgstr ""
+
