@@ -41,7 +41,7 @@ jobs:
       - name: 👷‍ Install dependencies
         shell: bash
         run: |
-          pip install -r docs/requirements-test.txt
+          pip install -r requirements-test.txt
 
       - name: 🔧 Build HTML
         run: |
