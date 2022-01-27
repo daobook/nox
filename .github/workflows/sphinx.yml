@@ -38,6 +38,11 @@ jobs:
       #     sudo apt update
       #     sudo apt install -y graphviz
 
+      - name: 👷‍ Install dependencies
+        shell: bash
+        run: |
+          pip install nox
+
       - name: 🔧 Build HTML
         run: |
           nox -s docs --non-interactive
@@ -47,7 +52,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/.nox/docs/tmp/output/html
-
-      # remove the .doctrees folder when building for deployment as it takes two thirds of disk space
-      - name: 🔥 Clean up files
-        run: rm -r docs/.nox
