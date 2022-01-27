@@ -78,43 +78,43 @@
 </pre></div>
 </div>
 <p>Nox 将按照指定的顺序运行这些会话。</p>
-<p>If you have a <a class="reference internal" href="config.html#virtualenv-config"><span class="std std-ref">configured session’s virtualenv</span></a>, you can choose to run only sessions with given Python versions:</p>
+<p>如果你有 <a class="reference internal" href="config.html#virtualenv-config"><span class="std std-ref">配置的会话的 virtualenv</span></a>，你可以选择只运行具有指定 Python 版本的会话：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --python 3.8</span>
 <span class="go">nox -p 3.7 3.8</span>
 </pre></div>
 </div>
-<p>You can also use <a class="reference external" href="https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests">pytest-style keywords</a> to filter test sessions:</p>
+<p>你也可以使用 <a class="reference external" href="https://docs.pytest.org/en/latest/usage.html#specifying-tests-selecting-tests">pytest-style keywords</a> 来过滤测试会话。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -k &quot;not lint&quot;</span>
 <span class="go">nox -k &quot;tests and not lint&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="specifying-parametrized-sessions">
-<span id="running-paramed-sessions"></span><h2>Specifying parametrized sessions<a class="headerlink" href="#specifying-parametrized-sessions" title="永久链接至标题">¶</a></h2>
-<p>If you have a <a class="reference internal" href="config.html#parametrized"><span class="std std-ref">parametrized</span></a> session such as:</p>
+<span id="running-paramed-sessions"></span><h2>指定参数化的会话<a class="headerlink" href="#specifying-parametrized-sessions" title="永久链接至标题">¶</a></h2>
+<p>如果你有 <a class="reference internal" href="config.html#parametrized"><span class="std std-ref">参数化</span></a> 会话，如：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@nox</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span><span class="s1">&#39;django&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;2.0&#39;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">tests</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">django</span><span class="p">):</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Then running <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--session</span> <span class="pre">tests</span></code> will actually run all parametrized versions of the session. If you want the run the session with a particular set of parametrized arguments, you can specify them with the session name:</p>
+<p>然后运行 <code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">--session</span> <span class="pre">tests</span></code> 实际上将运行所有参数化的会话版本。如果你想用一组特定的参数来运行会话，你可以用会话名称来指定它们：</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox --session &quot;tests(django=&#39;1.9&#39;)&quot;</span>
 <span class="go">nox --session &quot;tests(django=&#39;2.0&#39;)&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="changing-the-sessions-default-backend">
-<span id="opt-default-venv-backend"></span><h2>Changing the sessions default backend<a class="headerlink" href="#changing-the-sessions-default-backend" title="永久链接至标题">¶</a></h2>
-<p>By default nox uses <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> as the virtual environment backend for the sessions, but it also supports <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, and <code class="docutils literal notranslate"><span class="pre">venv</span></code> as well as no backend (passthrough to whatever python environment nox is running on). You can change the default behaviour by using <code class="docutils literal notranslate"><span class="pre">-db</span> <span class="pre">&lt;backend&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--default-venv-backend</span> <span class="pre">&lt;backend&gt;</span></code>. Supported names are <code class="docutils literal notranslate"><span class="pre">('none',</span> <span class="pre">'virtualenv',</span> <span class="pre">'conda',</span> <span class="pre">'mamba',</span> <span class="pre">'venv')</span></code>.</p>
+<span id="opt-default-venv-backend"></span><h2>改变会话的默认后端<a class="headerlink" href="#changing-the-sessions-default-backend" title="永久链接至标题">¶</a></h2>
+<p>默认情况下，nox 使用 <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> 作为会话的虚拟环境后端，但它也支持 <code class="docutils literal notranslate"><span class="pre">conda</span></code>、<code class="docutils literal notranslate"><span class="pre">mamba</span></code> 和 <code class="docutils literal notranslate"><span class="pre">venv</span></code> 以及无后端（直通到 nox 运行的任何 python 环境）。你可以通过使用 <code class="docutils literal notranslate"><span class="pre">-db</span> <span class="pre">&lt;backend&gt;</span></code> 或 <code class="docutils literal notranslate"><span class="pre">--default-venv-backend</span> <span class="pre">&lt;backend&gt;</span></code> 来改变默认行为。支持的名称是 <code class="docutils literal notranslate"><span class="pre">('none',</span> <span class="pre">'virtualenv',</span> <span class="pre">'conda',</span> <span class="pre">'mamba',</span> <span class="pre">'venv')</span></code>。</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -db conda</span>
 <span class="go">nox --default-venv-backend conda</span>
 </pre></div>
 </div>
-<p>You can also set this option in the Noxfile with <code class="docutils literal notranslate"><span class="pre">nox.options.default_venv_backend</span></code>. In case both are provided, the commandline argument takes precedence.</p>
-<p>Note that using this option does not change the backend for sessions where <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code> is explicitly set.</p>
+<p>你也可以在 Noxfile 中用 <code class="docutils literal notranslate"><span class="pre">nox.options.default_venv_backend</span></code> 设置这个选项。如果两者都提供，则以命令行参数为准。</p>
+<p>注意，使用这个选项不会改变明确设置了 <code class="docutils literal notranslate"><span class="pre">venv_backend</span></code> 的会话的后端。</p>
 </section>
 <section id="forcing-the-sessions-backend">
-<span id="opt-force-venv-backend"></span><h2>Forcing the sessions backend<a class="headerlink" href="#forcing-the-sessions-backend" title="永久链接至标题">¶</a></h2>
+<span id="opt-force-venv-backend"></span><h2>强制使用会话后端<a class="headerlink" href="#forcing-the-sessions-backend" title="永久链接至标题">¶</a></h2>
 <p>You might work in a different environment than a project’s default continuous integration settings, and might wish to get a quick way to execute the same tasks but on a different venv backend. For this purpose, you can temporarily force the backend used by <strong>all</strong> sessions in the current nox execution by using <code class="docutils literal notranslate"><span class="pre">-fb</span> <span class="pre">&lt;backend&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">--force-venv-backend</span> <span class="pre">&lt;backend&gt;</span></code>. No exceptions are made, the backend will be forced for all sessions run whatever the other options values and nox file configuration. Supported names are <code class="docutils literal notranslate"><span class="pre">('none',</span> <span class="pre">'virtualenv',</span> <span class="pre">'conda',</span> <span class="pre">'venv')</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nox -fb conda</span>
 <span class="go">nox --force-venv-backend conda</span>
@@ -364,9 +364,9 @@ or re-login for the autocompletion to start working.</p>
 <li class="toctree-l2"><a class="reference internal" href="#listing-available-sessions">列出可用的会话</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-all-sessions">运行所有会话</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#specifying-one-or-more-sessions">指定一个或多个会话</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#specifying-parametrized-sessions">Specifying parametrized sessions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#changing-the-sessions-default-backend">Changing the sessions default backend</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#forcing-the-sessions-backend">Forcing the sessions backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#specifying-parametrized-sessions">指定参数化的会话</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changing-the-sessions-default-backend">改变会话的默认后端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forcing-the-sessions-backend">强制使用会话后端</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#re-using-virtualenvs">Re-using virtualenvs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-additional-python-versions">Running additional Python versions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stopping-if-any-session-fails">Stopping if any session fails</a></li>
