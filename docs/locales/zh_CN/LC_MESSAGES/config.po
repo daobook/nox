@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../config.rst:2
 msgid "Configuration & API"
-msgstr ""
+msgstr "配置和 API"
 
 #: ../../config.rst:5
 msgid "Noxfile"
@@ -31,20 +31,23 @@ msgid ""
 "You can specify a different file using the ``--noxfile`` argument when "
 "running ``nox``."
 msgstr ""
-
+"Nox 默认在名为 ``noxfile.py`` 的文件中寻找配置。"
+"你可以在运行 ``nox`` 时使用 ``--noxfile`` 参数指定一个不同的文件。"
+`
 #: ../../config.rst:12
 msgid "Defining sessions"
-msgstr ""
+msgstr "定义会话"
 
 #: nox.registry.session_decorator:1 of
 msgid "Designate the decorated function as a session."
-msgstr ""
+msgstr "将装饰的函数指定为一个会话。"
 
 #: ../../config.rst:16
 msgid ""
 "Nox sessions are configured via standard Python functions that are "
 "decorated with ``@nox.session``. For example:"
 msgstr ""
+"Nox 会话是通过标准的 Python 函数配置的，这些函数用 ``@nox.session`` 装饰。例如："
 
 #: ../../config.rst:27
 msgid ""
@@ -52,10 +55,12 @@ msgid ""
 "as described in :ref:`virtualenv config` and  parametrize sessions as "
 "described in :ref:`parametrized sessions <parametrized>`."
 msgstr ""
+"你也可以按照 :ref:`virtualenv config` 中的描述，配置会话以针对多个 Python 版本运行，"
+"并按照 :ref:`参数化会话 <parametrized>` 中的描述，配置会话的参数。"
 
 #: ../../config.rst:31
 msgid "Session description"
-msgstr ""
+msgstr "会话描述"
 
 #: ../../config.rst:33
 msgid ""
@@ -63,14 +68,16 @@ msgid ""
 "<https://www.python.org/dev/peps/pep-0257>`__. The first line will be "
 "shown when listing the sessions. For example:"
 msgstr ""
+"你可以使用 `docstring <https://www.python.org/dev/peps/pep-0257>`__ 为你的会话添加描述。"
+"第一行将在列出会话时显示。比如说："
 
 #: ../../config.rst:45 ../../config.rst:68
 msgid "The ``nox --list`` command will show:"
-msgstr ""
+msgstr "``nox --list`` 命令将显示："
 
 #: ../../config.rst:55
 msgid "Session name"
-msgstr ""
+msgstr "会话名字"
 
 #: ../../config.rst:57
 msgid ""
@@ -79,14 +86,17 @@ msgid ""
 " need to you can customize the session's name by using the ``name`` "
 "argument to ``@nox.session``. For example:"
 msgstr ""
+"默认情况下，Nox 使用装饰后的函数名称作为会话名称。"
+"这对绝大多数项目来说是很好的，但是，如果你需要，"
+"你可以通过使用 ``@nox.session`` 的 ``name`` 参数来定制会话的名称。比如说："
 
 #: ../../config.rst:76
 msgid "And you can tell ``nox`` to run the session using the custom name:"
-msgstr ""
+msgstr "你可以告诉 ``nox`` 使用自定义的名字来运行会话："
 
 #: ../../config.rst:87
 msgid "Configuring a session's virtualenv"
-msgstr ""
+msgstr "配置会话的 virtualenv"
 
 #: ../../config.rst:89
 msgid ""
@@ -94,6 +104,8 @@ msgid ""
 "same interpreter that Nox uses. If you installed Nox using Python 3.6, "
 "Nox will use Python 3.6 by default for all of your sessions."
 msgstr ""
+"默认情况下，Nox 将为每个会话创建新的 virtualenv，使用 Nox 使用的相同解释器。"
+"如果你使用 Python 3.6 安装 Nox，Nox 将默认为你的所有会话使用 Python 3.6。"
 
 #: ../../config.rst:91
 msgid ""
@@ -101,6 +113,7 @@ msgid ""
 "specifying the ``python`` argument (or its alias ``py``) to "
 "``@nox.session``:"
 msgstr ""
+"你可以通过向 ``@nox.session`` 指定 ``python`` 参数（或其别名 ``py``），告诉 Nox 使用不同的 Python 解释器/版本："
 
 #: ../../config.rst:101
 msgid ""
@@ -110,6 +123,9 @@ msgid ""
 "the 32-bit version of a given Python, then ``X.Y-32`` should be used as "
 "the version."
 msgstr ""
+"Windows 上的 Python 二进制文件是通过 Python `Launcher`_ for Windows (``py``) 找到的。"
+"例如，Python 3.9 可以通过确定哪个可执行文件被 ``py -3.9`` 调用来找到。"
+"如果某个测试需要使用某个 Python 的 32 位版本，那么应该使用 ``X.Y-32`` 作为版本。"
 
 #: ../../config.rst:108
 msgid ""
@@ -118,6 +134,9 @@ msgid ""
 "for each interpreter you specify. For example, this session will run "
 "twice - once for Python 2.7 and once for Python 3.6:"
 msgstr ""
+"你也可以告诉 Nox 针对多个 Python 解释器运行你的会话。"
+"Nox 将创建一个单独的 virtualenv，为你指定的每个解释器运行会话。"
+"例如，这个会话将运行两次--一次用于 Python 2.7，另一次用于 Python 3.6："
 
 #: ../../config.rst:116
 msgid ""
@@ -125,6 +144,8 @@ msgid ""
 "determine the name of the executable. However, Nox also accepts the full "
 "executable name. If you want to test using pypy, for example:"
 msgstr ""
+"当你提供版本号时，Nox 会自动在前面加上 python 来确定可执行文件的名称。"
+"然而，Nox 也接受完整的可执行文件名。如果你想用 pypy 来测试，例如："
 
 #: ../../config.rst:124
 msgid ""
@@ -132,16 +153,20 @@ msgid ""
 "each interpreter. You can see these sessions when running ``nox --list``."
 " For example this Noxfile:"
 msgstr ""
+"当收集你的会话时，Nox 将为每个解释器创建一个单独的会话。"
+"你可以在运行 ``nox --list`` 时看到这些会话。"
+" 例如这个 Noxfile："
 
 #: ../../config.rst:132
 msgid "Will produce these sessions:"
-msgstr ""
+msgstr "将制作这些会话："
 
 #: ../../config.rst:142
 msgid ""
 "Note that this expansion happens *before* parameterization occurs, so you"
 " can still parametrize sessions with multiple interpreters."
 msgstr ""
+"注意，这种扩展发生在参数化之前，所以你仍然可以用多个解释器对会话进行参数化。"
 
 #: ../../config.rst:144
 msgid ""
@@ -150,6 +175,8 @@ msgid ""
 "are equivalent. Note that this can be done temporarily through the :ref"
 ":`--no-venv <opt-force-venv-backend>` commandline flag, too."
 msgstr ""
+"如果你想完全禁用 virtualenv 的创建，你可以把 ``python`` 设置为 ``False``，或者把 ``venv_backend`` 设置为 ``\"none\"``，两者都是等同的。"
+"注意，这也可以通过 :ref:`--no-venv <opt-force-venv-backend>` 命令行标志临时完成。"
 
 #: ../../config.rst:152
 msgid ""
@@ -157,26 +184,30 @@ msgid ""
 " it modifies the global Python environment. If this is what you really "
 "want, use :func:`session.run()` and pip instead."
 msgstr ""
+"使用 :func:`session.install()` 在没有 virtualenv 的情况下是被弃用的，"
+"因为它修改了全局 Python 环境。如果这是你真正想要的，使用 :func:`session.run()` 和 pip 来代替。"
 
 #: ../../config.rst:160
 msgid ""
 "You can also specify that the virtualenv should *always* be reused "
 "instead of recreated every time:"
 msgstr ""
+"你也可以指定 virtualenv 应该一直被重用，而不是每次都重新创建："
 
 #: ../../config.rst:170
 msgid ""
 "You are not limited to virtualenv, there is a selection of backends you "
 "can choose from as venv, conda, mamba, or virtualenv (default):"
 msgstr ""
+"你并不局限于 virtualenv，你可以选择 venv、conda、mamba 或 virtualenv（默认）等后端："
 
 #: ../../config.rst:178
 msgid "Finally, custom backend parameters are supported:"
-msgstr ""
+msgstr "最后，支持自定义后端参数："
 
 #: ../../config.rst:188
 msgid "Passing arguments into sessions"
-msgstr ""
+msgstr "将参数传入会话"
 
 #: ../../config.rst:190
 msgid ""
@@ -184,22 +215,24 @@ msgid ""
 "quick example that demonstrates how to use arguments to run tests against"
 " a particular file:"
 msgstr ""
+"通常情况下，向你的测试会话传递参数是很有用的。"
+"这里有一个快速的例子，演示了如何使用参数来运行针对特定文件的测试："
 
 #: ../../config.rst:207
 msgid "Now you if you run:"
-msgstr ""
+msgstr "现在你如果运行："
 
 #: ../../config.rst:215 ../../config.rst:229
 msgid "Then nox will run:"
-msgstr ""
+msgstr "然后 nox 将运行："
 
 #: ../../config.rst:222
 msgid "But if you run:"
-msgstr ""
+msgstr "但如果你运行："
 
 #: ../../config.rst:239
 msgid "Parametrizing sessions"
-msgstr ""
+msgstr "参数化会话"
 
 #: ../../config.rst:241
 msgid ""
@@ -207,10 +240,12 @@ msgid ""
 "decorator. Here's a typical example of parametrizing the Django version "
 "to install:"
 msgstr ""
+"会话实参可以用 :func:`nox.parametrize` 装饰器来参数化。"
+"下面是一个典型的参数化 Django 安装版本的例子："
 
 #: ../../config.rst:251
 msgid "When you run ``nox``, it will create a two distinct sessions:"
-msgstr ""
+msgstr "当你运行 ``nox`` 时，它将创建两个不同的会话："
 
 #: ../../config.rst:263
 msgid ""
@@ -218,10 +253,12 @@ msgid ""
 "to `pytest's parametrize "
 "<https://pytest.org/latest/parametrize.html#_pytest.python.Metafunc.parametrize>`_."
 msgstr ""
+":func:`nox.parametrize` 的接口和用法有意类似于 `pytest 的 parametrize "
+"<https://pytest.org/latest/parametrize.html#_pytest.python.Metafunc.parametrize>`_."
 
 #: nox._parametrize.parametrize_decorator:1 of
 msgid "Parametrize a session."
-msgstr ""
+msgstr "参数化会话"
 
 #: nox._parametrize.parametrize_decorator:3 of
 msgid ""
@@ -230,6 +267,8 @@ msgid ""
 "performed during session discovery and each invocation appears as a "
 "separate session to nox."
 msgstr ""
+"使用给定的 ``arg_names`` 的 ``arg_values_list`` 列表，向底层会话函数添加新的调用。"
+"参数化是在会话发现期间进行的，每个调用都作为一个单独的会话出现在 nox 中。"
 
 #: nox._parametrize.parametrize_decorator nox.sessions.Session.notify
 #: nox.sessions.Session.run nox.sessions.Session.run_always of
@@ -238,7 +277,7 @@ msgstr ""
 
 #: nox._parametrize.parametrize_decorator:8 of
 msgid "A list of argument names."
-msgstr ""
+msgstr "参数名称的列表。"
 
 #: nox._parametrize.parametrize_decorator:10 of
 msgid ""
@@ -249,32 +288,39 @@ msgid ""
 "each tuple-element specifies a value for its respective argument name, "
 "for example ``[(1, 'a'), (2, 'b')]``."
 msgstr ""
+"参数值列表决定了一个会话在不同参数值下被调用的频率。"
+"如果只指定了一个参数名，那么这就是一个简单的值列表，例如 ``[1, 2, 3]``。"
+"如果指定了 N 个参数名，这必须是一个 N 个元组的列表，其中每个元组元素为其各自的参数名指定一个值，"
+"例如 ``[(1, 'a'), (2, 'b')]``。"
 
 #: nox._parametrize.parametrize_decorator:18 of
 msgid "Optional sequence of test IDs to use for the parametrized arguments."
-msgstr ""
+msgstr "可选的测试 ID 序列，用于参数化的实参。"
 
 #: ../../config.rst:267
 msgid ""
 "You can also stack the decorator to produce sessions that are a "
 "combination of the arguments, for example:"
 msgstr ""
+"你也可以将装饰器堆叠起来，产生的会话是参数的组合，例如："
 
 #: ../../config.rst:278
 msgid ""
 "If you run ``nox --list``, you'll see that this generates the following "
 "set of sessions:"
 msgstr ""
+"如果你运行 ``nox --list``，你会看到这产生了以下一组会话："
 
 #: ../../config.rst:288
 msgid ""
 "If you only want to run one of the parametrized sessions, see "
 ":ref:`running_paramed_sessions`."
 msgstr ""
+"如果你只想运行其中一个参数化的会话，请参阅 :ref:`running_paramed_sessions`。"
 
 #: ../../config.rst:292
 msgid "Giving friendly names to parametrized sessions"
-msgstr ""
+msgstr "给予参数化的会话以友好的名称"
 
 #: ../../config.rst:294
 msgid ""
