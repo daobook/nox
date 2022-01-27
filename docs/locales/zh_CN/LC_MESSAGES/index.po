@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2016, Alethea Katherine Flowers
 # This file is distributed under the same license as the Nox package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# xinetzone <735613050@qq.com>, 2022.
 #
 #, fuzzy
 msgid ""
@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-27 11:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: xinetzone <735613050@qq.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../index.rst:2
 msgid "Welcome to Nox"
-msgstr ""
+msgstr "欢迎来到 Nox"
 
 #: ../../index.rst:15
 msgid ""
@@ -27,20 +27,24 @@ msgid ""
 "environments, similar to `tox`_. Unlike tox, Nox uses a standard Python "
 "file for configuration."
 msgstr ""
+"``nox`` 是一个命令行工具，可以在多个 Python 环境中自动测试，类似于 `tox`_。"
+"与 tox 不同，Nox 使用标准的 Python 文件进行配置。"
 
 #: ../../index.rst:17
 msgid "Install nox via `pip`_::"
-msgstr ""
+msgstr "使用 `pip`_ 安装 nox ::"
 
 #: ../../index.rst:22
 msgid ""
 "Nox is configured via a ``noxfile.py`` file in your project's directory. "
 "Here's a simple noxfile that runs lint and some tests::"
 msgstr ""
+"Nox 是通过你的项目目录中的 ``noxfile.py`` 文件配置的。"
+"这里有一个简单的 noxfile，运行 lint 和一些测试 ::"
 
 #: ../../index.rst:36
 msgid "To run both of these sessions, just run::"
-msgstr ""
+msgstr "要运行这两个会话，只需运行 ::"
 
 #: ../../index.rst:40
 msgid ""
@@ -48,6 +52,7 @@ msgid ""
 "appropriate interpreter, install the specified dependencies, and run the "
 "commands in order."
 msgstr ""
+"对于每个会话，Nox 将自动创建 `virtualenv`_ 与适当的解释器，安装指定的依赖，并按顺序运行命令。"
 
 #: ../../index.rst:42
 msgid ""
@@ -55,16 +60,19 @@ msgid ""
 "documentation on configuring sessions, see :doc:`config`. For "
 "documentation on running ``nox``, see :doc:`usage`."
 msgstr ""
+"要学习如何安装和使用 Nox，请参阅 :doc:`tutorial`。"
+"关于配置会话的文档，请看 :doc:`config`。关于运行 ``nox`` 的文档，请看 :doc:`usage`。"
 
 #: ../../index.rst:50
 msgid "Projects that use Nox"
-msgstr ""
+msgstr "使用 Nox 的项目"
 
 #: ../../index.rst:52
 msgid ""
 "Nox is lucky to have several wonderful projects that use it and provide "
 "feedback and contributions."
 msgstr ""
+"Nox 很幸运，有几个精彩的项目使用它并提供反馈和贡献。"
 
 #: ../../index.rst:54
 msgid "`Bézier <https://github.com/dhermes/bezier>`__"
@@ -164,13 +172,14 @@ msgstr ""
 
 #: ../../index.rst:77
 msgid "Other useful projects"
-msgstr ""
+msgstr "其他有用的项目"
 
 #: ../../index.rst:79
 msgid ""
 "Nox is not the only tool of its kind. If Nox doesn't quite fit your needs"
 " or you want to do more research, we recommend looking at these tools:"
 msgstr ""
+"Nox 不是唯一的同类工具。如果 Nox 不完全适合你的需要，或者你想做更多的研究，我们建议看看这些工具："
 
 #: ../../index.rst:81
 msgid ""
@@ -178,6 +187,7 @@ msgid ""
 "managing multiple Python test environments, and is the direct spiritual "
 "ancestor to Nox."
 msgstr ""
+"`tox <https://tox.readthedocs.org>`__ 是管理多个 Python 测试环境的事实标准，也是 Nox 的直接精神祖先。"
 
 #: ../../index.rst:82
 msgid ""
@@ -186,16 +196,19 @@ msgid ""
 "were tailored specifically to Python testing, so Invoke is a great choice"
 " for scripts that need to encompass far more than Nox's specialization."
 msgstr ""
+"`Invoke <https://www.pyinvoke.org/>`__ 是一个通用的任务执行库，类似于 Make。"
+"Nox 可以被认为是 Invoke 专门为 Python 测试定制的，所以 Invoke 是需要包含远远超过 Nox 专业性的脚本的一个很好的选择。"
 
 #: ../../index.rst:86
 msgid "Maintainers & contributors"
-msgstr ""
+msgstr "维护者和贡献者"
 
 #: ../../index.rst:88
 msgid ""
 "Nox is free & open-source software and is made possible by community "
 "maintainers and contributors."
 msgstr ""
+"Nox 是免费的开源软件，是由社区维护者和贡献者促成的。"
 
 #: ../../index.rst:90
 msgid "Our maintainers are (in alphabetical order):"
@@ -241,4 +254,6 @@ msgid ""
 "contributors using `Open Collective <https://opencollective.com/python-"
 "nox>`__."
 msgstr ""
-
+"Nox 的存在也是由于 `社区 <https://github.com/theacodes/nox/graphs/contributors>`__ 贡献的各种补丁和工作。"
+"如果你想参与进来，请参阅 :doc:`CONTRIBUTING`。"
+"我们使用 `Open Collective <https://opencollective.com/python-nox>`__ 支付我们的贡献者。"
