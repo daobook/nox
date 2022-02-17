@@ -49,16 +49,14 @@ class Param:
     def __str__(self) -> str:
         if self.id:
             return self.id
-        else:
-            call_spec = self.call_spec
-            args = [f"{k}={call_spec[k]!r}" for k in call_spec.keys()]
-            return ", ".join(args)
+        call_spec = self.call_spec
+        args = [f"{k}={call_spec[k]!r}" for k in call_spec.keys()]
+        return ", ".join(args)
 
     __repr__ = __str__
 
     def copy(self) -> "Param":
-        new = self.__class__(*self.args, arg_names=self.arg_names, id=self.id)
-        return new
+        return self.__class__(*self.args, arg_names=self.arg_names, id=self.id)
 
     def update(self, other: "Param") -> None:
         self.id = ", ".join([str(self), str(other)])

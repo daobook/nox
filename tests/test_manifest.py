@@ -80,9 +80,6 @@ def test_contains():
     assert "bar" in manifest
     assert "baz" not in manifest
 
-    # Establish that __contains__ works post-iteration.
-    for _session in manifest:
-        pass
     assert "foo" in manifest
     assert "bar" in manifest
     assert "baz" not in manifest
@@ -102,10 +99,6 @@ def test_getitem():
     with pytest.raises(KeyError):
         manifest["baz"]
 
-    # Establish that the sessions are still present even after being
-    # consumed by iteration.
-    for _session in manifest:
-        pass
     assert manifest["foo"].func is sessions["foo"]
     assert manifest["bar"].func is sessions["bar"]
 

@@ -106,11 +106,11 @@ def locate_via_py(version: str) -> Optional[str]:
         Optional[str]: The full executable path for the Python ``version``,
         if it is found.
     """
-    script = "import sys; print(sys.executable)"
     py_exe = py.path.local.sysfind("py")
     if py_exe is not None:
+        script = "import sys; print(sys.executable)"
         try:
-            return py_exe.sysexec("-" + version, "-c", script).strip()
+            return py_exe.sysexec(f'-{version}', "-c", script).strip()
         except py.process.cmdexec.Error:
             return None
     return None
@@ -136,8 +136,7 @@ def locate_using_path_and_version(version: str) -> Optional[str]:
         return None
 
     script = "import platform; print(platform.python_version())"
-    path_python = py.path.local.sysfind("python")
-    if path_python:
+    if path_python := py.path.local.sysfind("python"):
         try:
             prefix = f"{version}."
             version_string = path_python.sysexec("-c", script).strip()
@@ -201,7 +200,7 @@ class CondaEnv(ProcessEnv):
         self.location = os.path.abspath(location)
         self.interpreter = interpreter
         self.reuse_existing = reuse_existing
-        self.venv_params = venv_params if venv_params else []
+        self.venv_params = venv_params or []
         self.conda_cmd = conda_cmd
         super().__init__(env={"CONDA_PREFIX": self.location})
 
@@ -210,21 +209,20 @@ class CondaEnv(ProcessEnv):
         if os.path.exists(self.location):
             if self.reuse_existing:
                 return False
-            else:
-                cmd = [
-                    self.conda_cmd,
-                    "remove",
-                    "--yes",
-                    "--prefix",
-                    self.location,
-                    "--all",
-                ]
-                nox.command.run(cmd, silent=True, log=False)
-                # Make sure that location is clean
-                try:
-                    shutil.rmtree(self.location)
-                except FileNotFoundError:
-                    pass
+            cmd = [
+                self.conda_cmd,
+                "remove",
+                "--yes",
+                "--prefix",
+                self.location,
+                "--all",
+            ]
+            nox.command.run(cmd, silent=True, log=False)
+            # Make sure that location is clean
+            try:
+                shutil.rmtree(self.location)
+            except FileNotFoundError:
+                pass
 
         return True
 
@@ -260,10 +258,7 @@ class CondaEnv(ProcessEnv):
         # Ensure the pip package is installed.
         cmd.append("pip")
 
-        if self.interpreter:
-            python_dep = f"python={self.interpreter}"
-        else:
-            python_dep = "python"
+        python_dep = f"python={self.interpreter}" if self.interpreter else "python"
         cmd.append(python_dep)
 
         logger.info(f"Creating conda env in {self.location_name} with {python_dep}")
@@ -326,7 +321,7 @@ class VirtualEnv(ProcessEnv):
         self._resolved: Union[None, str, InterpreterNotFound] = None
         self.reuse_existing = reuse_existing
         self.venv_or_virtualenv = "venv" if venv else "virtualenv"
-        self.venv_params = venv_params if venv_params else []
+        self.venv_params = venv_params or []
         super().__init__(env={"VIRTUAL_ENV": self.location})
 
     def _clean_location(self) -> bool:
@@ -414,10 +409,9 @@ class VirtualEnv(ProcessEnv):
         xy_version = ""
         cleaned_interpreter = self.interpreter
 
-        # If this is just a X, X.Y, or X.Y.Z string, extract just the X / X.Y
-        # part and add Python to the front of it.
-        match = re.match(r"^(?P<xy_ver>\d(\.\d+)?)(\.\d+)?$", self.interpreter)
-        if match:
+        if match := re.match(
+            r"^(?P<xy_ver>\d(\.\d+)?)(\.\d+)?$", self.interpreter
+        ):
             xy_version = match.group("xy_ver")
             cleaned_interpreter = f"python{xy_version}"
 
@@ -432,20 +426,16 @@ class VirtualEnv(ProcessEnv):
             self._resolved = InterpreterNotFound(self.interpreter)
             raise self._resolved
 
-        # Allow versions of the form ``X.Y-32`` for Windows.
-        match = re.match(r"^\d\.\d+-32?$", cleaned_interpreter)
-        if match:
+        if match := re.match(r"^\d\.\d+-32?$", cleaned_interpreter):
             # preserve the "-32" suffix, as the Python launcher expects
             # it.
             xy_version = cleaned_interpreter
 
-        path_from_launcher = locate_via_py(xy_version)
-        if path_from_launcher:
+        if path_from_launcher := locate_via_py(xy_version):
             self._resolved = path_from_launcher
             return self._resolved
 
-        path_from_version_param = locate_using_path_and_version(xy_version)
-        if path_from_version_param:
+        if path_from_version_param := locate_using_path_and_version(xy_version):
             self._resolved = path_from_version_param
             return self._resolved
 

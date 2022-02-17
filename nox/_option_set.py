@@ -101,9 +101,7 @@ class Option:
 
     @property
     def default(self) -> Optional[Union[bool, str]]:
-        if callable(self._default):
-            return self._default()
-        return self._default
+        return self._default() if callable(self._default) else self._default
 
 
 def flag_pair_merge_func(

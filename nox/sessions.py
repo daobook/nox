@@ -86,18 +86,16 @@ def _dblquote_pkg_install_args(args: Tuple[str, ...]) -> Tuple[str, ...]:
                 f"ill-formated argument with odd number of quotes: {pkg_req_str}"
             )
 
-        if "<" in pkg_req_str or ">" in pkg_req_str:
-            if pkg_req_str[0] == '"' and pkg_req_str[-1] == '"':
-                # already double-quoted string
-                return pkg_req_str
-            else:
-                # need to double-quote string
-                if '"' in pkg_req_str:
-                    raise ValueError(f"Cannot escape requirement string: {pkg_req_str}")
-                return f'"{pkg_req_str}"'
-        else:
+        if "<" not in pkg_req_str and ">" not in pkg_req_str:
             # no dangerous char: no need to double-quote string
             return pkg_req_str
+        if pkg_req_str[0] == '"' and pkg_req_str[-1] == '"':
+            # already double-quoted string
+            return pkg_req_str
+        # need to double-quote string
+        if '"' in pkg_req_str:
+            raise ValueError(f"Cannot escape requirement string: {pkg_req_str}")
+        return f'"{pkg_req_str}"'
 
     # double-quote all args that need to be and return the result
     return tuple(_dblquote_pkg_install_arg(a) for a in args)
@@ -616,11 +614,7 @@ class SessionRunner:
 
     @property
     def description(self) -> Optional[str]:
-        doc = self.func.__doc__
-        if doc:
-            first_line = doc.strip().split("\n")[0]
-            return first_line
-        return None
+        return doc.strip().split("\n")[0] if (doc := self.func.__doc__) else None
 
     def __str__(self) -> str:
         sigs = ", ".join(self.signatures)
@@ -755,10 +749,7 @@ class Result:
         if self.status == Status.SUCCESS:
             return "was successful"
         status = self.status.name.lower()
-        if self.reason:
-            return f"{status}: {self.reason}"
-        else:
-            return status
+        return f"{status}: {self.reason}" if self.reason else status
 
     def log(self, message: str) -> None:
         """Log a message using the appropriate log function.

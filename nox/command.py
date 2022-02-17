@@ -46,9 +46,7 @@ def which(program: str, paths: Optional[List[str]]) -> str:
     if full_path:
         return full_path.strpath
 
-    full_path = py.path.local.sysfind(program)
-
-    if full_path:
+    if full_path := py.path.local.sysfind(program):
         return full_path.strpath
 
     logger.error(f"Program {program} not found.")
@@ -59,10 +57,7 @@ def _clean_env(env: Optional[dict]) -> Optional[dict]:
     if env is None:
         return None
 
-    clean_env = {}
-
-    # Ensure systemroot is passed down, otherwise Windows will explode.
-    clean_env["SYSTEMROOT"] = os.environ.get("SYSTEMROOT", "")
+    clean_env = {'SYSTEMROOT': os.environ.get("SYSTEMROOT", "")}
 
     clean_env.update(env)
     return clean_env
@@ -97,10 +92,9 @@ def run(
     if log:
         logger.info(full_cmd)
 
-        is_external_tool = paths is not None and not any(
+        if is_external_tool := paths is not None and not any(
             cmd_path.startswith(path) for path in paths
-        )
-        if is_external_tool:
+        ):
             if external == "error":
                 logger.error(
                     f"Error: {cmd} is not installed into the virtualenv, it is located at {cmd_path}. "

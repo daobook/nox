@@ -79,10 +79,10 @@ class Manifest:
     def __contains__(self, needle: Union[str, SessionRunner]) -> bool:
         if needle in self._queue or needle in self._consumed:
             return True
-        for session in self._queue + self._consumed:
-            if session.name == needle or needle in session.signatures:
-                return True
-        return False
+        return any(
+            session.name == needle or needle in session.signatures
+            for session in self._queue + self._consumed
+        )
 
     def __iter__(self) -> "Manifest":
         return self
@@ -139,9 +139,12 @@ class Manifest:
         # whether they are individually specified.
         queue = []
         for session_name in specified_sessions:
-            for session in self._queue:
-                if _normalized_session_match(session_name, session):
-                    queue.append(session)
+            queue.extend(
+                session
+                for session in self._queue
+                if _normalized_session_match(session_name, session)
+            )
+
         self._queue = queue
 
         # If a session was requested and was not found, complain loudly.
@@ -156,12 +159,11 @@ class Manifest:
                 ),
             )
         )
-        missing_sessions = [
+        if missing_sessions := [
             session_name
             for session_name in specified_sessions
             if _normalize_arg(session_name) not in all_sessions
-        ]
-        if missing_sessions:
+        ]:
             raise KeyError(f"Sessions not found: {', '.join(missing_sessions)}")
 
     def filter_by_python_interpreter(self, specified_pythons: Sequence[str]) -> None:
@@ -260,9 +262,12 @@ class Manifest:
             if not multi:
                 long_names.append(f"{name}{call.session_signature}")
             if func.python:
-                long_names.append(f"{name}-{func.python}{call.session_signature}")
-                # Ensure that specifying session-python will run all parameterizations.
-                long_names.append(f"{name}-{func.python}")
+                long_names.extend(
+                    (
+                        f"{name}-{func.python}{call.session_signature}",
+                        f"{name}-{func.python}",
+                    )
+                )
 
             sessions.append(SessionRunner(name, long_names, call, self._config, self))
 
@@ -332,10 +337,7 @@ class KeywordLocals(collections.abc.Mapping):
         self._keywords = keywords
 
     def __getitem__(self, variable_name: str) -> bool:
-        for keyword in self._keywords:
-            if variable_name in keyword:
-                return True
-        return False
+        return any(variable_name in keyword for keyword in self._keywords)
 
     def __iter__(self) -> Iterator[str]:
         return iter(self._keywords)
@@ -360,8 +362,7 @@ def _normalized_session_match(session_name: str, session: SessionRunner) -> bool
     if session_name == session.name or session_name in session.signatures:
         return True
     for name in session.signatures:
-        equal_rep = _normalize_arg(session_name) == _normalize_arg(name)
-        if equal_rep:
+        if equal_rep := _normalize_arg(session_name) == _normalize_arg(name):
             return True
     # Exhausted
     return False

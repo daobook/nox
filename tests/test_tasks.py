@@ -37,7 +37,7 @@ def session_func():
 
 session_func.python = None
 session_func.venv_backend = None
-session_func.should_warn = dict()
+session_func.should_warn = {}
 
 
 def session_func_with_python():

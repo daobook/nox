@@ -109,18 +109,17 @@ def _force_venv_backend_merge_func(
         noxfile_Args (_option_set.Namespace): The options specified in the
             Noxfile.
     """
-    if command_args.no_venv:
-        if (
-            command_args.force_venv_backend is not None
-            and command_args.force_venv_backend != "none"
-        ):
-            raise ValueError(
-                "You can not use `--no-venv` with a non-none `--force-venv-backend`"
-            )
-        else:
-            return "none"
-    else:
+    if not command_args.no_venv:
         return command_args.force_venv_backend or noxfile_args.force_venv_backend
+    if (
+        command_args.force_venv_backend is not None
+        and command_args.force_venv_backend != "none"
+    ):
+        raise ValueError(
+            "You can not use `--no-venv` with a non-none `--force-venv-backend`"
+        )
+    else:
+        return "none"
 
 
 def _envdir_merge_func(
@@ -140,8 +139,7 @@ def _envdir_merge_func(
 def _sessions_default() -> Optional[List[str]]:
     """Looks at the NOXSESSION env var to set the default value for sessions."""
     nox_env = os.environ.get("NOXSESSION")
-    env_sessions = nox_env.split(",") if nox_env else None
-    return env_sessions
+    return nox_env.split(",") if nox_env else None
 
 
 def _color_finalizer(value: bool, args: argparse.Namespace) -> bool:
@@ -202,7 +200,7 @@ def _posargs_finalizer(
 
     dash_index = posargs.index("--")
     if dash_index != 0:
-        unexpected_posargs = posargs[0:dash_index]
+        unexpected_posargs = posargs[:dash_index]
         raise _option_set.ArgumentError(
             None, f"Unknown argument(s) '{' '.join(unexpected_posargs)}'."
         )

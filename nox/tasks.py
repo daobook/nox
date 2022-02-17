@@ -387,6 +387,4 @@ def final_reduce(results: List[Result], global_config: Namespace) -> int:
     Returns:
         int: The final status code; ``0`` for success and ``1`` for failure.
     """
-    if not all(results):
-        return 1
-    return 0
+    return 1 if not all(results) else 0
